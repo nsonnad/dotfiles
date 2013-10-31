@@ -1,0 +1,121 @@
+/* file custom.css for the theme CleanNotebook */
+div#notebook { /* centers the page content */
+  font-family: 'Inconsolata' monospace;
+/*padding-left:20%;
+padding-right:20%;*/
+}
+
+body {
+  background-color:#292929;
+}
+
+div#maintoolbar, div#header {
+  display: none !important;
+}
+
+div#notebook {
+  border-top: none;
+}
+
+div.CodeMirror { /* Tunes the space between cells */
+  font-family: 'Inconsolata' monospace;
+  font-size: 16px;
+}
+
+div.input_prompt, div.output_prompt, div.output_area pre {
+  color: #f3ecdd;
+}
+
+.rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
+  border: 1px rgba(255, 250, 240, 0.1) solid;
+}
+
+.rendered_html th {
+  font-weight: normal;
+}
+
+div.cell.selected {
+  border-radius: 0px;
+}
+
+div.output_area pre {
+  font-family: 'Inconsolata' monospace;
+  font-size: 16px;
+}
+
+div.input_area {
+  border: none;
+}
+
+div.text_cell_render, div.output_html {
+ color: #fcfcfc;
+}
+
+span.CodeMirror-matchingbracket {
+  color: #599eff;
+}
+
+table.dataframe tr {
+  border: 1px #fcfcfc;
+}
+
+div.output_html {
+  font-family: sans-serif;
+}
+
+.rendered_html th {
+  font-weight: normal;
+}
+
+.output_wrapper, .prompt {
+  font-family: 'Inconsolata' monospace;
+}
+
+span.ansired {
+  color: #fb5151;
+}
+
+span.ansigreen {
+  color: #74f674;
+}
+
+span.ansiblue {
+  color: #74bcfb;
+}
+
+.cm-s-ipython.CodeMirror { background: #333; color: #7f9f7f; text-shadow: 0 -1px 1px #262626; }
+.cm-s-ipython div.CodeMirror-selected {background: #7d7d7d !important;} /* 33322B*/
+.cm-s-ipython .CodeMirror-cursor { border-left: 1px solid white !important; }
+.cm-s-ipython pre { padding: 0 8px; }/*editable code holder*/
+
+.cm-s-ipython.CodeMirror span.CodeMirror-matchingbracket { color: #7EFC7E; }/*65FC65*/
+
+.cm-s-ipython .CodeMirror-gutters { background: #262626; border-right:1px solid #aaa; }
+.cm-s-ipython .CodeMirror-linenumber { color: #777; }
+
+.cm-s-ipython span.cm-keyword { color: #f0dfaf; }
+.cm-s-ipython span.cm-atom { color: #C2B470; }
+.cm-s-ipython span.cm-number { color: #8cd0d3; }
+.cm-s-ipython span.cm-def {color: white;}
+.cm-s-ipython span.cm-variable { color:#f3ecdd; }
+.cm-s-ipython span.cm-variable-2 { color: #669199; }
+.cm-s-ipython span.cm-variable-3 { color: white; }
+.cm-s-ipython span.cm-property {color: #92A75C;}
+.cm-s-ipython span.cm-operator {color: #9ac39f;}
+.cm-s-ipython span.cm-comment { color: #7f9f7f; }
+.cm-s-ipython span.cm-string { color: #cc9393; }
+.cm-s-ipython span.cm-string-2 {color: #cc9393;}
+.cm-s-ipython span.cm-meta { color: #738C73; }
+.cm-s-ipython span.cm-error { color: #9d1e15; }
+.cm-s-ipython span.cm-qualifier {color: #555;}
+.cm-s-ipython span.cm-builtin { color: #efef8f; }
+.cm-s-ipython span.cm-bracket { color: #EBEFE7; }
+.cm-s-ipython span.cm-tag { color: #669199; }
+.cm-s-ipython span.cm-attribute {color: #00c;}
+.cm-s-ipython span.cm-header {color: #a0a;}
+.cm-s-ipython span.cm-quote {color: #090;}
+.cm-s-ipython span.cm-hr {color: #999;}
+.cm-s-ipython span.cm-link {color: #00c;}
+
+.cm-s-ipython .CodeMirror-activeline-background {background: #3C3A3A !important;}
+.cm-s-ipython .CodeMirror-matchingbracket {outline:1px solid rgba(140, 140, 140, 0.6); color:#e37170 !important;}
