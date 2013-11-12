@@ -1,8 +1,9 @@
-:noremap j 3j
-:noremap k 3k
+:noremap j 5j
+:noremap k 5k
 :noremap <S-j> <C-p>
 :noremap <S-k> <C-n>
 :set gui=none
 :hi Hint font-family: monospace; font-size: 14px; font-weight: bold; text-transform: uppercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px; 
 :hi CmdLine>* font-family: "Andale Mono", AndaleMono, monospace; font-size: 14px;
 :hi Normal color: black; background: white; font-size: 14px; font-family: Consolas, monaco, monospace;
+:set titlestring=ffox
