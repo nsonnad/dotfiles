@@ -67,3 +67,13 @@ bind 1:alt focus ${browser}
 bind 2:alt focus ${editor}
 bind 3:alt focus 'Skype'
 bind 4:alt focus 'VLC'
+
+# layouts
+layout worksplit ${browser}:REPEAT ${lefthalf}
+layout worksplit ${editor}:REPEAT ${righthalf}
+
+layout workfull ${browser}:REPEAT ${full}
+layout workfull ${editor}:REPEAT ${full}
+
+bind s:shift,cmd layout worksplit
+bind f:shift,cmd layout workfull
