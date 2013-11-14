@@ -19,15 +19,15 @@ alias browser 'Firefox'
 alias editor 'Sublime Text'
 
 # Resize Bindings
-bind right:shift;cmd  resize +10% +0
-bind left:shift;cmd   resize -10% +0
-bind up:shift;cmd          resize +0   -10%
-bind down:shift;cmd        resize +0   +10%
-bind right:ctrl;alt  resize -10% +0 bottom-right
-bind left:ctrl;alt   resize +10% +0 bottom-right
-bind up:ctrl;alt     resize +0   +10% bottom-right
-bind down:ctrl;alt   resize +0   -10% bottom-right
-bind up:ctrl          ${full}
+bind right:ctrl   resize +10% +0
+bind left:ctrl    resize -10% +0
+bind up:ctrl      resize +0 -10%
+bind down:ctrl    resize +0 +10%
+bind right:alt    resize -10% +0 bottom-right
+bind left:alt     resize +10% +0 bottom-right
+bind up:alt       resize +0 +10% bottom-right
+bind down:alt     resize +0 -10% bottom-right
+bind up:alt,ctrl  ${full}
 
 # Push Bindings
 bind right:ctrl,cmd  ${righthalf}
