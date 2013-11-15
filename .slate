@@ -15,21 +15,21 @@ alias showHintsLeftHand hint FDSAREWQ
 alias showNormalHint hint FHDJSKALGRUEIWOQPTY
 
 # app aliases
-alias browser 'Firefox'
-alias browser2 'Google Chrome'
-alias editor 'Sublime Text'
-alias media 'VLC'
+alias browser       'Firefox'
+alias browser2      'Google Chrome'
+alias editor        'Sublime Text'
+alias media         'VLC'
 
 # Resize Bindings
-bind right:ctrl   resize +10% +0
-bind left:ctrl    resize -10% +0
-bind up:ctrl      resize +0 -10%
-bind down:ctrl    resize +0 +10%
-bind right:alt    resize -10% +0 bottom-right
-bind left:alt     resize +10% +0 bottom-right
-bind up:alt       resize +0 +10% bottom-right
-bind down:alt     resize +0 -10% bottom-right
-bind up:alt,ctrl  ${full}
+bind right:ctrl     resize +10% +0
+bind left:ctrl      resize -10% +0
+bind up:ctrl        resize +0 -10%
+bind down:ctrl      resize +0 +10%
+bind right:alt      resize -10% +0 bottom-right
+bind left:alt       resize +10% +0 bottom-right
+bind up:alt         resize +0 +10% bottom-right
+bind down:alt       resize +0 -10% bottom-right
+bind up:alt,ctrl    ${full}
 
 # Push Bindings
 bind right:ctrl,cmd  ${righthalf}
@@ -50,10 +50,10 @@ bind up:ctrl;alt;cmd    throw up    resize
 bind down:ctrl;alt;cmd  throw down  resize
 
 # Focus Bindings
-bind right:cmd    focus right
-bind left:cmd     focus left
-bind up:cmd       focus up
-bind down:cmd     focus down
+bind l:ctrl       focus right
+bind h:ctrl       focus left
+bind j:ctrl       focus up
+bind k:ctrl       focus down
 bind up:cmd;alt   focus behind
 bind down:cmd;alt focus behind
 
@@ -82,7 +82,11 @@ layout testgrid ${browser}:REPEAT ${topleft}
 layout testgrid ${browser2}:REPEAT ${bottomleft}
 layout testgrid ${editor}:REPEAT ${righthalf}
 
-bind s:shift,cmd sequence layout worksplit | focus ${editor} | focus ${browser}
-bind f:shift,cmd sequence layout workfull | focus ${browser} | focus ${editor}
-bind m:shift,cmd sequence layout misc | focus ${media} | focus 'Skype'
-bind g:shift,cmd sequence layout testgrid | focus ${browser} | focus ${browser2} | focus ${editor}
+layout ipython ${browser}:REPEAT ${lefthalf}
+layout ipython ${browser2}:REPEAT ${righthalf}
+
+bind s:shift,alt sequence layout worksplit | focus ${editor} | focus ${browser}
+bind f:shift,alt sequence layout workfull | focus ${browser} | focus ${editor}
+bind m:shift,alt sequence layout misc | focus ${media} | focus 'Skype'
+bind g:shift,alt sequence layout testgrid | focus ${browser} | focus ${browser2} | focus ${editor}
+bind p:shift,alt sequence layout ipython | focus ${browser} | focus ${browser2}
