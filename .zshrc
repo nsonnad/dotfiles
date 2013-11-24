@@ -51,3 +51,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/usr/local/bin:$PATH
+export PATH=/Users/nikhil/bin:$PATH

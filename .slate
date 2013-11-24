@@ -50,16 +50,12 @@ bind up:ctrl;alt;cmd    throw up    resize
 bind down:ctrl;alt;cmd  throw down  resize
 
 # Focus Bindings
-bind l:ctrl       focus right
-bind h:ctrl       focus left
-bind j:ctrl       focus up
-bind k:ctrl       focus down
 bind up:cmd;alt   focus behind
 bind down:cmd;alt focus behind
 
 # Window Hints
 bind e:alt ${showHintsLeftHand}
-bind e:ctrl ${showNormalHint}
+bind e:cmd ${showNormalHint}
 
 # app specific focus
 bind 1:alt focus ${browser}
