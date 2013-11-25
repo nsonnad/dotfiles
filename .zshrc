@@ -45,7 +45,7 @@ alias updatepip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 '
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git sublime osx vi-mode autojump brew wd)
+plugins=(git sublime osx vi-mode brew lwd wd)
 
 source $ZSH/oh-my-zsh.sh
 
