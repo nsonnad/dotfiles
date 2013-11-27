@@ -83,6 +83,10 @@ span.ansiblue {
   color: #74bcfb;
 }
 
+div.output_stderr {
+  background-color: #ff3838;
+}
+
 .cm-s-ipython.CodeMirror { background: #333; color: #7f9f7f; text-shadow: 0 -1px 1px #262626; }
 .cm-s-ipython div.CodeMirror-selected {background: #7d7d7d !important;} /* 33322B*/
 .cm-s-ipython .CodeMirror-cursor { border-left: 1px solid white !important; }
