@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="nikhil"
+ZSH_THEME="sorin"
 
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
@@ -52,3 +52,4 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/usr/local/bin:$PATH
 export PATH=/Users/nikhil/bin:$PATH
+export PATH=/usr/local/sbin:/Users/nikhil/.rvm/gems/ruby-1.9.3-p448/bin:/Users/nikhil/.rvm/gems/ruby-1.9.3-p448@global/bin:/Users/nikhil/.rvm/rubies/ruby-1.9.3-p448/bin:/Users/nikhil/.rvm/bin:/Users/nikhil/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
