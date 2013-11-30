@@ -33,6 +33,12 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'goldfeld/vim-seek'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'tpope/vim-surround'
+
+"============================
+"Language specific
+"===========================
+NeoBundle 'hdima/python-syntax'
 
 "============================
 "SETTINGS
@@ -41,6 +47,8 @@ syntax on
 filetype plugin on
 filetype plugin indent on
 colorscheme zenburn
+"dont tell me to save when switching buffers
+set hidden
 set relativenumber
 set expandtab tabstop=2 shiftwidth=2
 set t_Co=256
@@ -70,6 +78,19 @@ noremap  <Left> ""
 noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
+
+"Alt-h: Go to previous buffer
+noremap ˙ :bprevious<CR>
+"Alt-j: Move current line down
+noremap ∆ mz:m+<cr>`z==
+"Alt-k: Move current line up
+noremap ˚ mz:m-2<cr>`z==
+"Alt-l: Go to next buffer
+noremap ¬ :bnext<CR>
+"Alt-Shift-j: Duplicate line down
+noremap Ô mzyyp`zj
+"Alt-Shift-k: Duplicate line up
+noremap  mzyyp`z
 
 "============================
 "Fugitive

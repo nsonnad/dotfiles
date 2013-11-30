@@ -15,6 +15,7 @@ alias t2="tree -L 2"
 alias t3="tree -L 3"
 alias ipynote="ipython notebook --profile=n --pylab=inline"
 alias updatepip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 'LATEST:'"
+alias fv="fg vim"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
