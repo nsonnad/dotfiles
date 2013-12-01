@@ -106,18 +106,19 @@ noremap  mzyyp`z
 "COLORS
 "=============================
 NeoBundle 'Zenburn'
-colorscheme zenburn
-"weird workaround for setting indent guide colors
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
-
 NeoBundle 'altercation/vim-colors-solarized'
-:command Solarized 
-  \ let g:solarized_termcolors=256
-  \ | set background=light 
-  \ | colorscheme solarized
 
+:command Zenburn colorscheme zenburn
+  \ | let g:indent_guides_auto_colors = 0
+  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
+
+:command Solarized set background=light | colorscheme solarized
+
+:Solarized
+":Zenburn
+noremap ⁄ :Zenburn<CR>
+noremap € :Solarized<CR>
 
 "============================
 "PLUGIN MAPPINGS
