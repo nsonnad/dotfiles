@@ -35,6 +35,7 @@ NeoBundle 'goldfeld/vim-seek'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'ivanov/vim-ipython'
+NeoBundle 'Raimondi/delimitMate'
 
 "============================
 "Language specific
