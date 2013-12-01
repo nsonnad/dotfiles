@@ -17,6 +17,7 @@ alias ipynote="ipython notebook --profile=n --pylab=inline"
 alias updatepip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 'LATEST:'"
 alias fv="fg vim"
 
+stty stop undef # to unmap ctrl-s
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 

@@ -34,6 +34,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'goldfeld/vim-seek'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'ivanov/vim-ipython'
 
 "============================
 "Language specific
@@ -62,23 +63,21 @@ let g:seek_enable_jumps = 1
 "============================
 "MAPPINGS
 "=============================
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
-nnoremap <Leader>w :bdelete<cr>
 nnoremap <leader>w :w!<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>th :tabprevious<cr>
+nnoremap <leader>tl :tabnext<cr>
+nnoremap <leader>t0 :tabfirst<cr>
+nnoremap <leader>t$ :tablast<cr>
 nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>te :tabedit
-nnoremap <leader>q :q<cr>
-nnoremap f :Unite file<cr>
-noremap  <Up> ""
-noremap! <Up> <Esc>
-noremap  <Down> ""
-noremap! <Down> <Esc>
-noremap  <Left> ""
-noremap! <Left> <Esc>
-noremap  <Right> ""
-noremap! <Right> <Esc>
-
+nnoremap <C-p> :Unite file<cr>
 "Alt-h: Go to previous buffer
 noremap ˙ :bprevious<CR>
 "Alt-j: Move current line down
@@ -91,6 +90,14 @@ noremap ¬ :bnext<CR>
 noremap Ô mzyyp`zj
 "Alt-Shift-k: Duplicate line up
 noremap  mzyyp`z
+
+"============================
+"PLUGIN MAPPINGS
+"=============================
+nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
+"let g:EasyMotion_leader_key = '<Leader>'
+let g:SeekKey = '-'
+let g:SeekBackKey = '_'
 
 "============================
 "Fugitive

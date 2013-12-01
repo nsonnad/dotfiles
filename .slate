@@ -52,8 +52,8 @@ bind down:ctrl;alt;cmd  throw down  resize
 # Focus Bindings
 bind up:cmd;alt   focus behind
 bind down:cmd;alt focus behind
-bind l:ctrl focus right
-bind h:ctrl focus left
+bind l:ctrl,cmd focus right
+bind h:ctrl,cmd focus left
 
 # Window Hints
 bind e:alt ${showHintsLeftHand}
