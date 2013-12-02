@@ -51,6 +51,8 @@ NeoBundle 'hdima/python-syntax'
 "tern is a js parser
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'groenewege/vim-less'
 
 "============================
 "SETTINGS
@@ -79,8 +81,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
-nnoremap <leader>w :w!<cr>
+nnoremap <leader>s :w!<cr>
 nnoremap <leader>q :q<cr>
+nnoremap <leader>Q :q!<cr>
 nnoremap <leader>th :tabprevious<cr>
 nnoremap <leader>tl :tabnext<cr>
 nnoremap <leader>t0 :tabfirst<cr>
@@ -115,8 +118,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 
 :command Solarized set background=light | colorscheme solarized
 
-:Solarized
-":Zenburn
+":Solarized
+:Zenburn
 noremap ⁄ :Zenburn<CR>
 noremap € :Solarized<CR>
 
@@ -124,7 +127,7 @@ noremap € :Solarized<CR>
 "PLUGIN MAPPINGS
 "=============================
 nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
-"let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_leader_key = '<Leader>'
 
 "vim-seek
 let g:SeekKey = '-'
