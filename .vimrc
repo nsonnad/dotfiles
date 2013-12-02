@@ -79,6 +79,7 @@ map <C-H> <C-w>h
 map <C-J> <C-w>j
 map <C-K> <C-w>k
 map <C-L> <C-w>l
+
 nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
 nnoremap <leader>s :w!<cr>
 nnoremap <leader>q :q<cr>
@@ -114,12 +115,14 @@ NeoBundle 'altercation/vim-colors-solarized'
   \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
   \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 
-:command Solarized set background=light | colorscheme solarized
+:command Solard set background=dark | colorscheme solarized
+:command Solarl set background=light | colorscheme solarized
 
 ":Solarized
 :Zenburn
 noremap ⁄ :Zenburn<CR>
-noremap € :Solarized<CR>
+noremap € :Solarl<CR>
+noremap ‹ :Solard<CR>
 
 "============================
 "PLUGIN MAPPINGS
