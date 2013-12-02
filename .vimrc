@@ -20,11 +20,7 @@ NeoBundle 'Shougo/vimproc', { 'build': {
       \ 'unix': 'make -f make_unix.mak',
       \ } }
 
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/unite-help'
-NeoBundle 'Shougo/unite-session'
-NeoBundle 'thinca/vim-unite-history'
+NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'MarcWeber/ultisnips'
 NeoBundle 'honza/vim-snippets'
@@ -40,6 +36,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'ivanov/vim-ipython'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       \     'mac' : './install.sh',
       \    },
@@ -93,7 +90,6 @@ nnoremap <leader>t$ :tablast<cr>
 nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>te :tabedit
-nnoremap <C-p> :Unite file<cr>
 "Alt-h: Go to previous buffer
 noremap ˙ :bprevious<CR>
 "Alt-j: Move current line down
