@@ -31,8 +31,10 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat'
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'goldfeld/vim-seek'
+NeoBundle 'justinmk/vim-sneak'
+NeoBundle 'maxbrunsfeld/vim-yankstack'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'ivanov/vim-ipython'
@@ -76,10 +78,10 @@ let g:seek_enable_jumps = 1
 "============================
 "MAPPINGS
 "=============================
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+map <C-H> <C-w>h
+map <C-J> <C-w>j
+map <C-K> <C-w>k
+map <C-L> <C-w>l
 nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
 nnoremap <leader>s :w!<cr>
 nnoremap <leader>q :q<cr>
@@ -128,15 +130,16 @@ noremap € :Solarized<CR>
 "=============================
 nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
 let g:EasyMotion_leader_key = '<Leader>'
-
-"vim-seek
-let g:SeekKey = '-'
-let g:SeekBackKey = '_'
+call yankstack#setup()
 
 "YouCompleteMe
 let g:ycm_add_preview_to_completeopt=0
 let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
+
+"Sneak
+nmap f <Plug>SneakForward
+nmap F <Plug>SneakBackward
 
 "Fugitive
 nnoremap <Leader>gc :Gcommit<cr>
@@ -150,8 +153,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 
+" UltiSnips
 let g:UltiSnips = {}
-let g:UltiSnips.ExpandTrigger = "<tab>"
+let g:UltiSnips.ExpandTrigger = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"                                       
+let g:UltiSnipsJumpBackwardTrigger="<c-k>" 
+let g:UltiSnips.always_use_first_snippet = 1
 let g:UltiSnips.snipmate_ft_filter = {
             \ 'default' : {'filetypes': ["FILETYPE"] },
             \ 'javascript'    : {'filetypes': ["javascript"] },
