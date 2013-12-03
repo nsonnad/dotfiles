@@ -1,4 +1,5 @@
 *.swp
+*.swo
 .Trashes
 .DS_Store
 .DS_Store?
