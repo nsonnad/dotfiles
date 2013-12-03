@@ -37,6 +37,7 @@ NeoBundle 'ivanov/vim-ipython'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'danro/rename.vim'
 NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       \     'mac' : './install.sh',
       \    },
