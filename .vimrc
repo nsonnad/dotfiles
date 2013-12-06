@@ -38,6 +38,7 @@ NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'danro/rename.vim'
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       \     'mac' : './install.sh',
       \    },
@@ -51,8 +52,11 @@ NeoBundle 'hdima/python-syntax'
 "tern is a js parser
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'wookiehangover/jshint.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'groenewege/vim-less'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'cakebaker/scss-syntax.vim'
 
 "============================
 "SETTINGS
@@ -83,6 +87,7 @@ map <C-L> <C-w>l
 
 nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
 nnoremap <leader>s :w!<cr>
+nnoremap <leader>a :w!<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :q!<cr>
 nnoremap <leader>th :tabprevious<cr>
