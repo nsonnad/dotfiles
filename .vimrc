@@ -37,7 +37,6 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'maxbrunsfeld/vim-yankstack'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'ivanov/vim-ipython'
@@ -141,9 +140,23 @@ set hidden
 set relativenumber
 set number
 set expandtab tabstop=2 shiftwidth=2
-set t_Co=256
 " vim-seek leaping motions
 let g:seek_enable_jumps = 1
+
+"===============================================================================
+" Function Key Mappings
+"===============================================================================
+
+" <F1>: Help
+nmap <F1> [unite]h
+
+" <F2>: Open Vimfiler
+
+" <F3>: Gundo
+nnoremap <F3> :<C-u>GundoToggle<CR>
+
+" <F4>: Save session
+nnoremap <F4> :<C-u>UniteSessionSave
 
 "===============================================================================
 " Leader Key Mappings
@@ -227,6 +240,9 @@ nmap <c-r> [unite];
 " Ctrl-y: Yanks
 nmap <c-y> [unite]y
 
+" Tab: Go to matching element
+nnoremap <Tab> %
+
 " Ctrl-p: Find MRU and buffers
 nmap <c-p> [unite]u
 
@@ -235,6 +251,43 @@ nmap <silent> <c-\> [unite]o
 
 " Ctrl-u: Scroll half a screen up smoothly
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 1)<CR>
+
+"===============================================================================
+" Visual Mode Key Mappings
+"===============================================================================
+
+" y: Yank and go to end of selection
+xnoremap y y`]
+
+" p: Paste in visual mode should not replace the default register with the
+" deleted text
+xnoremap p "_dP
+
+" d: Delete into the blackhole register to not clobber the last yank. To 'cut',
+" use 'x' instead
+xnoremap d "_d
+
+" \: Toggle comment
+xmap \ <Leader>c<space>
+
+"Backspace Delete selected and go into insert mode
+xnoremap <bs> c
+
+" Tab Indent
+xmap <Tab> >
+
+" shift-tab: unindent
+xmap <s-tab> <
+
+
+"===============================================================================
+" Normal Mode Key Mappings
+"===============================================================================
+" Up Down Left Right resize splits
+nnoremap <up> <c-w>+
+nnoremap <down> <c-w>-
+nnoremap <left> <c-w><
+nnoremap <right> <c-w>>
 
 "============================
 "MAPPINGS
@@ -271,19 +324,25 @@ NeoBundle 'altercation/vim-colors-solarized'
 :command Solard set background=dark | colorscheme solarized
 :command Solarl set background=light | colorscheme solarized
 
-":Solarized
-:Zenburn
+:Solarl
+":Zenburn
 noremap ⁄ :Zenburn<CR>
 noremap € :Solarl<CR>
 noremap ‹ :Solard<CR>
 
-"============================
-"PLUGIN MAPPINGS
-"=============================
-nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
-call yankstack#setup()
+"===============================================================================
+" NERDTree
+"===============================================================================
 
-" Unite
+nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
+let NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+
+"===============================================================================
+" Unite 
+"===============================================================================
+
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " Use the rank sorter for everything
 call unite#filters#sorter_default#use(['sorter_rank'])
@@ -347,7 +406,76 @@ nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
 " Quick commands
 nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
 
+" Custom Unite settings
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+
+  nmap <buffer> <ESC> <Plug>(unite_exit)
+  imap <buffer> <ESC> <Plug>(unite_exit)
+  " imap <buffer> <c-j> <Plug>(unite_select_next_line)
+  imap <buffer> <c-j> <Plug>(unite_insert_leave)
+  nmap <buffer> <c-j> <Plug>(unite_loop_cursor_down)
+  nmap <buffer> <c-k> <Plug>(unite_loop_cursor_up)
+  imap <buffer> <c-a> <Plug>(unite_choose_action)
+  imap <buffer> <Tab> <Plug>(unite_exit_insert)
+  imap <buffer> jj <Plug>(unite_insert_leave)
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_word)
+  imap <buffer> <C-u> <Plug>(unite_delete_backward_path)
+  imap <buffer> ' <Plug>(unite_quick_match_default_action)
+  nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+  nmap <buffer> <C-r> <Plug>(unite_redraw)
+  imap <buffer> <C-r> <Plug>(unite_redraw)
+  inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+  nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+  inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+  nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+
+  let unite = unite#get_current_unite()
+  if unite.buffer_name =~# '^search'
+    nnoremap <silent><buffer><expr> r unite#do_action('replace')
+  else
+    nnoremap <silent><buffer><expr> r unite#do_action('rename')
+  endif
+
+  nnoremap <silent><buffer><expr> cd unite#do_action('lcd')
+
+" Using Ctrl-\ to trigger outline, so close it using the same keystroke
+  if unite.buffer_name =~# '^outline'
+    imap <buffer> <C-\> <Plug>(unite_exit)
+  endif
+
+" Using Ctrl-/ to trigger line, close it using same keystroke
+  if unite.buffer_name =~# '^search_file'
+    imap <buffer> <C-_> <Plug>(unite_exit)
+  endif
+endfunction
+
+" Start in insert mode
+let g:unite_enable_start_insert = 1
+
+" Enable short source name in window
+" let g:unite_enable_short_source_names = 1
+
+" Enable history yank source
+let g:unite_source_history_yank_enable = 1
+
+" Open in bottom right
+let g:unite_split_rule = "botright"
+
+" Shorten the default update date of 500ms
+let g:unite_update_time = 200
+
+let g:unite_source_file_mru_limit = 1000
+let g:unite_cursor_line_highlight = 'TabLineSel'
+" let g:unite_abbr_highlight = 'TabLine'
+
+let g:unite_source_file_mru_filename_format = ':~:.'
+let g:unite_source_file_mru_time_format = ''
+
+"===============================================================================
 " EasyMotion
+"===============================================================================
+
 " Tweak the colors
 hi link EasyMotionTarget WarningMsg
 hi link EasyMotionShade Comment
@@ -369,7 +497,9 @@ set completeopt-=preview
 nmap f <Plug>SneakForward
 nmap F <Plug>SneakBackward
 
-"Fugitive
+"===============================================================================
+" Fugitive
+"===============================================================================
 nnoremap <Leader>gc :Gcommit<cr>
 nnoremap <Leader>gd :Gdiff<cr>
 nnoremap <Leader>gp :Git push<cr>
@@ -384,7 +514,11 @@ set laststatus=2
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
 
+
+"===============================================================================
 " UltiSnips
+"===============================================================================
+
 let g:UltiSnips = {}
 let g:UltiSnips.ExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"                                       
