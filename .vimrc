@@ -20,18 +20,22 @@ NeoBundle 'Shougo/vimproc', { 'build': {
       \ 'unix': 'make -f make_unix.mak',
       \ } }
 
-"NeoBundle 'kien/ctrlp.vim'
+" Unite
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite-help'
 NeoBundle 'Shougo/unite-session'
 NeoBundle 'thinca/vim-unite-history'
 
+" Utilities
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'vim-scripts/ShowMarks'
+NeoBundle 'rking/ag.vim'
 NeoBundle 'MarcWeber/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
@@ -40,6 +44,7 @@ NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'ivanov/vim-ipython'
+NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'airblade/vim-gitgutter'
@@ -51,19 +56,21 @@ NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       \ } 
 
 "============================
-"Language specific
+"Syntax highlighting
 "===========================
-NeoBundle 'hdima/python-syntax'
 
 "tern is a js parser
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'wookiehangover/jshint.vim'
+
+NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'digitaltoad/vim-jade'
 
+"Check for new/updated bundles
 NeoBundleCheck
 
 "============================
@@ -89,10 +96,34 @@ set showbreak=↪
 set ignorecase
 set smartcase
 
-" Set sensible heights for splits
-set winheight=50
-" Setting this causes problems with :Unite -outline. Don't really need it
-" set winminheight=5
+" Minimal number of screen lines to keep above and below the cursor
+set scrolloff=10
+
+" How many lines to scroll at a time, make scrolling appears faster
+set scrolljump=3
+
+" Min width of the number column to the left
+set numberwidth=1
+
+" Open all folds initially
+set foldmethod=indent
+set foldlevelstart=99
+
+" No need to show mode
+set noshowmode
+
+" Auto complete setting
+set completeopt=longest,menuone
+
+set wildmode=list:longest,full
+set wildmenu "turn on wild menu
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*DS_Store*
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/
+set wildignore+=*/.nx/**,*.app
 
 " Make search act like search in modern browsers
 set incsearch
@@ -105,13 +136,16 @@ set showcmd
 
 " Turn off sound
 set vb
-set t_vb="
+set t_vb=
 
 " Explicitly set encoding to utf-8
 set encoding=utf-8
 
 " Column width indicator
 set colorcolumn=+1
+
+" Lower the delay of escaping out of other modes
+set timeout timeoutlen=1000 ttimeoutlen=0"
 
 " Turn backup off
 set nobackup
@@ -132,6 +166,14 @@ set autoindent
 set nowrap
 set whichwrap+=h,l,<,>,[,]
 
+" Writes to the unnamed register also writes to the * and + registers. This
+" makes it easy to interact with the system clipboard
+if has ('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
+
 filetype plugin on
 filetype plugin indent on
 
@@ -142,7 +184,16 @@ set number
 set expandtab tabstop=2 shiftwidth=2
 " vim-seek leaping motions
 let g:seek_enable_jumps = 1
+"
+"Better redrawing for large files
+set ttyfast
 
+"Disable the vbell
+set visualbell t_vb="
+set title
+
+"Let backspace do what it's supposed to: allow backspace over indent, eol, and start of an insert
+set backspace=indent,eol,start
 "===============================================================================
 " Function Key Mappings
 "===============================================================================
@@ -179,7 +230,7 @@ nnoremap <Leader>w :bdelete<cr>
 nnoremap <Leader>o :only<cr>
 
 " <Leader>e: Fast editing of the .vimrc
-nnoremap <Leader>e :e! ~/dotfiles/.vimrc<cr>
+nnoremap <Leader>e :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
 
 " <Leader>s: Spell checking shortcuts
 nnoremap <Leader>ss :setlocal spell!<cr>
@@ -203,6 +254,7 @@ nnoremap <leader>t0 :tabfirst<cr>
 nnoremap <leader>t$ :tablast<cr>
 nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tc :tabclose<cr>
+nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>te :tabedit
 
 ""===============================================================================
@@ -222,6 +274,8 @@ nnoremap <bar> :vsp<cr>
 nnoremap + <c-a>
 nnoremap - <c-x>
 
+" Make Y act like other uppercase commands
+nnoremap Y y$"
 
 "===============================================================================
 " Normal Mode Ctrl Key Mappings
@@ -248,9 +302,6 @@ nmap <c-p> [unite]u
 
 " Ctrl-\: Quick outline
 nmap <silent> <c-\> [unite]o
-
-" Ctrl-u: Scroll half a screen up smoothly
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 1)<CR>
 
 "===============================================================================
 " Visual Mode Key Mappings
@@ -324,8 +375,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 :command Solard set background=dark | colorscheme solarized
 :command Solarl set background=light | colorscheme solarized
 
-:Solarl
-":Zenburn
+":Solarl
+:Zenburn
 noremap ⁄ :Zenburn<CR>
 noremap € :Solarl<CR>
 noremap ‹ :Solard<CR>
@@ -505,15 +556,69 @@ nnoremap <Leader>gd :Gdiff<cr>
 nnoremap <Leader>gp :Git push<cr>
 nnoremap <Leader>gs :Gstatus<cr>
 
+
+"===============================================================================
 " Airline
+"===============================================================================
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+
 set laststatus=2
 
+" Short mode letters
+if !exists('g:airline_mode_map')
+    let g:airline_mode_map = {}
+endif
+
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+
+"===============================================================================
 " Gundo
+"===============================================================================
 nnoremap <F5> :GundoToggle<CR>
 
+"===============================================================================
+" Syntastic
+"===============================================================================
+" specify which checkers to use
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_coffee_checkers = ['coffeelint']
+"let g:syntastic_less_checkers = ['jshint']
+let g:syntastic_json_checkers = ['jsonlint']
+let g:syntastic_scss_checkers = ['scss_lint']
+
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': [],
+                           \ 'passive_filetypes': ['html'] }
+
+" Better :sign interface symbols
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '!'
+
+" Check on buffer open
+let g:syntastic_check_on_open = 1"
+
+
+"===============================================================================
+" Emmet
+"===============================================================================
+" only use for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 "===============================================================================
 " UltiSnips
