@@ -231,6 +231,9 @@ nnoremap <Leader>`` :qa!<cr><F5>
 " <Leader>1: Toggle between paste mode
 nnoremap <silent> <Leader>1 :set paste!<cr>
 
+" Toggle display of unprintable characters
+nnoremap <silent> <Leader>2 :set list!
+
 " <Leader>w: Close current buffer
 nnoremap <Leader>w :bdelete<cr>
 
