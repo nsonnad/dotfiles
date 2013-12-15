@@ -33,6 +33,8 @@ NeoBundle 'vim-scripts/ShowMarks'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'MarcWeber/ultisnips'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/webapi-vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
@@ -72,6 +74,12 @@ NeoBundle 'digitaltoad/vim-jade'
 
 "Check for new/updated bundles
 NeoBundleCheck
+
+" Auto-refrech vimrc
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 
 "============================
 "SETTINGS
@@ -375,8 +383,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 :command Solard set background=dark | colorscheme solarized
 :command Solarl set background=light | colorscheme solarized
 
-":Solarl
-:Zenburn
+:Solarl
+":Zenburn
 noremap ⁄ :Zenburn<CR>
 noremap € :Solarl<CR>
 noremap ‹ :Solard<CR>
@@ -539,7 +547,10 @@ let g:EasyMotion_do_mapping = 0
 nnoremap <silent> <C-f> :call EasyMotion#F(0, 0)<CR>
 nnoremap <silent> <C-t> :call EasyMotion#T(0, 0)<CR>
 
-"YouCompleteMe
+"===============================================================================
+" YouCompleteMe
+"===============================================================================
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_add_preview_to_completeopt=0
 let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
@@ -628,9 +639,9 @@ let g:UltiSnips = {}
 let g:UltiSnips.ExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<c-k>" 
+
 let g:UltiSnips.always_use_first_snippet = 1
 let g:UltiSnips.snipmate_ft_filter = {
             \ 'default' : {'filetypes': ["FILETYPE"] },
             \ 'javascript'    : {'filetypes': ["javascript"] },
             \ 'python': {'filetypes': ["python"] },}
-
