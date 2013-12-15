@@ -113,3 +113,4 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:/Users/nikhil/.rvm/gems/ruby-1.9.3-p448/bin:/Users/nikhil/.rvm/gems/ruby-1.9.3-p448@global/bin:/Users/nikhil/.rvm/rubies/ruby-1.9.3-p448/bin:/Users/nikhil/.rvm/bin:/Users/nikhil/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
+alias wd='. /Users/nikhil/bin/wd/wd.sh'

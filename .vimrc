@@ -20,6 +20,27 @@ NeoBundle 'Shougo/vimproc', { 'build': {
       \ 'unix': 'make -f make_unix.mak',
       \ } }
 
+"============================
+"COLORS
+"=============================
+syntax enable
+NeoBundle 'Zenburn'
+NeoBundle 'altercation/vim-colors-solarized'
+
+:command Zenburn colorscheme zenburn
+  \ | let g:indent_guides_auto_colors = 0
+  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
+
+:command Solard set background=dark | colorscheme solarized
+:command Solarl set background=light | colorscheme solarized
+
+:Solarl
+":Zenburn
+noremap ⁄ :Zenburn<CR>
+noremap € :Solarl<CR>
+noremap ‹ :Solard<CR>
+
 " Unite
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
@@ -84,7 +105,6 @@ augroup END " }
 "============================
 "SETTINGS
 "=============================
-syntax on
 " Always splits to the right and below
 set splitright
 set splitbelow
@@ -372,25 +392,6 @@ noremap Ô mzyyp`zj
 "Alt-Shift-k: Duplicate line up
 noremap  mzyyp`z
 
-"============================
-"COLORS
-"=============================
-NeoBundle 'Zenburn'
-NeoBundle 'altercation/vim-colors-solarized'
-
-:command Zenburn colorscheme zenburn
-  \ | let g:indent_guides_auto_colors = 0
-  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
-
-:command Solard set background=dark | colorscheme solarized
-:command Solarl set background=light | colorscheme solarized
-
-:Solarl
-":Zenburn
-noremap ⁄ :Zenburn<CR>
-noremap € :Solarl<CR>
-noremap ‹ :Solard<CR>
 
 "===============================================================================
 " NERDTree
