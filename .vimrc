@@ -147,6 +147,7 @@ set wildmode=list:longest,full
 set wildmenu "turn on wild menu
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*DS_Store*
+set wildignore+=node_modules/**,bower_components/**
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
@@ -469,52 +470,9 @@ nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
 " Quick commands
 nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
 
-" Custom Unite settings
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-
-  nmap <buffer> <ESC> <Plug>(unite_exit)
-  imap <buffer> <ESC> <Plug>(unite_exit)
-  " imap <buffer> <c-j> <Plug>(unite_select_next_line)
-  imap <buffer> <c-j> <Plug>(unite_insert_leave)
-  nmap <buffer> <c-j> <Plug>(unite_loop_cursor_down)
-  nmap <buffer> <c-k> <Plug>(unite_loop_cursor_up)
-  imap <buffer> <c-a> <Plug>(unite_choose_action)
-  imap <buffer> <Tab> <Plug>(unite_exit_insert)
-  imap <buffer> jj <Plug>(unite_insert_leave)
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_word)
-  imap <buffer> <C-u> <Plug>(unite_delete_backward_path)
-  imap <buffer> ' <Plug>(unite_quick_match_default_action)
-  nmap <buffer> ' <Plug>(unite_quick_match_default_action)
-  nmap <buffer> <C-r> <Plug>(unite_redraw)
-  imap <buffer> <C-r> <Plug>(unite_redraw)
-  inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-  nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-  inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-
-  let unite = unite#get_current_unite()
-  if unite.buffer_name =~# '^search'
-    nnoremap <silent><buffer><expr> r unite#do_action('replace')
-  else
-    nnoremap <silent><buffer><expr> r unite#do_action('rename')
-  endif
-
-  nnoremap <silent><buffer><expr> cd unite#do_action('lcd')
-
-" Using Ctrl-\ to trigger outline, so close it using the same keystroke
-  if unite.buffer_name =~# '^outline'
-    imap <buffer> <C-\> <Plug>(unite_exit)
-  endif
-
-" Using Ctrl-/ to trigger line, close it using same keystroke
-  if unite.buffer_name =~# '^search_file'
-    imap <buffer> <C-_> <Plug>(unite_exit)
-  endif
-endfunction
-
 " Start in insert mode
 let g:unite_enable_start_insert = 1
+let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
 
 " Enable short source name in window
 " let g:unite_enable_short_source_names = 1
