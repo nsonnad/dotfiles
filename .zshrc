@@ -1,4 +1,4 @@
-j# Path to your oh-my-zsh configuration.
+# Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
@@ -15,6 +15,9 @@ alias t3="tree -L 3"
 alias ipynote="ipython notebook --profile=n --pylab=inline"
 alias vimrc="vim ~/docs/dotfiles/.vimrc"
 alias fv="fg vim"
+
+alias wd='. /Users/nikhil/bin/wd/wd.sh'
+alias wd='. /Users/nikhil/bin/wd/wd.sh'
 
 alias pipupdate="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 'LATEST:'"
 alias brewupdate="brew update && brew upgrade"
@@ -111,7 +114,5 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/usr/local/bin:$PATH
 export PATH=/Users/nikhil/bin:$PATH
-alias wd='. /Users/nikhil/bin/wd/wd.sh'
-alias wd='. /Users/nikhil/bin/wd/wd.sh'
-
+export PATH=/usr/local/sbin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
