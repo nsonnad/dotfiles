@@ -77,6 +77,8 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+alias wd='. /Users/nikhil/bin/wd/wd.sh'
+alias wd='. /Users/nikhil/bin/wd/wd.sh'
 stty stop undef # to unmap ctrl-s
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -107,12 +109,13 @@ stty stop undef # to unmap ctrl-s
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git sublime osx vi-mode brew wd npm)
+plugins=(brew osx vi-mode wd git)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+PATH=$PATH:$HOME/.rvm/bin
 export PATH=/usr/local/bin:$PATH
 export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
