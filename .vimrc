@@ -23,7 +23,7 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 "============================
 "COLORS
 "=============================
-syntax on
+syntax enable
 "let base16colorspace=256
 
 "NeoBundle 'Zenburn'
@@ -32,24 +32,21 @@ syntax on
   "\ | autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
   "\ | autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 
-NeoBundle 'altercation/vim-colors-solarized'
-:command Solard set background=dark | colorscheme solarized
-:command Solarl set background=light | colorscheme solarized
-
 "NeoBundle 'chriskempson/vim-tomorrow-theme'
 ":command Tom set background=dark | colorscheme Tomorrow-Night
 
 NeoBundle 'chriskempson/base16-vim'
-:command Base set background=dark | colorscheme base16-ocean
+:command Ocean set background=dark | colorscheme base16-ocean
+:command Solarl set background=light | colorscheme base16-solarized
 
-":Solarl
+:Solarl
 ":Zenburn
-:Base
+":Ocean
 ":Tom
 "
 "noremap ⁄ :Zenburn<CR>
+noremap ⁄ :Ocean<CR>
 noremap € :Solarl<CR>
-noremap ‹ :Solard<CR>
 noremap ‹ :Solard<CR>
 
 " Unite
