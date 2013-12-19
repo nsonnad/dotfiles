@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="sorin"
+ZSH_THEME="pure"
 
 # Example aliases
 alias zshconfig="vim ~/docs/dotfiles/.zshrc"
@@ -114,8 +114,9 @@ plugins=(brew osx vi-mode wd git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
-PATH=$PATH:$HOME/.rvm/bin
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+#if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+#PATH=$PATH:$HOME/.rvm/bin
 export PATH=/usr/local/bin:$PATH
 export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
