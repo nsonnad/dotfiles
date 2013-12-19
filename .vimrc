@@ -23,25 +23,31 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 "============================
 "COLORS
 "=============================
-syntax enable
+syntax on
+"let base16colorspace=256
 
-NeoBundle 'Zenburn'
-:command Zenburn colorscheme zenburn
-  \ | let g:indent_guides_auto_colors = 0
-  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
+"NeoBundle 'Zenburn'
+":command Zenburn colorscheme zenburn
+  "\ | let g:indent_guides_auto_colors = 0
+  "\ | autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+  "\ | autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 
 NeoBundle 'altercation/vim-colors-solarized'
 :command Solard set background=dark | colorscheme solarized
 :command Solarl set background=light | colorscheme solarized
 
-NeoBundle 'chriskempson/vim-tomorrow-theme'
-:command Tom set background=dark | colorscheme Tomorrow-Night
+"NeoBundle 'chriskempson/vim-tomorrow-theme'
+":command Tom set background=dark | colorscheme Tomorrow-Night
+
+NeoBundle 'chriskempson/base16-vim'
+:command Base set background=dark | colorscheme base16-ocean
 
 ":Solarl
 ":Zenburn
-:Tom
-noremap ⁄ :Zenburn<CR>
+:Base
+":Tom
+"
+"noremap ⁄ :Zenburn<CR>
 noremap € :Solarl<CR>
 noremap ‹ :Solard<CR>
 noremap ‹ :Solard<CR>
@@ -55,7 +61,7 @@ NeoBundle 'thinca/vim-unite-history'
 
 " Utilities
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'vim-scripts/ShowMarks'
+"NeoBundle 'vim-scripts/ShowMarks'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'MarcWeber/ultisnips'
 NeoBundle 'honza/vim-snippets'
