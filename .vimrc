@@ -77,6 +77,8 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'rizzatti/funcoo.vim'
+NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'ivanov/vim-ipython'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Raimondi/delimitMate'
@@ -274,6 +276,9 @@ nnoremap <Leader>o :only<cr>
 
 " <Leader>e: Fast editing of the .vimrc
 nnoremap <Leader>e :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
+
+:nmap <silent> <leader>d :Dash 
+:nmap <silent> <leader><leader>d <Plug>DashSearch
 
 " <Leader>s: Spell checking shortcuts
 nnoremap <Leader>ss :setlocal spell!<cr>

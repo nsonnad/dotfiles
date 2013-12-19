@@ -15,6 +15,7 @@ alias t3="tree -L 3"
 alias ipynote="ipython notebook --profile=n --pylab=inline"
 alias vimrc="vim ~/docs/dotfiles/.vimrc"
 alias fv="fg vim"
+alias dash="open dash://"
 
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
