@@ -2574,11 +2574,11 @@
 			<key>Ansi 10 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.10809243470430374</real>
+				<real>0.40784314274787903</real>
 				<key>Green Component</key>
-				<real>0.64463001489639282</real>
+				<real>0.74117648601531982</real>
 				<key>Red Component</key>
-				<real>0.55913352966308594</real>
+				<real>0.70980393886566162</real>
 			</dict>
 			<key>Ansi 11 Color</key>
 			<dict>
@@ -2628,11 +2628,11 @@
 			<key>Ansi 2 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.23049443960189819</real>
+				<real>0.40784314274787903</real>
 				<key>Green Component</key>
-				<real>0.69918364286422729</real>
+				<real>0.74117648601531982</real>
 				<key>Red Component</key>
-				<real>0.64100277423858643</real>
+				<real>0.70980393886566162</real>
 			</dict>
 			<key>Ansi 3 Color</key>
 			<dict>
@@ -3314,7 +3314,7 @@
 			<key>Use Italic Font</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<real>1</real>
+			<real>0.90132761001586914</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
