@@ -36,12 +36,12 @@ syntax enable
 ":command Tom set background=dark | colorscheme Tomorrow-Night
 
 NeoBundle 'chriskempson/base16-vim'
-:command Ocean set background=dark | colorscheme base16-ocean
+:command Oceanl set background=light | colorscheme base16-ocean
 :command Solarl set background=light | colorscheme base16-solarized
 
 :Solarl
 ":Zenburn
-":Ocean
+":Oceand
 ":Tom
 "
 "noremap ⁄ :Zenburn<CR>

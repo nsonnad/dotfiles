@@ -118,6 +118,6 @@ source $ZSH/oh-my-zsh.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 #if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 #PATH=$PATH:$HOME/.rvm/bin
-export PATH=/usr/local/bin:$PATH
 export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:$PATH
