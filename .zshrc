@@ -20,8 +20,8 @@ alias dash="open dash://"
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 
-alias pipupdate="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 'LATEST:'"
-alias brewupdate="brew update && brew upgrade"
+alias update-pip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 'LATEST:'"
+alias update-brew="brew update && brew upgrade"
 
 # common aliases, taken from https://github.com/robbyrussell/oh-my-zsh/pull/1866
 # ----------------------------------------------------------------------

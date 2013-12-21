@@ -73,6 +73,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'rizzatti/funcoo.vim'
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'ivanov/vim-ipython'
@@ -374,6 +375,9 @@ xmap <Tab> >
 " shift-tab: unindent
 xmap <s-tab> <
 
+" Bubble multiple lines
+vmap ˚ [egv
+vmap ∆ ]egv
 
 "===============================================================================
 " Normal Mode Key Mappings
@@ -384,20 +388,17 @@ nnoremap <down> <c-w>-
 nnoremap <left> <c-w><
 nnoremap <right> <c-w>>
 
-"============================
-"MAPPINGS
-"=============================
 map <C-H> <C-w>h
 map <C-J> <C-w>j
 map <C-K> <C-w>k
 map <C-L> <C-w>l
 
+" Bubble single lines
+nmap ˚ [e
+nmap ∆ ]e
+
 "Alt-h: Go to previous buffer
 noremap ˙ :bprevious<CR>
-"Alt-j: Move current line down
-noremap ∆ mz:m+<cr>`z==
-"Alt-k: Move current line up
-noremap ˚ mz:m-2<cr>`z==
 "Alt-l: Go to next buffer
 noremap ¬ :bnext<CR>
 "Alt-Shift-j: Duplicate line down
