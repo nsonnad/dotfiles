@@ -112,8 +112,8 @@ stty stop undef # to unmap ctrl-s
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(brew osx vi-mode wd git sublime)
 
-export LC_CTYPE=C 
-export LANG=C
+#export LC_CTYPE=C 
+#export LANG=C
 
 source $ZSH/oh-my-zsh.sh
 

@@ -24,6 +24,7 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 "COLORS
 "=============================
 syntax enable
+filetype off
 "let base16colorspace=256
 
 "NeoBundle 'Zenburn'
