@@ -110,7 +110,10 @@ stty stop undef # to unmap ctrl-s
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew osx vi-mode wd git)
+plugins=(brew osx vi-mode wd git sublime)
+
+export LC_CTYPE=C 
+export LANG=C
 
 source $ZSH/oh-my-zsh.sh
 
