@@ -81,6 +81,33 @@ alias mv='mv -i'
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 stty stop undef # to unmap ctrl-s
+
+# R-vim tweaks
+if [[ "x$DISPLAY" != "x" ]]; then
+alias vim='vim --servername VIM'
+    if [[ "x$TERM" = "xrxvt-256-color" ]] || [[ "x$TERM" == "xxterm-256color" ]]
+    then
+function tvim(){
+            tmux -2 new-session "TERM=xterm-256color vim --servername VIM $@" ;
+        }
+    else
+function tvim(){
+            tmux new-session "vim --servername VIM $@" ;
+        }
+    fi
+else
+if [[ "x$TERM" == "xrxvt-256color" ]] || [[ "x$TERM" == "xxterm-256color" ]]
+    then
+function tvim(){
+            tmux -2 new-session "TERM=xterm-256color vim $@" ;
+        }
+    else
+function tvim(){
+            tmux new-session "vim $@" ;
+        }
+    fi
+fi
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -110,8 +137,8 @@ stty stop undef # to unmap ctrl-s
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew osx vi-mode wd git sublime)
-
+plugins=(brew osx vi-mode wd git sublime tmux)
+#
 #export LC_CTYPE=C 
 #export LANG=C
 
@@ -124,3 +151,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
+
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+

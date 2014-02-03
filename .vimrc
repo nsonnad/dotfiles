@@ -215,7 +215,7 @@ else
 endif
 
 filetype plugin on
-filetype plugin indent on
+filetype indent on
 
 "dont tell me to save when switching buffers
 set hidden
@@ -627,3 +627,11 @@ let g:UltiSnips.snipmate_ft_filter = {
             \ 'default' : {'filetypes': ["FILETYPE"] },
             \ 'javascript'    : {'filetypes': ["javascript"] },
             \ 'python': {'filetypes': ["python"] },}
+"
+"===============================================================================
+" R
+"===============================================================================
+let vimrplugin_r_path = "/usr/local/bin/R"
+" Press the space bar to send lines (in Normal mode) and selections to R:
+vmap <Space> <Plug>RDSendSelection
+nmap <Space> <Plug>RDSendLine
