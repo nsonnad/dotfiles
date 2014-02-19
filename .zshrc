@@ -82,6 +82,8 @@ alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 stty stop undef # to unmap ctrl-s
 
+alias hr='hr █'
+
 # R-vim tweaks
 if [[ "x$DISPLAY" != "x" ]]; then
 alias vim='vim --servername VIM'
@@ -108,6 +110,8 @@ function tvim(){
     fi
 fi
 
+NPMRC_STORE=~/docs/dotfiles/npmrcs/
+NPMRC=~/docs/dotfiles/npmrcs/default
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -137,7 +141,7 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew osx vi-mode wd git sublime tmux)
+plugins=(brew osx vi-mode wd git sublime)
 #
 #export LC_CTYPE=C 
 #export LANG=C

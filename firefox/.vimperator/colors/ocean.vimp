@@ -1,0 +1,59 @@
+" ==Vimperator_Color_Scheme==
+" name: ocean-light
+" ==Ocean_Colorscheme_Settings==
+
+hi Hint font-family: "Inconsolata", monospace; font-size: 12px; font-weight: bold; text-transform: uppercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px; 
+hi CmdLine font-family: "Inconsolata", monospace; font-size: 16px;
+hi CompGroup font-family: "Inconsolata", monospace; font-size: 16px;
+hi Normal color: black; background: #eff1f5; font-size: 14px; font-family: "Inconsolata", monospace;
+
+hi Bell                 border: 0 none; background-color: black;
+hi Boolean              color: #CC9393;
+
+hi CmdOutput            white-space: pre;
+hi CompDesc             color: #65737e; width: 50%;font-size: 10pt;
+hi CompGroup:not(:first-of-type)    margin-top: .5em;
+hi CompIcon             width: 16px; min-width: 16px; display: inline-block; margin-right: .5ex;
+hi CompIcon>img         max-width: 16px; max-height: 16px; vertical-align: middle;
+hi CompItem             font-size: 11px;
+hi CompItem>*           padding: 0 .5ex;
+hi CompItem[selected]   color: #dfe1e8; background: #343d46;
+hi CompMsg              font-style: italic; margin-left: 16px;
+hi CompResult           width: 45%; overflow: hidden;font-size: 12pt; font-family: "Inconsolata", monospace; font-weight: normal;
+hi CompTitle            color: #bf616a; background: #eff1f5; font-weight: bold;
+hi CompTitle>*          padding: 0 .5ex;
+hi ErrorMsg             color: #bf616a; background: #dfe1e8; font-weight: normal; font-size:14px; font-family: "Inconsolata", monospace;
+hi Filter               color: #4f5b66; background: #343d46;
+hi FrameIndicator       background-color: #CC9393; opacity: 0.5; z-index: 999; position: fixed; top: 0; bottom: 0; left: 0; right: 0;
+hi Function             color: navy;
+hi Hint                 font-family: "Inconsolata", monospace; font-size: 12px; font-weight: bold; color: #ebcb8b; background: #4f5b66; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 1px 2px;
+hi Hint::after          content: attr(number);
+hi HintActive           background: #F18C96; color: #333333;
+hi HintElem             background-color: #dfe1e8; color: #343d46;
+hi HintImage            opacity: .5;
+hi Indicator            color: #94BFF3;
+hi InfoMsg              color: #4f5b66; background: #eff1f5;
+hi LineNr               color: orange; background: #eff1f5;
+hi Message              white-space: normal; min-width: 100%; padding-left: 2em; text-indent: -2em; display: block;
+hi ModeMsg              color: #ebcb8b; background: #4f5b66; padding: 2px; font-size: 12px;
+hi MoreMsg              color: #b48ead; background: #eff1f5;
+hi NonText              color: #94BFF3; min-height: 16px; padding-left: 2px;
+hi Normal               color: #4f5b66; background: #eff1f5;
+hi Null                 color: #94BFF3;
+hi Number               color: #94BFF3;
+hi Object               color: maroon;
+hi Preview              color: gray;
+hi Question             color: #b48ead; background: #eff1f5; font-weight: bold;
+hi StatusLine           color: #afaf87; background: #eff1f5; font-size: 10pt; font-family: "Inconsoloata", monospace; font-weight: bold; padding: 0px 3px;
+hi String               color: #b48ead;
+hi TabNumber            font-weight: bold; margin: 0; padding-right: .3ex;
+hi Tag                  color: #94BFF3;
+hi Title                color: #bf616a; background: #eff1f5; font-weight: bold;
+hi URL                  text-decoration: none; color: #b48ead; background: inherit;
+hi URL:hover            text-decoration: underline; cursor: pointer;
+hi WarningMsg           color: #CC9393; background: #eff1f5;
+
+style -name statusbar chrome://* <<EOM
+#status-bar statusbarpanel { padding: 0 1px !important; }
+statusbarpanel > * { margin: 0 !important; padding: 0 2px 0 0 !important; }
+EOM

@@ -5,4 +5,4 @@
   -moz-box-shadow: none !important;
   -moz-border-radius: 1px 1px 4px 4px !important;
 }
-tab[selected="true"] { min-width: 150px !important; }
+tab[selected="true"] { min-width: 100px !important; }
