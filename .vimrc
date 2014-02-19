@@ -40,8 +40,8 @@ NeoBundle 'chriskempson/base16-vim'
 :command Ocean set background=dark | colorscheme base16-ocean
 :command Solarl set background=light | colorscheme base16-solarized
 
-":Solarl
-:Ocean
+:Solarl
+":Ocean
 ":Zenburn
 "
 "noremap ⁄ :Zenburn<CR>
@@ -101,6 +101,9 @@ NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'plasticboy/vim-markdown'
+" Enable spell checking for markdown files
+au BufRead *.md setlocal spell
+au BufRead *.markdown setlocal spell
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'wavded/vim-stylus'
@@ -276,7 +279,7 @@ nnoremap <Leader>o :only<cr>
 " <Leader>e: Fast editing of the .vimrc
 nnoremap <Leader>e :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
 
-:nmap <silent> <leader>D :Dash 
+:nmap <silent> <leader>D :Dash
 :nmap <silent> <leader><leader>D <Plug>DashSearch
 
 " <Leader>s: Spell checking shortcuts
@@ -293,6 +296,7 @@ nnoremap <Leader>, <C-w>p
 nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
 nnoremap <leader>s :w!<cr>
 nnoremap <leader>a :w!<cr>
+nnoremap <leader>A :wa!<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :q!<cr>
 nnoremap <leader>th :tabprevious<cr>
@@ -628,6 +632,7 @@ let g:UltiSnips.snipmate_ft_filter = {
             \ 'default' : {'filetypes': ["FILETYPE"] },
             \ 'javascript'    : {'filetypes': ["javascript"] },
             \ 'python': {'filetypes': ["python"] },}
+
 "
 "===============================================================================
 " R
@@ -636,3 +641,8 @@ let vimrplugin_r_path = "/usr/local/bin/R"
 " Press the space bar to send lines (in Normal mode) and selections to R:
 "vmap <Space> <Plug>RDSendSelection
 "nmap <Space> <Plug>RDSendLine
+"===============================================================================
+" Custom commands
+"===============================================================================
+:command Ipysource source ~/docs/dotfiles/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
+
