@@ -28,10 +28,10 @@ filetype off
 "let base16colorspace=256
 
 "NeoBundle 'Zenburn'
-":command Zenburn colorscheme zenburn
-  "\ | let g:indent_guides_auto_colors = 0
-  "\ | autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-  "\ | autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
+:command Zenburn colorscheme zenburn
+  \ | let g:indent_guides_auto_colors = 0
+  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 
 "NeoBundle 'chriskempson/vim-tomorrow-theme'
 ":command Tom set background=dark | colorscheme Tomorrow-Night
@@ -106,6 +106,7 @@ au BufRead *.md setlocal spell
 au BufRead *.markdown setlocal spell
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'wavded/vim-stylus'
 
 "Check for new/updated bundles
 NeoBundleCheck
@@ -278,8 +279,8 @@ nnoremap <Leader>o :only<cr>
 " <Leader>e: Fast editing of the .vimrc
 nnoremap <Leader>e :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
 
-:nmap <silent> <leader>d :Dash 
-:nmap <silent> <leader><leader>d <Plug>DashSearch
+:nmap <silent> <leader>D :Dash
+:nmap <silent> <leader><leader>D <Plug>DashSearch
 
 " <Leader>s: Spell checking shortcuts
 nnoremap <Leader>ss :setlocal spell!<cr>
@@ -631,14 +632,15 @@ let g:UltiSnips.snipmate_ft_filter = {
             \ 'default' : {'filetypes': ["FILETYPE"] },
             \ 'javascript'    : {'filetypes': ["javascript"] },
             \ 'python': {'filetypes': ["python"] },}
+
 "
 "===============================================================================
 " R
 "===============================================================================
 let vimrplugin_r_path = "/usr/local/bin/R"
 " Press the space bar to send lines (in Normal mode) and selections to R:
-vmap <Space> <Plug>RDSendSelection
-nmap <Space> <Plug>RDSendLine
+"vmap <Space> <Plug>RDSendSelection
+"nmap <Space> <Plug>RDSendLine
 
 
 "===============================================================================

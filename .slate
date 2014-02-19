@@ -15,7 +15,7 @@ alias showHintsLeftHand hint FDSAREWQ
 alias showNormalHint hint FHDJSKALGRUEIWOQPTY
 
 # app aliases
-alias browser       'Firefox'
+alias browser       'Aurora'
 alias browser2      'Google Chrome'
 alias editor        'Sublime Text'
 alias media         'VLC'
