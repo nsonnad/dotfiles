@@ -17,7 +17,8 @@ alias showNormalHint hint FHDJSKALGRUEIWOQPTY
 # app aliases
 alias browser       'Aurora'
 alias browser2      'Google Chrome'
-alias editor        'Sublime Text'
+alias dash          'Dash'
+alias editor        'iTerm'
 alias media         'VLC'
 
 # Resize Bindings
@@ -29,13 +30,11 @@ bind right:alt      resize -10% +0 bottom-right
 bind left:alt       resize +10% +0 bottom-right
 bind up:alt         resize +0 +10% bottom-right
 bind down:alt       resize +0 -10% bottom-right
-bind up:alt,ctrl    ${full}
 
 # Push Bindings
 bind right:ctrl,cmd  ${righthalf}
 bind left:ctrl,cmd   ${lefthalf}
-bind up:ctrl,cmd     push up    bar-resize:screenSizeY/2
-bind down:ctrl,cmd   push down  bar-resize:screenSizeY/2
+bind up:ctrl,cmd     ${full}
 
 # Nudge Bindings
 bind right:shift;alt nudge +10% +0
@@ -61,9 +60,9 @@ bind e:cmd ${showNormalHint}
 
 # app specific focus
 bind 1:alt focus ${browser}
-bind 2:alt focus ${editor}
-bind 3:alt focus 'Skype'
-bind 4:alt focus ${browser2}
+bind 2:alt focus ${browser2}
+bind 3:alt focus ${dash}
+bind 4:alt focus 'Skype'
 bind 5:alt focus ${media}
 
 # layouts
@@ -83,8 +82,8 @@ layout testgrid ${editor}:REPEAT ${righthalf}
 layout ipython ${browser}:REPEAT ${lefthalf}
 layout ipython ${browser2}:REPEAT ${righthalf}
 
-bind s:shift,alt sequence layout worksplit | focus ${editor} | focus ${browser}
-bind f:shift,alt sequence layout workfull | focus ${browser} | focus ${editor}
-bind m:shift,alt sequence layout misc | focus ${media} | focus 'Skype'
-bind g:shift,alt sequence layout testgrid | focus ${browser} | focus ${browser2} | focus ${editor}
-bind p:shift,alt sequence layout ipython | focus ${browser} | focus ${browser2}
+bind s:ctrl,cmd sequence layout worksplit | focus ${editor} | focus ${browser}
+bind f:ctrl,cmd sequence layout workfull | focus ${browser} | focus ${editor}
+bind m:cmd,alt sequence layout misc | focus ${media} | focus 'Skype'
+bind g:cmd,alt sequence layout testgrid | focus ${browser} | focus ${browser2} | focus ${editor}
+bind p:cmd,alt sequence layout ipython | focus ${browser} | focus ${browser2}
