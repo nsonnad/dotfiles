@@ -17,13 +17,13 @@ hi CompIcon             width: 16px; min-width: 16px; display: inline-block; mar
 hi CompIcon>img         max-width: 16px; max-height: 16px; vertical-align: middle;
 hi CompItem             font-size: 11px;
 hi CompItem>*           padding: 0 .5ex;
-hi CompItem[selected]   color: #dfe1e8; background: #343d46;
+hi CompItem[selected]   background: #dfe1e8;
 hi CompMsg              font-style: italic; margin-left: 16px;
 hi CompResult           width: 45%; overflow: hidden;font-size: 12pt; font-family: "Inconsolata", monospace; font-weight: normal;
 hi CompTitle            color: #bf616a; background: #eff1f5; font-weight: bold;
 hi CompTitle>*          padding: 0 .5ex;
 hi ErrorMsg             color: #bf616a; background: #dfe1e8; font-weight: normal; font-size:14px; font-family: "Inconsolata", monospace;
-hi Filter               color: #4f5b66; background: #343d46;
+hi Filter               color: #4f5b66; background: #dfe1e8;
 hi FrameIndicator       background-color: #CC9393; opacity: 0.5; z-index: 999; position: fixed; top: 0; bottom: 0; left: 0; right: 0;
 hi Function             color: navy;
 hi Hint                 font-family: "Inconsolata", monospace; font-size: 12px; font-weight: bold; color: #ebcb8b; background: #4f5b66; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 1px 2px;
