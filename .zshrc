@@ -83,6 +83,7 @@ alias wd='. /Users/nikhil/bin/wd/wd.sh'
 stty stop undef # to unmap ctrl-s
 
 alias hr='hr █'
+alias vless='vim -u /usr/share/vim/vim73/macros/less.vim'
 
 # R-vim tweaks
 if [[ "x$DISPLAY" != "x" ]]; then

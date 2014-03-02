@@ -27,27 +27,13 @@ syntax enable
 filetype off
 "let base16colorspace=256
 
-"NeoBundle 'Zenburn'
-:command Zenburn colorscheme zenburn
-  \ | let g:indent_guides_auto_colors = 0
-  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-  \ | autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
-
-"NeoBundle 'chriskempson/vim-tomorrow-theme'
-":command Tom set background=dark | colorscheme Tomorrow-Night
-
 NeoBundle 'chriskempson/base16-vim'
-:command Ocean set background=dark | colorscheme base16-ocean
-:command Solarl set background=light | colorscheme base16-solarized
+:command Dark set background=dark | colorscheme base16-ocean
+:command Light set background=light | colorscheme base16-solarized
+:Dark
 
-:Solarl
-":Ocean
-":Zenburn
-"
-"noremap ⁄ :Zenburn<CR>
-noremap ⁄ :Ocean<CR>
-noremap € :Solarl<CR>
-noremap ‹ :Solard<CR>
+noremap ˆ :Dark<CR>
+noremap ¬ :Light<CR>
 
 " Unite
 NeoBundle 'Shougo/unite.vim'
@@ -57,37 +43,40 @@ NeoBundle 'Shougo/unite-session'
 NeoBundle 'thinca/vim-unite-history'
 
 " Utilities
-NeoBundle 'terryma/vim-multiple-cursors'
-"NeoBundle 'vim-scripts/ShowMarks'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'MarcWeber/ultisnips'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'danro/rename.vim'
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/webapi-vim'
+NeoBundle 'ivanov/vim-ipython'
+NeoBundle 'justinmk/vim-sneak'
+NeoBundle 'MarcWeber/ultisnips'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'rizzatti/funcoo.vim'
-NeoBundle 'rizzatti/dash.vim'
-NeoBundle 'ivanov/vim-ipython'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'danro/rename.vim'
-NeoBundle 'godlygeek/tabular'
 NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       \     'mac' : './install.sh',
       \    },
       \ } 
+
+" Utilities not being used
+"============================
+"NeoBundle 'vim-scripts/ShowMarks'
+"NeoBundle 'mattn/gist-vim'
+"NeoBundle 'mattn/webapi-vim'
+"NeoBundle 'rizzatti/funcoo.vim'
+"NeoBundle 'rizzatti/dash.vim'
+"NeoBundle 'Lokaltog/vim-easymotion'
 
 "============================
 "Syntax highlighting
@@ -100,11 +89,12 @@ NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascr
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'groenewege/vim-less'
+
 NeoBundle 'plasticboy/vim-markdown'
 " Enable spell checking for markdown files
 au BufRead *.md setlocal spell
 au BufRead *.markdown setlocal spell
-NeoBundle 'cakebaker/scss-syntax.vim'
+
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'wavded/vim-stylus'
 
@@ -238,6 +228,7 @@ set title
 
 "Let backspace do what it's supposed to: allow backspace over indent, eol, and start of an insert
 set backspace=indent,eol,start
+
 "===============================================================================
 " Function Key Mappings
 "===============================================================================
@@ -279,8 +270,8 @@ nnoremap <Leader>o :only<cr>
 " <Leader>e: Fast editing of the .vimrc
 nnoremap <Leader>e :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
 
-:nmap <silent> <leader>D :Dash
-:nmap <silent> <leader><leader>D <Plug>DashSearch
+:nmap <silent> <leader>d :Dark<cr>
+:nmap <silent> <leader>l :Light<cr>
 
 " <Leader>s: Spell checking shortcuts
 nnoremap <Leader>ss :setlocal spell!<cr>
@@ -307,6 +298,13 @@ nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>te :tabedit
+
+"Alt-g: Toggle gitgutter
+noremap <leader>gg :GitGutterToggle<CR>
+"Alt-g: Toggle gitgutter
+noremap <leader>gu :GundoToggle<CR>
+"Alt-n: Toggle numbers
+nnoremap <silent> <leader>nn :set nonumber! \| set relativenumber!<cr>
 
 ""===============================================================================
 " Normal Mode Shift Key Mappings
@@ -412,7 +410,6 @@ noremap Ô mzyyp`zj
 "Alt-Shift-k: Duplicate line up
 noremap  mzyyp`z
 
-
 "===============================================================================
 " NERDTree
 "===============================================================================
@@ -515,7 +512,6 @@ let g:unite_source_file_mru_time_format = ''
 "===============================================================================
 " GitGutter
 "===============================================================================
-
 let g:gitgutter_eager=0
 
 "===============================================================================
@@ -523,16 +519,16 @@ let g:gitgutter_eager=0
 "===============================================================================
 
 " Tweak the colors
-hi link EasyMotionTarget WarningMsg
-hi link EasyMotionShade Comment
+"hi link EasyMotionTarget WarningMsg
+"hi link EasyMotionShade Comment
 
-let g:EasyMotion_do_mapping = 0
+"let g:EasyMotion_do_mapping = 0
 " nnoremap <silent> <C-f>f :call EasyMotion#F(0, 0)<CR>
 " nnoremap <silent> <C-f><C-f> :call EasyMotion#F(0, 1)<CR>
 " nnoremap <silent> <C-f>t :call EasyMotion#T(0, 0)<CR>
 " nnoremap <silent> <C-f><C-t> :call EasyMotion#T(0, 1)<CR>
-nnoremap <silent> <C-f> :call EasyMotion#F(0, 0)<CR>
-nnoremap <silent> <C-t> :call EasyMotion#T(0, 0)<CR>
+"nnoremap <silent> <C-f> :call EasyMotion#F(0, 0)<CR>
+"nnoremap <silent> <C-t> :call EasyMotion#T(0, 0)<CR>
 
 "===============================================================================
 " YouCompleteMe
@@ -542,9 +538,10 @@ let g:ycm_add_preview_to_completeopt=0
 let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
 
-"Sneak
-nmap f <Plug>SneakForward
-nmap F <Plug>SneakBackward
+"===============================================================================
+" Sneak
+"===============================================================================
+" Trying the defaults, but I may miss `s`
 
 "===============================================================================
 " Fugitive
@@ -582,11 +579,6 @@ let g:airline_mode_map = {
     \ 'S'  : 'S',
     \ '' : 'S',
     \ }
-
-"===============================================================================
-" Gundo
-"===============================================================================
-nnoremap <F5> :GundoToggle<CR>
 
 "===============================================================================
 " Syntastic

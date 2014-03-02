@@ -23,14 +23,14 @@ alias editor        'iTerm'
 alias media         'VLC'
 
 # Resize Bindings
-bind l:shift,alt     resize +10% +0
-bind h:shift,alt      resize -10% +0
-bind k:shift,alt        resize +0 -10%
-bind j:shift,alt      resize +0 +10%
-bind l:ctrl,alt      resize -10% +0 bottom-right
-bind h:ctrl,alt       resize +10% +0 bottom-right
-bind k:ctrl,alt         resize +0 +10% bottom-right
-bind j:ctrl,alt       resize +0 -10% bottom-right
+# bind l:shift,ctrl     resize +10% +0
+# bind h:shift,ctrl      resize -10% +0
+# bind k:shift,ctrl        resize +0 -10%
+# bind j:shift,ctrl      resize +0 +10%
+# bind l:ctrl,alt      resize -10% +0 bottom-right
+# bind h:ctrl,alt       resize +10% +0 bottom-right
+# bind k:ctrl,alt         resize +0 +10% bottom-right
+# bind j:ctrl,alt       resize +0 -10% bottom-right
 
 # Push Bindings
 bind l:ctrl,cmd  ${righthalf}
