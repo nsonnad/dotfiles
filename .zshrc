@@ -41,7 +41,7 @@ alias zshrc='vim ~/docs/dotfiles/.zshrc'
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5'
 
-alias t='tail -f'
+alias tl='tail -f'
 
 # cd, because typing the backslash is A LOT of work!!
 alias ..='cd ../'
@@ -82,8 +82,18 @@ alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 stty stop undef # to unmap ctrl-s
 
+# Custom tools
+# --------------------------
+
+# hr
+# --------------------------
 alias hr='hr █'
-alias vless='vim -u /usr/share/vim/vim73/macros/less.vim'
+
+# todo.txt
+# --------------------------
+source /usr/local/Cellar/todo-txt/2.9/etc/bash_completion.d/todo_completion complete -F _todo t
+# alias to td because of twitter thing
+alias td='/usr/local/Cellar/todo-txt/2.9/bin/todo.sh -d $HOME/Dropbox/todo/todo.cfg'
 
 # R-vim tweaks
 if [[ "x$DISPLAY" != "x" ]]; then
@@ -142,7 +152,7 @@ NPMRC=~/docs/dotfiles/npmrcs/default
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew osx vi-mode wd git sublime)
+plugins=(brew osx vi-mode wd git sublime pass)
 #
 #export LC_CTYPE=C 
 #export LANG=C

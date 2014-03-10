@@ -392,6 +392,7 @@ nnoremap <down> <c-w>-
 nnoremap <left> <c-w><
 nnoremap <right> <c-w>>
 
+" Navigate btwn splits
 map <C-H> <C-w>h
 map <C-J> <C-w>j
 map <C-K> <C-w>k
