@@ -95,6 +95,10 @@ source /usr/local/Cellar/todo-txt/2.9/etc/bash_completion.d/todo_completion comp
 # alias to td because of twitter thing
 alias td='/usr/local/Cellar/todo-txt/2.9/bin/todo.sh -d $HOME/Dropbox/todo/todo.cfg'
 
+# twitter gem
+# --------------------------
+alias tw='/Users/nikhil/.rvm/gems/ruby-2.0.0-p353/bin/t'
+
 # R-vim tweaks
 if [[ "x$DISPLAY" != "x" ]]; then
 alias vim='vim --servername VIM'
@@ -166,7 +170,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
-
+eval "$(pyenv init -)"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
