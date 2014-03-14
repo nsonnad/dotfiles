@@ -18,6 +18,7 @@ alias showNormalHint hint FHDJSKALGRUEIWOQPTY
 # app aliases
 alias browser       'Aurora'
 alias browser2      'Google Chrome'
+alias viewer        'Preview'
 alias dash          'Dash'
 alias editor        'iTerm'
 alias media         'VLC'
@@ -63,7 +64,8 @@ bind 1:alt focus ${browser}
 bind 2:alt focus ${browser2}
 bind 3:alt focus ${dash}
 bind 4:alt focus 'Skype'
-bind 5:alt focus ${media}
+bind 5:alt focus ${viewer}
+bind 6:alt focus ${media}
 
 # layouts
 layout worksplit ${browser}:REPEAT ${lefthalf}

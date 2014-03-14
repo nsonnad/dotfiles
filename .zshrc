@@ -170,7 +170,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
-eval "$(pyenv init -)"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 

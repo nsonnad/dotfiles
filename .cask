@@ -1,0 +1,25 @@
+# Install native apps
+brew install phinze/cask/brew-cask
+brew tap caskroom/versions
+
+function installcask() {
+	brew cask install "${@}" 2> /dev/null
+}
+
+installcask aurora
+installcask cog
+installcask disk-inventory-x
+installcask dropbox
+installcask dash
+installcask evernote
+installcask flux
+installcask google-chrome
+installcask google-chrome-canary
+installcask iterm2
+installcask keyremap4macbook
+installcask quicksilver
+installcask slate
+installcask sublime-text
+installcask tor-browser
+installcask transmission
+installcask vlc
