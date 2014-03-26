@@ -20,7 +20,9 @@ install homebrew/dupes/grep
 
 install ag
 install git
+install gfortran
 install gnupg2
+install jq
 install node
 install numpy
 install pass
@@ -28,6 +30,7 @@ install python
 install python3
 install r
 install scipy
+install todo-txt
 install tree
 install tmux
 install youtube-dl

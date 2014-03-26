@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -78,8 +77,6 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias wd='. /Users/nikhil/bin/wd/wd.sh'
-alias wd='. /Users/nikhil/bin/wd/wd.sh'
 stty stop undef # to unmap ctrl-s
 
 # Custom tools
@@ -98,6 +95,15 @@ alias td='/usr/local/Cellar/todo-txt/2.9/bin/todo.sh -d $HOME/Dropbox/todo/todo.
 # twitter gem
 # --------------------------
 alias tw='/Users/nikhil/.rvm/gems/ruby-2.0.0-p353/bin/t'
+
+alias batt='pmset -g batt'
+
+# command line calculator with =
+function \=() {
+    calc="${@//p/+}"
+    calc="${calc//x/*}"
+    bc -l <<<"scale=10;$calc"
+}
 
 # R-vim tweaks
 if [[ "x$DISPLAY" != "x" ]]; then
@@ -156,7 +162,8 @@ NPMRC=~/docs/dotfiles/npmrcs/default
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew osx vi-mode wd git sublime pass)
+# wd plugin seems to fuck shit up
+plugins=(brew osx vi-mode git sublime pass)
 #
 #export LC_CTYPE=C 
 #export LANG=C

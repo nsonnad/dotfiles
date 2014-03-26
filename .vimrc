@@ -436,7 +436,7 @@ nmap <space> [unite]
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 
 " Quick buffer and mru
-nnoremap <silent> [unite]u :<C-u>Unite -buffer-name=buffers buffer file_mru<CR>
+nnoremap <silent> [unite]u :<C-u>Unite -buffer-name=buffers buffer<CR>
 
 " Quick yank history
 nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<CR>
