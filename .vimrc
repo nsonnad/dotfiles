@@ -23,8 +23,6 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 "============================
 "COLORS
 "=============================
-syntax enable
-filetype off
 "let base16colorspace=256
 
 NeoBundle 'chriskempson/base16-vim'
@@ -45,6 +43,7 @@ NeoBundle 'thinca/vim-unite-history'
 " Utilities
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'honza/vim-snippets'
@@ -111,6 +110,12 @@ augroup END " }
 "============================
 "SETTINGS
 "=============================
+filetype plugin on
+filetype indent on
+
+syntax enable
+syntax on
+
 " Always splits to the right and below
 set splitright
 set splitbelow
@@ -208,9 +213,6 @@ if has ('unnamedplus')
 else
   set clipboard=unnamed
 endif
-
-filetype plugin on
-filetype indent on
 
 "dont tell me to save when switching buffers
 set hidden

@@ -167,6 +167,7 @@ plugins=(brew osx vi-mode git sublime pass)
 #
 #export LC_CTYPE=C 
 #export LANG=C
+export NODE_ENV=development
 
 source $ZSH/oh-my-zsh.sh
 
