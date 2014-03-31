@@ -38,6 +38,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite-help'
 NeoBundle 'Shougo/unite-session'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'thinca/vim-unite-history'
 
 " Utilities
@@ -434,6 +435,10 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 nnoremap [unite] <Nop>
 nmap <space> [unite]
 
+" General fuzzy search
+nnoremap <silent> [unite]<space> :<C-u>Unite
+      \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
+
 " Quick registers
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 
@@ -491,7 +496,7 @@ nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
 nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
 
 " Start in insert mode
-let g:unite_enable_start_insert = 1
+let g:unite_enable_start_insert = 0
 let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
 
 " Enable short source name in window
@@ -591,7 +596,6 @@ let g:airline_mode_map = {
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_coffee_checkers = ['coffeelint']
-"let g:syntastic_less_checkers = ['jshint']
 let g:syntastic_json_checkers = ['jsonlint']
 let g:syntastic_scss_checkers = ['scss_lint']
 
