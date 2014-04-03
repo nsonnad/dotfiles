@@ -22,6 +22,7 @@ install ag
 install git
 install gfortran
 install gnupg2
+install hub
 install jq
 install node
 install numpy
@@ -59,4 +60,3 @@ cask install sublime-text3
 cask install tor-browser
 cask install transmission
 cask install vlc
-

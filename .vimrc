@@ -30,8 +30,8 @@ NeoBundle 'chriskempson/base16-vim'
 :command Light set background=light | colorscheme base16-solarized
 :Dark
 
-noremap ˆ :Dark<CR>
-noremap ¬ :Light<CR>
+noremap ⁄ :Dark<CR>
+noremap € :Light<CR>
 
 " Unite
 NeoBundle 'Shougo/unite.vim'
@@ -497,7 +497,13 @@ nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command comm
 
 " Start in insert mode
 let g:unite_enable_start_insert = 0
-let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+
+if executable('ag')
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+  let g:unite_source_grep_command='ag'
+  let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+  let g:unite_source_grep_recursive_opt=''
+endif
 
 " Enable short source name in window
 " let g:unite_enable_short_source_names = 1
