@@ -43,15 +43,13 @@ NeoBundle 'thinca/vim-unite-history'
 
 " Utilities
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'itchyny/lightline.vim'
-"NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'ivanov/vim-ipython'
 NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'MarcWeber/ultisnips'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'Raimondi/delimitMate'
@@ -59,6 +57,8 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'SirVer/ultisnips'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tommcdo/vim-exchange'
@@ -66,10 +66,10 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
-      \     'mac' : './install.sh',
-      \    },
-      \ } 
+"NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
+      "\     'mac' : './install.sh',
+      "\    },
+      "\ } 
 
 " Utilities not being used
 "============================
@@ -78,6 +78,7 @@ NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
 "NeoBundle 'mattn/webapi-vim'
 "NeoBundle 'rizzatti/funcoo.vim'
 "NeoBundle 'rizzatti/dash.vim'
+"NeoBundle 'bling/vim-airline'
 "NeoBundle 'Lokaltog/vim-easymotion'
 
 "============================
@@ -549,10 +550,10 @@ let g:gitgutter_eager=0
 "===============================================================================
 " YouCompleteMe
 "===============================================================================
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_add_preview_to_completeopt=0
-let g:ycm_confirm_extra_conf=0
-set completeopt-=preview
+" let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+" let g:ycm_add_preview_to_completeopt=0
+" let g:ycm_confirm_extra_conf=0
+" set completeopt-=preview
 
 "===============================================================================
 " Sneak
@@ -685,6 +686,42 @@ let g:unite_force_overwrite_statusline = 0
 set laststatus=2
 
 "===============================================================================
+" neocomplete
+"===============================================================================
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+"===============================================================================
 " Airline
 "===============================================================================
 "let g:airline_powerline_fonts = 1
@@ -746,11 +783,11 @@ autocmd FileType html,css EmmetInstall
 "===============================================================================
 
 let g:UltiSnips = {}
-let g:UltiSnips.ExpandTrigger = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"                                       
-let g:UltiSnipsJumpBackwardTrigger="<c-k>" 
+let g:UltiSnipsExpandTrigger = "<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"                                       
+let g:UltiSnipsJumpBackwardTrigger="<C-k>" 
 
-let g:UltiSnips.always_use_first_snippet = 1
+let g:UltiSnips.always_use_first_snippet = 0
 let g:UltiSnips.snipmate_ft_filter = {
             \ 'default' : {'filetypes': ["FILETYPE"] },
             \ 'javascript'    : {'filetypes': ["javascript"] },

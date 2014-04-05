@@ -107,7 +107,6 @@ function \=() {
 
 # R-vim tweaks
 if [[ "x$DISPLAY" != "x" ]]; then
-alias vim='vim --servername VIM'
     if [[ "x$TERM" = "xrxvt-256-color" ]] || [[ "x$TERM" == "xxterm-256color" ]]
     then
 function tvim(){
