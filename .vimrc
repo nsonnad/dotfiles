@@ -43,7 +43,8 @@ NeoBundle 'thinca/vim-unite-history'
 
 " Utilities
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'itchyny/lightline.vim'
+"NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'godlygeek/tabular'
@@ -568,32 +569,148 @@ nnoremap <Leader>gs :Gstatus<cr>
 
 
 "===============================================================================
-" Airline
+" Lightline
 "===============================================================================
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'mode_map': {
+      \   '__' : '-',
+      \   'n'  : 'N',
+      \   'i'  : 'I',
+      \   'R'  : 'R',
+      \   'c'  : 'C',
+      \   'v'  : 'V',
+      \   'V'  : 'V',
+      \   '' : 'V',
+      \   's'  : 'S',
+      \   'S'  : 'S',
+      \   '' : 'S',
+      \ },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
+
+function! MyModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! MyReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "⭤"
+  else
+    return ""
+  endif
+endfunction
+
+function! MyFilename()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? g:lightline.fname :
+        \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ &ft == 'unite' ? unite#get_status_string() :
+        \ &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let _ = fugitive#head()
+      return strlen(_) ? mark._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? 'CtrlP' :
+        \ fname == '__Gundo__' ? 'Gundo' :
+        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ &ft == 'unite' ? 'Unite' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+let g:unite_force_overwrite_statusline = 0
 
 set laststatus=2
 
-" Short mode letters
-if !exists('g:airline_mode_map')
-    let g:airline_mode_map = {}
-endif
+"===============================================================================
+" Airline
+"===============================================================================
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#fnamemod = ':t'
 
-let g:airline_mode_map = {
-    \ '__' : '-',
-    \ 'n'  : 'N',
-    \ 'i'  : 'I',
-    \ 'R'  : 'R',
-    \ 'c'  : 'C',
-    \ 'v'  : 'V',
-    \ 'V'  : 'V',
-    \ '' : 'V',
-    \ 's'  : 'S',
-    \ 'S'  : 'S',
-    \ '' : 'S',
-    \ }
+"set laststatus=2
+
+"" Short mode letters
+"if !exists('g:airline_mode_map')
+    "let g:airline_mode_map = {}
+"endif
+
+"let g:airline_mode_map = {
+    "\ '__' : '-',
+    "\ 'n'  : 'N',
+    "\ 'i'  : 'I',
+    "\ 'R'  : 'R',
+    "\ 'c'  : 'C',
+    "\ 'v'  : 'V',
+    "\ 'V'  : 'V',
+    "\ '' : 'V',
+    "\ 's'  : 'S',
+    "\ 'S'  : 'S',
+    "\ '' : 'S',
+    "\ }
 
 "===============================================================================
 " Syntastic
