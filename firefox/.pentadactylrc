@@ -1,9 +1,9 @@
 :colorscheme solarized-light
 
-:noremap j 5j
-:noremap k 5k
-:noremap <C-h> <C-p>
-:noremap <C-l> <C-n>
+:map j 5j
+:map k 5k
+:map <C-h> <C-p>
+:map <C-l> <C-n>
 
 silent qmark g https://mail.google.com/mail/u/0/#inbox
 silent qmark h https://github.com/
