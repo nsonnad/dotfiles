@@ -1,7 +1,7 @@
 :colorscheme solarized-light
 
-:map j 5j
-:map k 5k
+:map -builtin j 5j
+:map -builtin k 5k
 :map <C-h> <C-p>
 :map <C-l> <C-n>
 
