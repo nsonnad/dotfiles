@@ -573,7 +573,7 @@ nnoremap <Leader>gs :Gstatus<cr>
 " Lightline
 "===============================================================================
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'Tomorrow_Night_Eighties',
       \ 'mode_map': {
       \   '__' : '-',
       \   'n'  : 'N',
@@ -604,6 +604,31 @@ let g:lightline = {
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
+
+augroup LightLineColorscheme
+  autocmd!
+  autocmd ColorScheme * call s:lightline_update()
+augroup END
+
+function! s:lightline_update()
+  if !exists('g:loaded_lightline')
+    return
+  endif
+  try
+    if (&background =~# 'dark')
+      let g:lightline.colorscheme = 'Tomorrow_Night_Eighties'
+      call lightline#init()
+      call lightline#colorscheme()
+      call lightline#update()
+    elseif (&background =~# 'light')
+      let g:lightline.colorscheme = 'solarized_light'
+      call lightline#init()
+      call lightline#colorscheme()
+      call lightline#update()
+    endif
+  catch
+  endtry
+endfunction
 
 function! MyModified()
   if &filetype == "help"
