@@ -23,9 +23,10 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 "============================
 "COLORS
 "=============================
-"let base16colorspace=256
 
 NeoBundle 'chriskempson/base16-vim'
+let base16colorspace=256
+"set t_Co=256
 :command Dark set background=dark | colorscheme base16-ocean
 :command Light set background=light | colorscheme base16-solarized
 :Dark
