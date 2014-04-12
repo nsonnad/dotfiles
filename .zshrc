@@ -103,6 +103,18 @@ alias tw='/Users/nikhil/.rvm/gems/ruby-2.0.0-p353/bin/t'
 
 alias batt='pmset -g batt'
 
+# Enable reattach-to-user-namespace on Mac. See
+# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/8
+#if [[ "$(uname)" == "Darwin" ]]; then
+  #alias tmux='tmux -2'
+#else
+  #alias tmux='tmux -2'
+#fi
+
+# Export TERM correctly for tmux
+#[[ $TERM == "screen" ]] && export TERM=screen-256color
+#[[ $TERM == "xterm" ]] && export TERM=xterm-256color
+
 # command line calculator with =
 function \=() {
     calc="${@//p/+}"

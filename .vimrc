@@ -306,11 +306,8 @@ nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>te :tabedit
 
-"Alt-g: Toggle gitgutter
 noremap <leader>gg :GitGutterToggle<CR>
-"Alt-g: Toggle gitgutter
 noremap <leader>gu :GundoToggle<CR>
-"Alt-n: Toggle numbers
 nnoremap <silent> <leader>nn :set nonumber! \| set relativenumber!<cr>
 
 ""===============================================================================
@@ -342,7 +339,7 @@ nnoremap Y y$"
 " Ctrl-w: Window management
 
 " Ctrl-e: Find (e)verything
-nmap <c-e> [unite]f
+"nmap <c-e> [unite]f
 
 " Ctrl-r: Command history using :Unite , this matches my muscle memory in zsh
 nmap <c-r> [unite];
@@ -574,7 +571,7 @@ nnoremap <Leader>gs :Gstatus<cr>
 " Lightline
 "===============================================================================
 let g:lightline = {
-      \ 'colorscheme': 'Tomorrow_Night_Eighties',
+      \ 'colorscheme': 'jellybeans',
       \ 'mode_map': {
       \   '__' : '-',
       \   'n'  : 'N',
@@ -617,7 +614,7 @@ function! s:lightline_update()
   endif
   try
     if (&background =~# 'dark')
-      let g:lightline.colorscheme = 'Tomorrow_Night_Eighties'
+      let g:lightline.colorscheme = 'jellybeans'
       call lightline#init()
       call lightline#colorscheme()
       call lightline#update()
