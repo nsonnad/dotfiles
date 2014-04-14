@@ -26,7 +26,7 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 
 NeoBundle 'chriskempson/base16-vim'
 let base16colorspace=256
-"set t_Co=256
+set t_Co=256
 :command Dark set background=dark | colorscheme base16-ocean
 :command Light set background=light | colorscheme base16-solarized
 :Dark
@@ -45,6 +45,7 @@ NeoBundle 'thinca/vim-unite-history'
 " Utilities
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'chrisbra/csv.vim'
+NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'honza/vim-snippets'
@@ -63,10 +64,10 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tommcdo/vim-exchange'
+NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       "\     'mac' : './install.sh',
       "\    },
@@ -79,6 +80,7 @@ NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'mattn/webapi-vim'
 "NeoBundle 'rizzatti/funcoo.vim'
 "NeoBundle 'rizzatti/dash.vim'
+"NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'bling/vim-airline'
 "NeoBundle 'Lokaltog/vim-easymotion'
 
@@ -396,12 +398,6 @@ nnoremap <down> <c-w>-
 nnoremap <left> <c-w><
 nnoremap <right> <c-w>>
 
-" Navigate btwn splits
-map <C-H> <C-w>h
-map <C-J> <C-w>j
-map <C-K> <C-w>k
-map <C-L> <C-w>l
-
 " Bubble single lines
 nmap ˚ [e
 nmap ∆ ]e
@@ -414,6 +410,18 @@ noremap ¬ :bnext<CR>
 noremap Ô mzyyp`zj
 "Alt-Shift-k: Duplicate line up
 noremap  mzyyp`z
+
+
+"===============================================================================
+" TmuxNavigator
+"===============================================================================
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 
 "===============================================================================
 " NERDTree
