@@ -1,10 +1,11 @@
-:colorscheme solarized-light
+colorscheme solarized-light
 
-:map -builtin j 5j
-:map -builtin k 5k
-:map <C-h> <C-p>
-:map <C-l> <C-n>
+map -builtin j 5j
+map -builtin k 5k
+map <C-h> <C-p>
+map <C-l> <C-n>
 
+silent qmark c https://www.google.com/calendar
 silent qmark g https://mail.google.com/mail/u/0/#inbox
 silent qmark h https://github.com/
 silent qmark I https://www.instapaper.com/u
@@ -14,4 +15,8 @@ silent qmark p javascript:(function(){var e=false;var t=null;var r=false;var n={
 silent qmark q http://qz.com
 silent qmark t https://tweetdeck.twitter.com/
 
-:hi FontFixed -a font-size:14px !important; font-family:"Inconsolata" !important;
+hi FontFixed -a font-size:14px !important; font-family:"Inconsolata" !important;
+
+set passkeys+=tweetdeck.twitter.com:jkhlrtfndpg?1234567890xs<CR><Esc>
+set passkeys+=mail.google.com:'!#*+-./<C-Down><C-s><Enter>?INU[]acefjklmnopqrsuvxyz',*a,*n,*r,*s,*t,*u,ga,gc,gd,gi,gl,gs,gt,yo
+set strictfocus+=mail.google.com:laissez-faire
