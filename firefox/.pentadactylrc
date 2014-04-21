@@ -15,8 +15,13 @@ silent qmark p javascript:(function(){var e=false;var t=null;var r=false;var n={
 silent qmark q http://qz.com
 silent qmark t https://tweetdeck.twitter.com/
 
+silent bmark -k slack https://qz.slack.com
+silent bmark -k qzwp https://qz.com/wp-admin
+silent bmark -k cal https://www.google.com/calendar
+
 hi FontFixed -a font-size:14px !important; font-family:"Inconsolata" !important;
 
 set passkeys+=tweetdeck.twitter.com:jkhlrtfndpg?1234567890xs<CR><Esc>
 set passkeys+=mail.google.com:'!#*+-./<C-Down><C-s><Enter>?INU[]acefjklmnopqrsuvxyz',*a,*n,*r,*s,*t,*u,ga,gc,gd,gi,gl,gs,gt,yo
+set passkeys+=google.com/calendar:'kpjnrtdwmxace<Del>z<Esc>s/+qs?'
 set strictfocus+=mail.google.com:laissez-faire
