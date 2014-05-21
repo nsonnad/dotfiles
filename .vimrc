@@ -68,6 +68,7 @@ NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       "\     'mac' : './install.sh',
       "\    },
@@ -80,7 +81,6 @@ NeoBundle 'tpope/vim-surround'
 "NeoBundle 'mattn/webapi-vim'
 "NeoBundle 'rizzatti/funcoo.vim'
 "NeoBundle 'rizzatti/dash.vim'
-"NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'bling/vim-airline'
 "NeoBundle 'Lokaltog/vim-easymotion'
 

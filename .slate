@@ -16,11 +16,12 @@ alias showHintsLeftHand hint FDSAREWQ
 alias showNormalHint hint FHDJSKALGRUEIWOQPTY
 
 # app aliases
-alias browser       'Aurora'
-alias browser2      'Google Chrome'
+alias browser       'Google Chrome'
+alias browser2      'Firefox'
 alias viewer        'Preview'
 alias dash          'Dash'
 alias editor        'iTerm'
+alias atom          'Atom'
 alias media         'VLC'
 
 # Resize Bindings
@@ -62,10 +63,11 @@ bind e:cmd ${showNormalHint}
 # app specific focus
 bind 1:alt focus ${browser}
 bind 2:alt focus ${browser2}
-bind 3:alt focus ${dash}
-bind 4:alt focus 'Skype'
+bind 3:alt focus 'Slack'
+bind 4:alt focus ${atom}
 bind 5:alt focus ${viewer}
-bind 6:alt focus ${media}
+bind 6:alt focus ${dash}
+bind 7:alt focus ${media}
 
 # layouts
 layout worksplit ${browser}:REPEAT ${lefthalf}

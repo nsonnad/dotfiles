@@ -18,7 +18,7 @@ alias t2="tree -L 2"
 alias t3="tree -L 3"
 alias ipynote="ipython notebook --profile=n --pylab=inline"
 alias vimrc="vim ~/docs/dotfiles/.vimrc"
-alias fv="fg vim"
+alias penta="vim ~/docs/dotfiles/firefox/.pentadactylrc"
 
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
@@ -92,9 +92,8 @@ alias hr='hr █'
 
 # todo.txt
 # --------------------------
-source /usr/local/Cellar/todo-txt/2.9/etc/bash_completion.d/todo_completion complete -F _todo t
 # alias to td because of twitter thing
-alias td='/usr/local/Cellar/todo-txt/2.9/bin/todo.sh -d $HOME/Dropbox/todo/todo.cfg'
+alias td='todo.sh -d $HOME/Dropbox/todo/todo.cfg'
 
 # twitter gem
 # --------------------------
@@ -180,14 +179,22 @@ NPMRC=~/docs/dotfiles/npmrcs/default
 # wd plugin seems to fuck shit up
 plugins=(brew osx vi-mode git sublime pass)
 #
-#export LC_CTYPE=C 
+#export LC_CTYPE=C
 #export LANG=C
-export NODE_ENV=development
+LANG="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
+NODE_ENV=development
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 #if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 #PATH=$PATH:$HOME/.rvm/bin
 export PATH=/Users/nikhil/bin:$PATH
@@ -195,4 +202,3 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-

@@ -57,6 +57,6 @@ cask install keyremap4macbook
 cask install quicksilver
 cask install slate
 cask install sublime-text3
-cask install tor-browser
+cask install torbrowserbundle
 cask install transmission
 cask install vlc
