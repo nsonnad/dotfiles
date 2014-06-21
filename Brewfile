@@ -21,7 +21,7 @@ install homebrew/dupes/grep
 install ag
 install git
 install gfortran
-install gnupg2
+install gnu-sed --default-namesinstall gnupg2
 install hub
 install jq
 install node

@@ -7,9 +7,13 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="pure"
 
 # Base16 Shell
-BASE16_SCHEME="ocean"
+BASE16_SCHEME="eighties"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+
+#alias gcc='/usr/local/bin/gcc-4.8'
+#alias cc='/usr/local/bin/gcc-4.8'
+#alias g++='/usr/local/bin/g++-4.8'
 
 # aliases
 alias zshconfig="vim ~/docs/dotfiles/.zshrc"
@@ -208,6 +212,7 @@ source $ZSH/oh-my-zsh.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 #if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 #PATH=$PATH:$HOME/.rvm/bin
+export VIMRUNTIME=/usr/local/Cellar/vim/7.4.273/share/vim/vim74
 export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH

@@ -45,16 +45,12 @@ NeoBundle 'thinca/vim-unite-history'
 " Utilities
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'chrisbra/csv.vim'
-NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'ivanov/vim-ipython'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'mikewest/vimroom'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdcommenter'
@@ -97,13 +93,15 @@ NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'groenewege/vim-less'
 
-NeoBundle 'plasticboy/vim-markdown'
 " Enable spell checking for markdown files
 au BufRead *.md setlocal spell
 au BufRead *.markdown setlocal spell
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'wavded/vim-stylus'
+
+NeoBundle 'vim-scripts/syntaxhaskell.vim'
 
 "Check for new/updated bundles
 NeoBundleCheck
@@ -789,7 +787,6 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_coffee_checkers = ['coffeelint']
 let g:syntastic_json_checkers = ['jsonlint']
-let g:syntastic_scss_checkers = ['scss_lint']
 
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
