@@ -43,7 +43,7 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'thinca/vim-unite-history'
 
 " Utilities
-NeoBundle 'airblade/vim-gitgutter'
+"NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'godlygeek/tabular'
@@ -69,7 +69,7 @@ NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       "\     'mac' : './install.sh',
       "\    },
-      "\ } 
+      "\ }
 
 " Utilities not being used
 "============================
@@ -237,6 +237,9 @@ set title
 "Let backspace do what it's supposed to: allow backspace over indent, eol, and start of an insert
 set backspace=indent,eol,start
 
+" automatically remove trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
 "===============================================================================
 " Function Key Mappings
 "===============================================================================
@@ -276,7 +279,7 @@ nnoremap <Leader>w :bdelete<cr>
 nnoremap <Leader>o :only<cr>
 
 " <Leader>e: Fast editing of the .vimrc
-nnoremap <Leader>e :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
+nnoremap <Leader>ee :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
 
 :nmap <silent> <leader>d :Dark<cr>
 :nmap <silent> <leader>l :Light<cr>
@@ -309,6 +312,11 @@ nnoremap <leader>te :tabedit
 
 noremap <leader>gg :GitGutterToggle<CR>
 noremap <leader>gu :GundoToggle<CR>
+noremap <leader>sm :SyntasticToggleMode<CR>
+noremap <leader>st :SyntasticCheck<CR>
+
+" search for current word (to replace)
+noremap <leader>sc :%s/<C-r><C-w>/
 nnoremap <silent> <leader>nn :set nonumber! \| set relativenumber!<cr>
 
 ""===============================================================================
@@ -334,6 +342,12 @@ nnoremap Y y$"
 "===============================================================================
 " Normal Mode Ctrl Key Mappings
 "===============================================================================
+
+" easier split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Ctrl-q: Visual block mode
 
@@ -416,11 +430,11 @@ noremap  mzyyp`z
 "===============================================================================
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+"nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+"nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+"nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+"nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+"nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 
 "===============================================================================
 " NERDTree
@@ -432,7 +446,7 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 
 "===============================================================================
-" Unite 
+" Unite
 "===============================================================================
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -805,6 +819,7 @@ let g:syntastic_check_on_open = 1"
 "===============================================================================
 " only use for html/css
 let g:user_emmet_install_global = 0
+let g:user_emmet_leader_key='<C-e>'
 autocmd FileType html,css EmmetInstall
 
 "===============================================================================
@@ -813,8 +828,8 @@ autocmd FileType html,css EmmetInstall
 
 let g:UltiSnips = {}
 let g:UltiSnipsExpandTrigger = "<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"                                       
-let g:UltiSnipsJumpBackwardTrigger="<C-k>" 
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 let g:UltiSnips.always_use_first_snippet = 0
 let g:UltiSnips.snipmate_ft_filter = {

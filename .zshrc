@@ -105,16 +105,16 @@ alias tw='/Users/nikhil/.rvm/gems/ruby-2.0.0-p353/bin/t'
 alias batt='pmset -g batt'
 
 # Python
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
-if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-else
-    echo "WARNING: Can't find virtualenvwrapper.sh"
-fi
+#export WORKON_HOME=$HOME/.virtualenvs
+#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+#export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+#export PIP_VIRTUALENV_BASE=$WORKON_HOME
+#export PIP_RESPECT_VIRTUALENV=true
+#if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+    #source /usr/local/bin/virtualenvwrapper.sh
+#else
+    #echo "WARNING: Can't find virtualenvwrapper.sh"
+#fi
 
 # Enable reattach-to-user-namespace on Mac. See
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/8
@@ -212,9 +212,11 @@ source $ZSH/oh-my-zsh.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 #if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 #PATH=$PATH:$HOME/.rvm/bin
-export VIMRUNTIME=/usr/local/Cellar/vim/7.4.273/share/vim/vim74
+export VIMRUNTIME=/usr/local/Cellar/vim/7.4.335/share/vim/vim74
+export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
 export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
+export QZDATA_PATH=/Users/nsonnad/docs/qz/code/qzdata
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

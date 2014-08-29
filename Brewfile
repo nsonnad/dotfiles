@@ -20,7 +20,6 @@ install homebrew/dupes/grep
 
 install ag
 install git
-install gfortran
 install gnu-sed --default-namesinstall gnupg2
 install hub
 install jq
@@ -52,7 +51,7 @@ cask install firefox-aurora
 cask install flux
 cask install google-chrome
 cask install google-chrome-canary
-cask install iterm2
+cask install iterm2-veta
 cask install keyremap4macbook
 cask install quicksilver
 cask install slate
