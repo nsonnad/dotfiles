@@ -192,7 +192,7 @@ NPMRC=~/docs/dotfiles/npmrcs/default
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # wd plugin seems to fuck shit up
-plugins=(brew osx vi-mode git sublime pass)
+plugins=(brew osx vi-mode git pass)
 #
 #export LC_CTYPE=C
 #export LANG=C
@@ -207,6 +207,9 @@ LC_ALL="en_US.UTF-8"
 NODE_ENV=development
 
 source $ZSH/oh-my-zsh.sh
+# aws tab completion
+source /usr/local/share/zsh/site-functions/_aws
+source ~/docs/dotfiles/local.sh
 
 # Customize to your needs...
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
@@ -214,6 +217,7 @@ source $ZSH/oh-my-zsh.sh
 #PATH=$PATH:$HOME/.rvm/bin
 export VIMRUNTIME=/usr/local/Cellar/vim/7.4.335/share/vim/vim74
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
+export PATH=/Users/nikhil/.cabal/bin:$PATH
 export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH

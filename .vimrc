@@ -57,9 +57,10 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'terryma/vim-multiple-cursors'
+"NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
@@ -100,7 +101,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'wavded/vim-stylus'
-
 NeoBundle 'vim-scripts/syntaxhaskell.vim'
 
 "Check for new/updated bundles
