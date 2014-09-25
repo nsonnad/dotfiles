@@ -29,8 +29,10 @@ install pass
 install python
 install python3
 install r
+install reattach-to-user-namespace --wrap-pbcopy-pbpaste
 install scipy
 install tree
+install tmux
 install unar
 install youtube-dl
 

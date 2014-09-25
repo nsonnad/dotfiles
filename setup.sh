@@ -8,9 +8,9 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 # install homebrew stuff
 brew bundle Brewfile
 
-links=(.bash_profile .ghci .slate .vimrc .zshenv .zshrc)
+links=(.bash_profile .ghci .slate .vimrc .zshenv .zshrc .tmux.conf)
 
-for f in ${links[@]} do
+for f in ${links[@]}; do
   rm ~/$f
   ln -s `pwd`$f ~/$f
 done
@@ -18,6 +18,7 @@ done
 # install node stuff
 npm install -g json
 npm install -g n
+npm install -g trash
 
 # install python stuff
 pip install csvkit
