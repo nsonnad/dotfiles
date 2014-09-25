@@ -213,9 +213,10 @@ source ~/docs/dotfiles/local.sh
 
 # Customize to your needs...
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-#if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
-#PATH=$PATH:$HOME/.rvm/bin
+if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+PATH=$PATH:$HOME/.rvm/bin
 export VIMRUNTIME=/usr/local/Cellar/vim/7.4.335/share/vim/vim74
+export EDITOR='vim'
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
 export PATH=/Users/nikhil/.cabal/bin:$PATH
 export PATH=/Users/nikhil/bin:$PATH
