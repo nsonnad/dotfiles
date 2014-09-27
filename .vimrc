@@ -425,6 +425,12 @@ noremap Ô mzyyp`zj
 "Alt-Shift-k: Duplicate line up
 noremap  mzyyp`z
 
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W', '#F'],
+      \'y'    : ['%R', '%a', '%Y'],
+      \'z'    : '#H'}
 
 "===============================================================================
 " TmuxNavigator

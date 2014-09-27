@@ -23,12 +23,15 @@ alias t3="tree -L 3"
 alias ipynote="ipython notebook --profile=n --pylab=inline"
 alias vimrc="vim ~/docs/dotfiles/.vimrc"
 alias penta="vim ~/docs/dotfiles/firefox/.pentadactylrc"
+alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias pgup='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 
 alias update-pip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 'LATEST:'"
 alias update-brew="brew update && brew upgrade"
+alias update-slush="npm uninstall -g slush-qz-thing && npm install -g git+ssh://git@gitlab.com:quartzthings/slush-qz-thing.git"
 
 # common aliases, taken from https://github.com/robbyrussell/oh-my-zsh/pull/1866
 # ----------------------------------------------------------------------
@@ -60,7 +63,7 @@ alias .....='cd ../../../../'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
-alias -g L="| less"
+alias -g L="| less -r"
 alias -g M="| most"
 alias -g LL="2>&1 | less"
 alias -g CA="2>&1 | cat -A"
@@ -100,21 +103,21 @@ alias td='todo.sh -d $HOME/Dropbox/todo/todo.cfg'
 
 # twitter gem
 # --------------------------
-alias tw='/Users/nikhil/.rvm/gems/ruby-2.0.0-p353/bin/t'
+# alias tw='/Users/nikhil/.rvm/gems/ruby-2.0.0-p353/bin/t'
 
 alias batt='pmset -g batt'
 
 # Python
-#export WORKON_HOME=$HOME/.virtualenvs
-#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 #export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 #export PIP_VIRTUALENV_BASE=$WORKON_HOME
 #export PIP_RESPECT_VIRTUALENV=true
-#if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-    #source /usr/local/bin/virtualenvwrapper.sh
-#else
-    #echo "WARNING: Can't find virtualenvwrapper.sh"
-#fi
+if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+else
+    echo "WARNING: Can't find virtualenvwrapper.sh"
+fi
 
 # Enable reattach-to-user-namespace on Mac. See
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/8
@@ -215,11 +218,9 @@ source ~/docs/dotfiles/local.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 PATH=$PATH:$HOME/.rvm/bin
-export VIMRUNTIME=/usr/local/Cellar/vim/7.4.335/share/vim/vim74
 export EDITOR='vim'
+export VIMRUNTIME=/usr/local/Cellar/vim/7.4.430_1/share/vim/vim74
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
-export PATH=/Users/nikhil/.cabal/bin:$PATH
-export PATH=/Users/nikhil/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export QZDATA_PATH=/Users/nsonnad/docs/qz/code/qzdata
