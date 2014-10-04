@@ -12,7 +12,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 # install homebrew stuff
 brew bundle Brewfile
 
-links=(.bash_profile .ghci .slate .vimrc .zshenv .zshrc .tmux.conf)
+links=(.bash_profile .ghci .slate .vimrc .zshenv .zshrc .tmux.conf .vimpagerrc)
 
 for f in ${links[@]}; do
   rm ~/$f
