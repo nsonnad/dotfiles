@@ -213,6 +213,7 @@ source $ZSH/oh-my-zsh.sh
 # aws tab completion
 source /usr/local/share/zsh/site-functions/_aws
 source ~/docs/dotfiles/local.sh
+. ~/docs/dotfiles/z/z.sh
 
 # Customize to your needs...
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
