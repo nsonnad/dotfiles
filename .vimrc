@@ -89,7 +89,8 @@ NeoBundle 'tpope/vim-unimpaired'
 
 "tern is a js parser
 NeoBundle 'marijnh/tern_for_vim'
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
 
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
@@ -826,7 +827,7 @@ let g:syntastic_check_on_open = 1"
 "===============================================================================
 " only use for html/css
 let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_leader_key='<C-m>'
 autocmd FileType html,css EmmetInstall
 
 "===============================================================================
