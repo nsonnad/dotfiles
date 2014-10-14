@@ -58,9 +58,12 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Shougo/context_filetype.vim'
+NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'SirVer/ultisnips'
+"NeoBundle 'SirVer/ultisnips'
 NeoBundle 'sjl/gundo.vim'
 "NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tommcdo/vim-exchange'
@@ -91,7 +94,10 @@ NeoBundle 'tpope/vim-unimpaired'
 "tern is a js parser
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'pangloss/vim-javascript'
+
+" react
 NeoBundle 'mxw/vim-jsx'
+NeoBundle 'justinj/vim-react-snippets'
 
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
@@ -832,19 +838,48 @@ let g:user_emmet_leader_key='<C-m>'
 autocmd FileType html,css EmmetInstall
 
 "===============================================================================
+" Neosnippet
+"===============================================================================
+
+let g:neosnippet#disable_runtime_snippets = {
+\   '_' : 1,
+\ }
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/docs/dotfiles/.vim/bundle/vim-snippets/snippets,~/docs/dotfiles/.vim/bundle/vim-react-snippets/snippets'
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+
+"===============================================================================
 " UltiSnips
 "===============================================================================
 
-let g:UltiSnips = {}
-let g:UltiSnipsExpandTrigger = "<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+"let g:UltiSnips = {}
+"let g:UltiSnipsExpandTrigger = "<C-j>"
+"let g:UltiSnipsJumpForwardTrigger="<C-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
-let g:UltiSnips.always_use_first_snippet = 0
-let g:UltiSnips.snipmate_ft_filter = {
-            \ 'default' : {'filetypes': ["FILETYPE"] },
-            \ 'javascript'    : {'filetypes': ["javascript"] },
-            \ 'python': {'filetypes': ["python"] },}
+"let g:UltiSnips.always_use_first_snippet = 0
+"let g:UltiSnips.snipmate_ft_filter = {
+            "\ 'default' : {'filetypes': ["FILETYPE"] },
+            "\ 'javascript'    : {'filetypes': ["javascript"] },
+            "\ 'python': {'filetypes': ["python"] },}
 
 "
 "===============================================================================
