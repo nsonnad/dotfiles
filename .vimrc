@@ -94,7 +94,6 @@ NeoBundle 'tpope/vim-unimpaired'
 "tern is a js parser
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'pangloss/vim-javascript'
-<<<<<<< Updated upstream
 
 " react
 NeoBundle 'justinj/vim-react-snippets'

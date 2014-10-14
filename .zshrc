@@ -221,7 +221,6 @@ source ~/docs/dotfiles/local.sh
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 PATH=$PATH:$HOME/.rvm/bin
 export EDITOR='vim'
-export VIMRUNTIME=/usr/local/Cellar/vim/7.4.430_1/share/vim/vim74
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
