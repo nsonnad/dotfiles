@@ -25,6 +25,7 @@ alias vimrc="vim ~/docs/dotfiles/.vimrc"
 alias penta="vim ~/docs/dotfiles/firefox/.pentadactylrc"
 alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias pgup='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias jsvim='vimpager -c "setf json"'
 
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
@@ -220,7 +221,9 @@ source ~/docs/dotfiles/local.sh
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 PATH=$PATH:$HOME/.rvm/bin
 export EDITOR='vim'
-export VIMRUNTIME=/usr/local/Cellar/vim/7.4.430/share/vim/vim74
+export VIMRUNTIME=/usr/local/Cellar/vim/7.4.430_1/share/vim/vim74
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH

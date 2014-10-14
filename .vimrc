@@ -94,10 +94,12 @@ NeoBundle 'tpope/vim-unimpaired'
 "tern is a js parser
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'pangloss/vim-javascript'
+<<<<<<< Updated upstream
 
 " react
-NeoBundle 'mxw/vim-jsx'
 NeoBundle 'justinj/vim-react-snippets'
+NeoBundle 'mxw/vim-jsx'
+let javascript_enable_domhtmlcss=1
 
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
@@ -129,6 +131,9 @@ filetype indent on
 
 syntax enable
 syntax on
+
+set exrc            " enable per-directory .vimrc files
+set secure          " disable unsafe commands in local .vimrc files
 
 " Always splits to the right and below
 set splitright
@@ -283,6 +288,7 @@ nnoremap <silent> <Leader>2 :set list!
 
 " <Leader>w: Close current buffer
 nnoremap <Leader>w :bdelete<cr>
+nnoremap <Leader>x :bp\|bd #<cr>
 
 " <Leader>o: only
 nnoremap <Leader>o :only<cr>
