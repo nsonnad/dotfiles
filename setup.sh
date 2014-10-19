@@ -1,10 +1,10 @@
 #!/bin/sh
-# symbolic links
-# loop over list of things that need to be ln -s to home
-# link ipython custom css
+# Set up a fresh OSX
 
+mkdir -p ~/docs
 
-# CHECK THIS: install xcode command line tools first
+# install xcode command line tools
+xcode-select --install
 
 # install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -12,6 +12,11 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 # install homebrew stuff
 brew bundle Brewfile
 
+# oh my zsh
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+# symbolic links
+# loop over list of things that need to be ln -s to home
 links=(.bash_profile .ghci .slate .vimrc .zshenv .zshrc .tmux.conf .vimpagerrc)
 
 for f in ${links[@]}; do
