@@ -220,6 +220,7 @@ source ~/docs/dotfiles/local.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 PATH=$PATH:$HOME/.rvm/bin
+export PATH=$PATH:$HOME/bin
 export EDITOR='vim'
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin

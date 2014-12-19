@@ -1,3 +1,6 @@
 [submodule "pure"]
 	path = pure
 	url = https://github.com/sindresorhus/pure
+[submodule "Tim"]
+	path = Tim
+	url = https://github.com/ggustafsson/Tim
