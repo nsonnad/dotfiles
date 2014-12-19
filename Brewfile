@@ -25,6 +25,7 @@ install hub
 install mpc
 install node
 install numpy
+install paperkey
 install pass
 install python
 install python3

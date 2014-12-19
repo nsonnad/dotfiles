@@ -46,7 +46,7 @@ NeoBundle 'thinca/vim-unite-history'
 "NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'danro/rename.vim'
-NeoBundle 'embear/vim-localvimrc'
+NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'honza/vim-snippets'
@@ -850,7 +850,7 @@ let g:neosnippet#disable_runtime_snippets = {
 \   '_' : 1,
 \ }
 let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/docs/dotfiles/.vim/bundle/vim-snippets/snippets,~/docs/dotfiles/.vim/bundle/vim-react-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/bundle/vim-react-snippets/snippets'
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
