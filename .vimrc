@@ -8,7 +8,7 @@ if has ('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin()
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -25,15 +25,6 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 "=============================
 
 NeoBundle 'chriskempson/base16-vim'
-let base16colorspace=256
-set t_Co=256
-:command Dark set background=dark | colorscheme base16-ocean
-:command Light set background=light | colorscheme base16-solarized
-:Dark
-
-noremap ⁄ :Dark<CR>
-noremap € :Light<CR>
-
 " Unite
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
@@ -46,12 +37,11 @@ NeoBundle 'thinca/vim-unite-history'
 "NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'danro/rename.vim'
-NeoBundle 'embear/vim-localvimrc'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'justinmk/vim-sneak'
+NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'rking/ag.vim'
@@ -63,15 +53,11 @@ NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/vimproc.vim'
-"NeoBundle 'SirVer/ultisnips'
 NeoBundle 'sjl/gundo.vim'
-"NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tommcdo/vim-exchange'
-NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       "\     'mac' : './install.sh',
       "\    },
@@ -86,6 +72,13 @@ NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'rizzatti/dash.vim'
 "NeoBundle 'bling/vim-airline'
 "NeoBundle 'Lokaltog/vim-easymotion'
+"NeoBundle 'justinmk/vim-sneak'
+"NeoBundle 'SirVer/ultisnips'
+"NeoBundle 'terryma/vim-multiple-cursors'
+"NeoBundle 'tpope/vim-unimpaired'
+"NeoBundle 'tpope/vim-eunuch'
+"NeoBundle 'kchmck/vim-coffee-script'
+"NeoBundle 'groenewege/vim-less'
 
 "============================
 "Syntax highlighting
@@ -101,8 +94,6 @@ NeoBundle 'mxw/vim-jsx'
 let javascript_enable_domhtmlcss=1
 
 NeoBundle 'hdima/python-syntax'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'groenewege/vim-less'
 
 " Enable spell checking for markdown files
 au BufRead *.md setlocal spell
@@ -115,6 +106,17 @@ NeoBundle 'vim-scripts/syntaxhaskell.vim'
 
 "Check for new/updated bundles
 NeoBundleCheck
+
+call neobundle#end()
+
+let base16colorspace=256
+set t_Co=256
+:command Dark set background=dark | colorscheme base16-ocean
+:command Light set background=light | colorscheme base16-solarized
+:Dark
+
+noremap ⁄ :Dark<CR>
+noremap € :Light<CR>
 
 " Auto-refrech vimrc
 augroup reload_vimrc " {
@@ -253,6 +255,10 @@ set backspace=indent,eol,start
 " automatically remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
+" disable weird vim regex
+nnoremap / /\v
+vnoremap / /\v
+
 "===============================================================================
 " Function Key Mappings
 "===============================================================================
@@ -324,15 +330,19 @@ nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>te :tabedit
 
-noremap <leader>gg :GitGutterToggle<CR>
 noremap <leader>gu :GundoToggle<CR>
 noremap <leader>sm :SyntasticToggleMode<CR>
 noremap <leader>st :SyntasticCheck<CR>
+nmap <leader>uc <Plug>(unite_redraw)
 
 " search for current word (to replace)
 noremap <leader>sc :%s/<C-r><C-w>/
 nnoremap <silent> <leader>nn :set nonumber! \| set relativenumber!<cr>
 
+nnoremap <leader>R :RainbowParenthesesToggle
+
+" <Leader>m: Maximize current split
+nnoremap <Leader>m <C-w>_<C-w><Bar>
 ""===============================================================================
 " Normal Mode Shift Key Mappings
 "===============================================================================
@@ -469,9 +479,19 @@ let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 " Unite
 "===============================================================================
 
+" Use the fuzzy matcher for everything
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" Use the rank sorter for everything
-call unite#filters#sorter_default#use(['sorter_rank'])
+
+" Set up some custom ignores
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ 'git5/.*/review/',
+      \ 'tmp/',
+      \ 'node_modules/',
+      \ 'bower_components/',
+      \ ], '\|'))
+
 " Map space to the prefix for Unite
 nnoremap [unite] <Nop>
 nmap <space> [unite]
@@ -537,10 +557,10 @@ nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
 nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
 
 " Start in insert mode
-let g:unite_enable_start_insert = 0
+let g:unite_enable_start_insert = 1
 
 if executable('ag')
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+  let g:unite_source_rec_async_command='ag --follow --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
   let g:unite_source_grep_command='ag'
   let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
   let g:unite_source_grep_recursive_opt=''
@@ -558,7 +578,8 @@ let g:unite_split_rule = "botright"
 " Shorten the default update date of 500ms
 let g:unite_update_time = 200
 
-let g:unite_source_file_mru_limit = 1000
+" Increase number of file candidates
+call unite#custom_source('file_rec/async,file_mru,file,buffer,grep', 'max_candidates', 600)
 let g:unite_cursor_line_highlight = 'TabLineSel'
 " let g:unite_abbr_highlight = 'TabLine'
 
