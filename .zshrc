@@ -214,7 +214,6 @@ source $ZSH/oh-my-zsh.sh
 # aws tab completion
 source /usr/local/share/zsh/site-functions/_aws
 source ~/docs/dotfiles/local.sh
-. ~/docs/dotfiles/z/z.sh
 
 # Customize to your needs...
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
@@ -227,6 +226,5 @@ export PATH=$PATH:$GOPATH/bin
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
-export QZDATA_PATH=/Users/nsonnad/docs/qz/code/qzdata
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
