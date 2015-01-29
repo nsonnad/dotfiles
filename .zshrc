@@ -20,7 +20,7 @@ alias zshconfig="vim ~/docs/dotfiles/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias t2="tree -L 2"
 alias t3="tree -L 3"
-alias ipynote="ipython notebook --profile=n --pylab=inline"
+alias ipynote="ipython notebook --profile=n"
 alias vimrc="vim ~/docs/dotfiles/.vimrc"
 alias penta="vim ~/docs/dotfiles/firefox/.pentadactylrc"
 alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
@@ -212,7 +212,7 @@ NODE_ENV=development
 
 source $ZSH/oh-my-zsh.sh
 # aws tab completion
-source /usr/local/share/zsh/site-functions/_aws
+#source /usr/local/share/zsh/site-functions/_aws
 source ~/docs/dotfiles/local.sh
 
 # Customize to your needs...

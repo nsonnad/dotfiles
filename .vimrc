@@ -113,9 +113,7 @@ call neobundle#end()
 
 let base16colorspace=256
 set t_Co=256
-:command Dark set background=dark | colorscheme base16-ocean
-:command Light set background=light | colorscheme base16-solarized
-:Dark
+set background=dark | colorscheme base16-ocean
 
 noremap ⁄ :Dark<CR>
 noremap € :Light<CR>
