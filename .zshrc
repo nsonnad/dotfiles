@@ -33,6 +33,7 @@ alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias update-pip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 'LATEST:'"
 alias update-brew="brew update && brew upgrade"
 alias update-slush="npm uninstall -g slush-qz-thing && npm install -g git+ssh://git@gitlab.com:quartzthings/slush-qz-thing.git"
+alias pomo="pomojs --log ~/.pomo.log --tmux"
 
 # common aliases, taken from https://github.com/robbyrussell/oh-my-zsh/pull/1866
 # ----------------------------------------------------------------------
@@ -101,10 +102,6 @@ alias hr='hr █'
 # --------------------------
 # alias to td because of twitter thing
 alias td='todo.sh -d $HOME/Dropbox/todo/todo.cfg'
-
-# twitter gem
-# --------------------------
-# alias tw='/Users/nikhil/.rvm/gems/ruby-2.0.0-p353/bin/t'
 
 alias batt='pmset -g batt'
 
@@ -210,15 +207,14 @@ LC_TIME="en_US.UTF-8"
 LC_ALL="en_US.UTF-8"
 NODE_ENV=development
 
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/
+
 source $ZSH/oh-my-zsh.sh
 # aws tab completion
 #source /usr/local/share/zsh/site-functions/_aws
 source ~/docs/dotfiles/local.sh
 
 # Customize to your needs...
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
-PATH=$PATH:$HOME/.rvm/bin
 export PATH=$PATH:$HOME/bin
 export EDITOR='vim'
 export GOPATH=$HOME/go
@@ -226,5 +222,7 @@ export PATH=$PATH:$GOPATH/bin
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/texbin:$PATH
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

@@ -28,6 +28,7 @@ done
 npm install -g json
 npm install -g n
 npm install -g trash
+npm install -g pomo
 
 # install python stuff
 pip install csvkit

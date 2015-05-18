@@ -8,7 +8,7 @@ if has ('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#begin()
+call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -25,6 +25,15 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 "=============================
 
 NeoBundle 'chriskempson/base16-vim'
+let base16colorspace=256
+set t_Co=256
+:command Dark set background=dark | colorscheme base16-ocean
+:command Light set background=light | colorscheme base16-solarized
+:Dark
+
+noremap ⁄ :Dark<CR>
+noremap € :Light<CR>
+
 " Unite
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
@@ -34,37 +43,33 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'thinca/vim-unite-history'
 
 " Utilities
-"NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'danro/rename.vim'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'shime/vim-livedown'
-NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'SirVer/ultisnips'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tommcdo/vim-exchange'
+NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       "\     'mac' : './install.sh',
       "\    },
-      "\ }
+      "\ } 
 
 " Utilities not being used
 "============================
@@ -75,13 +80,6 @@ NeoBundle 'tpope/vim-sleuth'
 "NeoBundle 'rizzatti/dash.vim'
 "NeoBundle 'bling/vim-airline'
 "NeoBundle 'Lokaltog/vim-easymotion'
-"NeoBundle 'justinmk/vim-sneak'
-"NeoBundle 'SirVer/ultisnips'
-"NeoBundle 'terryma/vim-multiple-cursors'
-"NeoBundle 'tpope/vim-unimpaired'
-"NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'groenewege/vim-less'
 
 "============================
 "Syntax highlighting
@@ -89,14 +87,11 @@ NeoBundle 'groenewege/vim-less'
 
 "tern is a js parser
 NeoBundle 'marijnh/tern_for_vim'
-NeoBundle 'pangloss/vim-javascript'
-
-" react
-NeoBundle 'justinj/vim-react-snippets'
-NeoBundle 'mxw/vim-jsx'
-let javascript_enable_domhtmlcss=1
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 
 NeoBundle 'hdima/python-syntax'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'groenewege/vim-less'
 
 " Enable spell checking for markdown files
 au BufRead *.md setlocal spell
@@ -105,22 +100,11 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'wavded/vim-stylus'
+
 NeoBundle 'vim-scripts/syntaxhaskell.vim'
 
 "Check for new/updated bundles
 NeoBundleCheck
-
-call neobundle#end()
-
-let base16colorspace=256
-set t_Co=256
-:command Dark set background=dark | colorscheme base16-ocean
-:command Light set background=light | colorscheme base16-solarized
-:Dark
-":Light
-
-noremap ⁄ :Dark<CR>
-noremap € :Light<CR>
 
 " Auto-refrech vimrc
 augroup reload_vimrc " {
@@ -137,9 +121,6 @@ filetype indent on
 syntax enable
 syntax on
 
-set exrc            " enable per-directory .vimrc files
-set secure          " disable unsafe commands in local .vimrc files
-
 " Always splits to the right and below
 set splitright
 set splitbelow
@@ -152,7 +133,7 @@ set autowriteall
 
 " Display unprintable chars
 set list
-set listchars=tab:\|\ ,extends:❯,precedes:❮,nbsp:␣
+set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
 set showbreak=↪
 
 " Case insensitive search
@@ -256,13 +237,6 @@ set title
 "Let backspace do what it's supposed to: allow backspace over indent, eol, and start of an insert
 set backspace=indent,eol,start
 
-" automatically remove trailing whitespace
-autocmd BufWritePre * :%s/\s\+$//e
-
-" disable weird vim regex
-nnoremap / /\v
-vnoremap / /\v
-
 "===============================================================================
 " Function Key Mappings
 "===============================================================================
@@ -297,13 +271,12 @@ nnoremap <silent> <Leader>2 :set list!
 
 " <Leader>w: Close current buffer
 nnoremap <Leader>w :bdelete<cr>
-nnoremap <Leader>x :bp\|bd #<cr>
 
 " <Leader>o: only
 nnoremap <Leader>o :only<cr>
 
 " <Leader>e: Fast editing of the .vimrc
-nnoremap <Leader>ee :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
+nnoremap <Leader>e :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
 
 :nmap <silent> <leader>d :Dark<cr>
 :nmap <silent> <leader>l :Light<cr>
@@ -334,20 +307,10 @@ nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>te :tabedit
 
+noremap <leader>gg :GitGutterToggle<CR>
 noremap <leader>gu :GundoToggle<CR>
-noremap <leader>sm :SyntasticToggleMode<CR>
-noremap <leader>st :SyntasticCheck<CR>
-nmap <leader>uc <Plug>(unite_redraw)
-
-" search for current word (to replace)
-noremap <leader>sc :%s/<C-r><C-w>/
 nnoremap <silent> <leader>nn :set nonumber! \| set relativenumber!<cr>
 
-nnoremap <leader>R :RainbowParenthesesToggle
-
-" <Leader>m: Maximize current split
-nnoremap <Leader>m <C-w>_<C-w><Bar>
-nmap <Leader>md :LivedownPreview<CR>
 ""===============================================================================
 " Normal Mode Shift Key Mappings
 "===============================================================================
@@ -371,12 +334,6 @@ nnoremap Y y$"
 "===============================================================================
 " Normal Mode Ctrl Key Mappings
 "===============================================================================
-
-" easier split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " Ctrl-q: Visual block mode
 
@@ -453,23 +410,17 @@ noremap Ô mzyyp`zj
 "Alt-Shift-k: Duplicate line up
 noremap  mzyyp`z
 
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W', '#F'],
-      \'y'    : ['%R', '%a', '%Y'],
-      \'z'    : '#H'}
 
 "===============================================================================
 " TmuxNavigator
 "===============================================================================
 let g:tmux_navigator_no_mappings = 1
 
-"nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-"nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-"nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-"nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-"nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 
 "===============================================================================
 " NERDTree
@@ -481,22 +432,12 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 
 "===============================================================================
-" Unite
+" Unite 
 "===============================================================================
 
-" Use the fuzzy matcher for everything
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-" Set up some custom ignores
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ 'git5/.*/review/',
-      \ 'tmp/',
-      \ 'node_modules/',
-      \ 'bower_components/',
-      \ ], '\|'))
-
+" Use the rank sorter for everything
+call unite#filters#sorter_default#use(['sorter_rank'])
 " Map space to the prefix for Unite
 nnoremap [unite] <Nop>
 nmap <space> [unite]
@@ -562,10 +503,10 @@ nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
 nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
 
 " Start in insert mode
-let g:unite_enable_start_insert = 1
+let g:unite_enable_start_insert = 0
 
 if executable('ag')
-  let g:unite_source_rec_async_command='ag --follow --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
   let g:unite_source_grep_command='ag'
   let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
   let g:unite_source_grep_recursive_opt=''
@@ -583,8 +524,7 @@ let g:unite_split_rule = "botright"
 " Shorten the default update date of 500ms
 let g:unite_update_time = 200
 
-" Increase number of file candidates
-call unite#custom_source('file_rec/async,file_mru,file,buffer,grep', 'max_candidates', 600)
+let g:unite_source_file_mru_limit = 1000
 let g:unite_cursor_line_highlight = 'TabLineSel'
 " let g:unite_abbr_highlight = 'TabLine'
 
@@ -638,7 +578,7 @@ nnoremap <Leader>gs :Gstatus<cr>
 " Lightline
 "===============================================================================
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'jellybeans',
       \ 'mode_map': {
       \   '__' : '-',
       \   'n'  : 'N',
@@ -865,52 +805,22 @@ let g:syntastic_check_on_open = 1"
 "===============================================================================
 " only use for html/css
 let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key='<C-m>'
 autocmd FileType html,css EmmetInstall
-
-"===============================================================================
-" Neosnippet
-"===============================================================================
-
-let g:neosnippet#disable_runtime_snippets = {
-\   '_' : 1,
-\ }
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/bundle/vim-react-snippets/snippets'
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
 
 "===============================================================================
 " UltiSnips
 "===============================================================================
 
-"let g:UltiSnips = {}
-"let g:UltiSnipsExpandTrigger = "<C-j>"
-"let g:UltiSnipsJumpForwardTrigger="<C-j>"
-"let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnips = {}
+let g:UltiSnipsExpandTrigger = "<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"                                       
+let g:UltiSnipsJumpBackwardTrigger="<C-k>" 
 
-"let g:UltiSnips.always_use_first_snippet = 0
-"let g:UltiSnips.snipmate_ft_filter = {
-            "\ 'default' : {'filetypes': ["FILETYPE"] },
-            "\ 'javascript'    : {'filetypes': ["javascript"] },
-            "\ 'python': {'filetypes': ["python"] },}
+let g:UltiSnips.always_use_first_snippet = 0
+let g:UltiSnips.snipmate_ft_filter = {
+            \ 'default' : {'filetypes': ["FILETYPE"] },
+            \ 'javascript'    : {'filetypes': ["javascript"] },
+            \ 'python': {'filetypes': ["python"] },}
 
 "
 "===============================================================================
