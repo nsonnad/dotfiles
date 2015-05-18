@@ -33,7 +33,8 @@ alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias update-pip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 'LATEST:'"
 alias update-brew="brew update && brew upgrade"
 alias update-slush="npm uninstall -g slush-qz-thing && npm install -g git+ssh://git@gitlab.com:quartzthings/slush-qz-thing.git"
-alias pomo="pomojs --log ~/.pomo.log --tmux"
+alias pomo="pomojs -q --log ~/Dropbox/.pomo.log --tmux"
+alias draft="cd ~/Dropbox/Draft && vim ."
 
 # common aliases, taken from https://github.com/robbyrussell/oh-my-zsh/pull/1866
 # ----------------------------------------------------------------------
