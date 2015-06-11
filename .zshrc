@@ -99,11 +99,7 @@ stty stop undef # to unmap ctrl-s
 # --------------------------
 alias hr='hr █'
 
-# todo.txt
-# --------------------------
-# alias to td because of twitter thing
-alias td='todo.sh -d $HOME/Dropbox/todo/todo.cfg'
-
+alias todo='vim ~/Dropbox/Draft/1-todo.md'
 alias batt='pmset -g batt'
 
 # Python
