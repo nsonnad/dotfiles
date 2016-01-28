@@ -20,11 +20,9 @@ NeoBundle 'Shougo/vimproc', { 'build': {
       \ 'unix': 'make -f make_unix.mak',
       \ } }
 
-"============================
-"COLORS
-"=============================
-
+" Colors
 NeoBundle 'chriskempson/base16-vim'
+
 " Unite
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
@@ -34,7 +32,6 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'thinca/vim-unite-history'
 
 " Utilities
-"NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
@@ -44,7 +41,6 @@ NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
@@ -57,10 +53,6 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-surround'
-"NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
-      "\     'mac' : './install.sh',
-      "\    },
-      "\ }
 
 " Utilities not being used
 "============================
@@ -77,14 +69,13 @@ NeoBundle 'tpope/vim-surround'
 "NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'tpope/vim-eunuch'
 "NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'groenewege/vim-less'
+"NeoBundle 'groenewege/vim-less'
 
 "============================
 "Syntax highlighting
 "===========================
 
 "tern is a js parser
-NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'pangloss/vim-javascript'
 
 " react
@@ -127,6 +118,7 @@ augroup END " }
 "SETTINGS
 "=============================
 let g:python3_host_prog = '/usr/local/bin/python3'
+let g:deoplete#enable_at_startup = 1
 
 filetype plugin on
 filetype indent on
@@ -563,10 +555,12 @@ nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command comm
 let g:unite_enable_start_insert = 1
 
 if executable('ag')
-  let g:unite_source_rec_async_command='ag --follow --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
-  let g:unite_source_grep_command='ag'
-  let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-  let g:unite_source_grep_recursive_opt=''
+  let g:unite_source_rec_async_command=['ag','--follow','--nocolor','--nogroup','--hidden','-g','']
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts =
+  \ '-i --vimgrep --hidden --ignore ' .
+  \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  let g:unite_source_grep_recursive_opt = ''
 endif
 
 " Enable short source name in window
@@ -593,35 +587,6 @@ let g:unite_source_file_mru_time_format = ''
 " GitGutter
 "===============================================================================
 let g:gitgutter_eager=0
-
-"===============================================================================
-" EasyMotion
-"===============================================================================
-
-" Tweak the colors
-"hi link EasyMotionTarget WarningMsg
-"hi link EasyMotionShade Comment
-
-"let g:EasyMotion_do_mapping = 0
-" nnoremap <silent> <C-f>f :call EasyMotion#F(0, 0)<CR>
-" nnoremap <silent> <C-f><C-f> :call EasyMotion#F(0, 1)<CR>
-" nnoremap <silent> <C-f>t :call EasyMotion#T(0, 0)<CR>
-" nnoremap <silent> <C-f><C-t> :call EasyMotion#T(0, 1)<CR>
-"nnoremap <silent> <C-f> :call EasyMotion#F(0, 0)<CR>
-"nnoremap <silent> <C-t> :call EasyMotion#T(0, 0)<CR>
-
-"===============================================================================
-" YouCompleteMe
-"===============================================================================
-" let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-" let g:ycm_add_preview_to_completeopt=0
-" let g:ycm_confirm_extra_conf=0
-" set completeopt-=preview
-
-"===============================================================================
-" Sneak
-"===============================================================================
-" Trying the defaults, but I may miss `s`
 
 "===============================================================================
 " Fugitive
@@ -773,46 +738,16 @@ let g:unite_force_overwrite_statusline = 0
 
 set laststatus=2
 
-
-"===============================================================================
-" Airline
-"===============================================================================
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#fnamemod = ':t'
-
-"set laststatus=2
-
-"" Short mode letters
-"if !exists('g:airline_mode_map')
-    "let g:airline_mode_map = {}
-"endif
-
-"let g:airline_mode_map = {
-    "\ '__' : '-',
-    "\ 'n'  : 'N',
-    "\ 'i'  : 'I',
-    "\ 'R'  : 'R',
-    "\ 'c'  : 'C',
-    "\ 'v'  : 'V',
-    "\ 'V'  : 'V',
-    "\ '' : 'V',
-    "\ 's'  : 'S',
-    "\ 'S'  : 'S',
-    "\ '' : 'S',
-    "\ }
-
 "===============================================================================
 " Syntastic
 "===============================================================================
 " specify which checkers to use
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_coffee_checkers = ['coffeelint']
+let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_json_checkers = ['jsonlint']
 
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
+                           \ 'active_filetypes': ['js', 'py', 'json', 'jsx'],
                            \ 'passive_filetypes': ['html'] }
 
 " Better :sign interface symbols
@@ -822,14 +757,6 @@ let g:syntastic_warning_symbol = '!'
 " Check on buffer open
 let g:syntastic_check_on_open = 1"
 
-
-"===============================================================================
-" Emmet
-"===============================================================================
-" only use for html/css
-let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key='<C-m>'
-autocmd FileType html,css EmmetInstall
 
 "===============================================================================
 " Neosnippet
@@ -859,30 +786,6 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-
-"===============================================================================
-" UltiSnips
-"===============================================================================
-
-"let g:UltiSnips = {}
-"let g:UltiSnipsExpandTrigger = "<C-j>"
-"let g:UltiSnipsJumpForwardTrigger="<C-j>"
-"let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-
-"let g:UltiSnips.always_use_first_snippet = 0
-"let g:UltiSnips.snipmate_ft_filter = {
-            "\ 'default' : {'filetypes': ["FILETYPE"] },
-            "\ 'javascript'    : {'filetypes': ["javascript"] },
-            "\ 'python': {'filetypes': ["python"] },}
-
-"
-"===============================================================================
-" R
-"===============================================================================
-let vimrplugin_r_path = "/usr/local/bin/R"
-" Press the space bar to send lines (in Normal mode) and selections to R:
-"vmap <Space> <Plug>RDSendSelection
-"nmap <Space> <Plug>RDSendLine
 "===============================================================================
 " Custom commands
 "===============================================================================
