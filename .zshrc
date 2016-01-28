@@ -7,9 +7,9 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="pure"
 
 # Base16 Shell
-BASE16_SCHEME="eighties"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
-[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+ BASE16_SCHEME="eighties"
+ BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+ [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 #alias gcc='/usr/local/bin/gcc-4.8'
 #alias cc='/usr/local/bin/gcc-4.8'
@@ -32,7 +32,7 @@ alias wd='. /Users/nikhil/bin/wd/wd.sh'
 
 alias update-pip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 'LATEST:'"
 alias update-brew="brew update && brew upgrade"
-alias update-slush="npm uninstall -g slush-qz-thing && npm install -g git+ssh://git@gitlab.com:quartzthings/slush-qz-thing.git"
+alias update-slush="npm uninstall -g slush-qz-thing && npm install -g git+ssh://git@github.com:quartz/slush-qz-thing.git"
 alias pomo="pomojs -q --log ~/Dropbox/.pomo.log --tmux"
 alias draft="cd ~/Dropbox/Draft && vim ."
 
@@ -194,15 +194,16 @@ plugins=(brew osx vi-mode git pass)
 #
 #export LC_CTYPE=C
 #export LANG=C
-LANG="en_US.UTF-8"
-LC_COLLATE="en_US.UTF-8"
-LC_CTYPE="en_US.UTF-8"
-LC_MESSAGES="en_US.UTF-8"
-LC_MONETARY="en_US.UTF-8"
-LC_NUMERIC="en_US.UTF-8"
-LC_TIME="en_US.UTF-8"
-LC_ALL="en_US.UTF-8"
-NODE_ENV=development
+export LANG="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export NODE_ENV=development
+export TERM=xterm-256color
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/
 
@@ -223,3 +224,6 @@ export PATH=/usr/texbin:$PATH
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+export NVM_DIR="/Users/nikhil/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

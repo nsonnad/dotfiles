@@ -36,31 +36,29 @@ NeoBundle 'thinca/vim-unite-history'
 " Utilities
 "NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'chrisbra/csv.vim'
+NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'godlygeek/tabular'
+NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'kien/rainbow_parentheses.vim'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'shime/vim-livedown'
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-surround'
 "NeoBundle 'Valloric/YouCompleteMe' , { 'build': {
       "\     'mac' : './install.sh',
       "\    },
@@ -80,7 +78,7 @@ NeoBundle 'tpope/vim-sleuth'
 "NeoBundle 'terryma/vim-multiple-cursors'
 "NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'kchmck/vim-coffee-script'
+"NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'groenewege/vim-less'
 
 "============================
@@ -92,7 +90,6 @@ NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'pangloss/vim-javascript'
 
 " react
-NeoBundle 'justinj/vim-react-snippets'
 NeoBundle 'mxw/vim-jsx'
 let javascript_enable_domhtmlcss=1
 
@@ -105,7 +102,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'wavded/vim-stylus'
-NeoBundle 'vim-scripts/syntaxhaskell.vim'
+"NeoBundle 'vim-scripts/syntaxhaskell.vim'
 
 "Check for new/updated bundles
 NeoBundleCheck
@@ -333,6 +330,7 @@ nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>te :tabedit
+nnoremap <leader>jd :JsDoc<cr>
 
 noremap <leader>gu :GundoToggle<CR>
 noremap <leader>sm :SyntasticToggleMode<CR>
@@ -925,3 +923,4 @@ let vimrplugin_r_path = "/usr/local/bin/R"
 "===============================================================================
 :command Ipysource source ~/docs/dotfiles/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
 
+let g:jsdoc_default_mapping=0
