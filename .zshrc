@@ -100,6 +100,8 @@ stty stop undef # to unmap ctrl-s
 alias hr='hr █'
 
 alias todo='vim ~/Dropbox/Draft/1-todo.md'
+alias qnotes='vim ~/Dropbox/Draft'
+alias notes='cd ~/Dropbox/Draft && vim'
 alias batt='pmset -g batt'
 
 # Python
@@ -157,6 +159,10 @@ function tvim(){
         }
     fi
 fi
+
+vol () {
+  osascript -e "set volume output volume $*";
+}
 
 NPMRC_STORE=~/docs/dotfiles/npmrcs/
 NPMRC=~/docs/dotfiles/npmrcs/default
@@ -225,5 +231,5 @@ export PATH=/usr/texbin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-export NVM_DIR="/Users/nikhil/.nvm"
+export NVM_DIR="/Users/nsonnad/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -43,6 +43,8 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'reedes/vim-pencil'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdcommenter'
@@ -108,7 +110,6 @@ NeoBundleCheck
 
 call neobundle#end()
 
-let base16colorspace=256
 set t_Co=256
 :command Dark set background=dark | colorscheme base16-ocean
 :command Light set background=light | colorscheme base16-solarized
