@@ -36,7 +36,6 @@ NeoBundle 'thinca/vim-unite-history'
 " Utilities
 "NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'chrisbra/csv.vim'
-NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'edkolev/tmuxline.vim'
