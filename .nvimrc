@@ -27,7 +27,7 @@ Plug 'scrooloose/syntastic'
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/deoplete.nvim'
-Plug 'sjl/gundo.vim'
+Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -216,7 +216,7 @@ vnoremap / /\v
 " <F2>: Open Vimfiler
 
 " <F3>: Gundo
-nnoremap <F3> :<C-u>GundoToggle<CR>
+nnoremap <F3> :<C-u>MundoToggle<CR>
 
 "===============================================================================
 " Leader Key Mappings
@@ -283,7 +283,7 @@ nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>te :tabedit
 nnoremap <leader>jd :JsDoc<cr>
 
-noremap <leader>gu :GundoToggle<CR>
+noremap <leader>gu :MundoToggle<CR>
 noremap <leader>sm :SyntasticToggleMode<CR>
 noremap <leader>st :SyntasticCheck<CR>
 
@@ -545,8 +545,6 @@ endfunction
 function! MyMode()
   let fname = expand('%:t')
   return fname == 'ControlP' ? 'CtrlP' :
-        \ fname == '__Gundo__' ? 'Gundo' :
-        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
