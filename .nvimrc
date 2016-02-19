@@ -1,97 +1,59 @@
 set nocompatible
 
 "========================================================
-" NeoBundle
+" Plug
 "========================================================
-
-if has ('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#begin()
-
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/vimproc', { 'build': {
-      \ 'windows': 'make -f make_mingw32.mak',
-      \ 'cygwin': 'make -f make_cygwin.mak',
-      \ 'mac': 'make -f make_mac.mak',
-      \ 'unix': 'make -f make_unix.mak',
-      \ } }
+call plug#begin('~/.vim/plugged')
 
 " Colors
-NeoBundle 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 
 " Utilities
-NeoBundle 'chrisbra/csv.vim'
-NeoBundle 'danro/rename.vim'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'edkolev/tmuxline.vim'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'heavenshell/vim-jsdoc'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'junegunn/goyo.vim'
-NeoBundle 'reedes/vim-pencil'
-NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/deoplete.nvim'
-NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'tpope/vim-surround'
-
-" Utilities not being used
-"============================
-"NeoBundle 'vim-scripts/ShowMarks'
-"NeoBundle 'mattn/gist-vim'
-"NeoBundle 'mattn/webapi-vim'
-"NeoBundle 'rizzatti/funcoo.vim'
-"NeoBundle 'rizzatti/dash.vim'
-"NeoBundle 'bling/vim-airline'
-"NeoBundle 'Lokaltog/vim-easymotion'
-"NeoBundle 'justinmk/vim-sneak'
-"NeoBundle 'SirVer/ultisnips'
-"NeoBundle 'terryma/vim-multiple-cursors'
-"NeoBundle 'tpope/vim-unimpaired'
-"NeoBundle 'tpope/vim-eunuch'
-"NeoBundle 'kchmck/vim-coffee-script'
-"NeoBundle 'groenewege/vim-less'
+Plug 'chrisbra/csv.vim'
+Plug 'danro/rename.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'godlygeek/tabular'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'honza/vim-snippets'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'Shougo/context_filetype.vim'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 
 "============================
 "Syntax highlighting
 "===========================
-
-"tern is a js parser
-NeoBundle 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 " react
-NeoBundle 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 let javascript_enable_domhtmlcss=1
 
-NeoBundle 'hdima/python-syntax'
+Plug 'hdima/python-syntax'
 
 " Enable spell checking for markdown files
 au BufRead *.md setlocal spell
 au BufRead *.markdown setlocal spell
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'wavded/vim-stylus'
-"NeoBundle 'vim-scripts/syntaxhaskell.vim'
+Plug 'digitaltoad/vim-jade'
+Plug 'wavded/vim-stylus'
+"Plug 'vim-scripts/syntaxhaskell.vim'
 
 "Check for new/updated bundles
-NeoBundleCheck
-
-call neobundle#end()
+call plug#end()
 
 let base16colorspace=256
 set t_Co=256
@@ -297,12 +259,20 @@ nnoremap <Leader>sf z=
 " <Leader>,: Switch to previous split
 nnoremap <Leader>, <C-w>p
 
+" launch nerdtree
 nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
+
+" Saving, quitting
 nnoremap <leader>s :w!<cr>
 nnoremap <leader>a :w!<cr>
 nnoremap <leader>A :wa!<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :q!<cr>
+
+" FZF
+nnoremap <leader>f :FZF<cr>
+nnoremap <leader>F :FZF!<cr>
+
 nnoremap <leader>th :tabprevious<cr>
 nnoremap <leader>tl :tabnext<cr>
 nnoremap <leader>t0 :tabfirst<cr>
@@ -326,6 +296,7 @@ nnoremap <leader>R :RainbowParenthesesToggle
 " <Leader>m: Maximize current split
 nnoremap <Leader>m <C-w>_<C-w><Bar>
 nmap <Leader>md :LivedownPreview<CR>
+
 ""===============================================================================
 " Normal Mode Shift Key Mappings
 "===============================================================================
