@@ -23,14 +23,6 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 " Colors
 NeoBundle 'chriskempson/base16-vim'
 
-" Unite
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/unite-help'
-NeoBundle 'Shougo/unite-session'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'thinca/vim-unite-history'
-
 " Utilities
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'danro/rename.vim'
@@ -40,6 +32,9 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'reedes/vim-pencil'
+NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
@@ -256,16 +251,10 @@ vnoremap / /\v
 " Function Key Mappings
 "===============================================================================
 
-" <F1>: Help
-nmap <F1> [unite]h
-
 " <F2>: Open Vimfiler
 
 " <F3>: Gundo
 nnoremap <F3> :<C-u>GundoToggle<CR>
-
-" <F4>: Save session
-nnoremap <F4> :<C-u>UniteSessionSave
 
 "===============================================================================
 " Leader Key Mappings
@@ -327,7 +316,6 @@ nnoremap <leader>jd :JsDoc<cr>
 noremap <leader>gu :GundoToggle<CR>
 noremap <leader>sm :SyntasticToggleMode<CR>
 noremap <leader>st :SyntasticCheck<CR>
-nmap <leader>uc <Plug>(unite_redraw)
 
 " search for current word (to replace)
 noremap <leader>sc :%s/<C-r><C-w>/
@@ -371,24 +359,6 @@ nnoremap <C-H> <C-W><C-H>
 " Ctrl-q: Visual block mode
 
 " Ctrl-w: Window management
-
-" Ctrl-e: Find (e)verything
-"nmap <c-e> [unite]f
-
-" Ctrl-r: Command history using :Unite , this matches my muscle memory in zsh
-nmap <c-r> [unite];
-
-" Ctrl-y: Yanks
-nmap <c-y> [unite]y
-
-" Tab: Go to matching element
-nnoremap <Tab> %
-
-" Ctrl-p: Find MRU and buffers
-nmap <c-p> [unite]u
-
-" Ctrl-\: Quick outline
-nmap <silent> <c-\> [unite]o
 
 "===============================================================================
 " Visual Mode Key Mappings
@@ -469,119 +439,6 @@ nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-
-"===============================================================================
-" Unite
-"===============================================================================
-
-" Use the fuzzy matcher for everything
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-" Set up some custom ignores
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ 'git5/.*/review/',
-      \ 'tmp/',
-      \ 'node_modules/',
-      \ 'bower_components/',
-      \ ], '\|'))
-
-" Map space to the prefix for Unite
-nnoremap [unite] <Nop>
-nmap <space> [unite]
-
-" General fuzzy search
-nnoremap <silent> [unite]<space> :<C-u>Unite
-      \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
-
-" Quick registers
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-
-" Quick buffer and mru
-nnoremap <silent> [unite]u :<C-u>Unite -buffer-name=buffers buffer<CR>
-
-" Quick yank history
-nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<CR>
-
-" Quick outline
-nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -vertical outline<CR>
-
-" Quick sessions (projects)
-nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=sessions session<CR>
-
-" Quick sources
-nnoremap <silent> [unite]a :<C-u>Unite -buffer-name=sources source<CR>
-
-" Quick snippet
-nnoremap <silent> [unite]s :<C-u>Unite -buffer-name=snippets snippet<CR>
-
-" Quickly switch lcd
-nnoremap <silent> [unite]d
-      \ :<C-u>Unite -buffer-name=change-cwd -default-action=lcd directory_mru<CR>
-
-" Quick file search
-nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
-
-" Quick grep from cwd
-nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
-
-" Quick help
-nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
-
-" Quick line using the word under cursor
-nnoremap <silent> [unite]l :<C-u>UniteWithCursorWord -buffer-name=search_file line<CR>
-
-" Quick MRU search
-nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mru file_mru<CR>
-
-" Quick find
-nnoremap <silent> [unite]n :<C-u>Unite -buffer-name=find find:.<CR>
-
-" Quick commands
-nnoremap <silent> [unite]c :<C-u>Unite -buffer-name=commands command<CR>
-
-" Quick bookmarks
-nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
-
-" Fuzzy search from current buffer
-" nnoremap <silent> [unite]b :<C-u>UniteWithBufferDir
-" \ -buffer-name=files -prompt=%\ buffer file_mru bookmark file<CR>
-
-" Quick commands
-nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
-
-" Start in insert mode
-let g:unite_enable_start_insert = 1
-
-if executable('ag')
-  let g:unite_source_rec_async_command=['ag','--follow','--nocolor','--nogroup','--hidden','-g','']
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-  \ '-i --vimgrep --hidden --ignore ' .
-  \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt = ''
-endif
-
-" Enable short source name in window
-" let g:unite_enable_short_source_names = 1
-
-" Enable history yank source
-let g:unite_source_history_yank_enable = 1
-
-" Open in bottom right
-let g:unite_split_rule = "botright"
-
-" Shorten the default update date of 500ms
-let g:unite_update_time = 200
-
-" Increase number of file candidates
-call unite#custom_source('file_rec/async,file_mru,file,buffer,grep', 'max_candidates', 600)
-let g:unite_cursor_line_highlight = 'TabLineSel'
-" let g:unite_abbr_highlight = 'TabLine'
-
-let g:unite_source_file_mru_filename_format = ':~:.'
-let g:unite_source_file_mru_time_format = ''
 
 "===============================================================================
 " GitGutter
@@ -684,7 +541,6 @@ function! MyFilename()
   let fname = expand('%:t')
   return fname == '__Tagbar__' ? g:lightline.fname :
         \ fname =~ '__Gundo\|NERD_tree' ? '' :
-        \ &ft == 'unite' ? unite#get_status_string() :
         \ &ft == 'vimshell' ? vimshell#get_status_string() :
         \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
         \ ('' != fname ? fname : '[No Name]') .
@@ -721,7 +577,6 @@ function! MyMode()
         \ fname == '__Gundo__' ? 'Gundo' :
         \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ &ft == 'unite' ? 'Unite' :
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
@@ -733,8 +588,6 @@ function! s:syntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
-
-let g:unite_force_overwrite_statusline = 0
 
 set laststatus=2
 
