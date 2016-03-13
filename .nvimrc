@@ -58,10 +58,11 @@ call plug#end()
 
 let base16colorspace=256
 set t_Co=256
-:colo nofrils-dark
-":command Dark set background=dark | colorscheme base16-ocean
-":command Light set background=light | colorscheme base16-solarized
-":Dark
+:command Dark colo nofrils-dark
+:command Light colo nofrils-light
+:command Sepia colo nofrils-sepia
+:command Zen colo zenburn
+:Dark
 ":Light
 
 noremap ⁄ :Dark<CR>
@@ -154,7 +155,7 @@ set t_vb=
 set encoding=utf-8
 
 " Column width indicator
-set colorcolumn=+1
+execute "set colorcolumn=" . join(range(81,335), ',')
 
 " Lower the delay of escaping out of other modes
 set timeout timeoutlen=1000 ttimeoutlen=0"
@@ -431,7 +432,7 @@ nnoremap <Leader>gs :Gstatus<cr>
 " Lightline
 "===============================================================================
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'seoul256',
       \ 'mode_map': {
       \   '__' : '-',
       \   'n'  : 'N',
@@ -474,7 +475,7 @@ function! s:lightline_update()
   endif
   try
     if (&background =~# 'dark')
-      let g:lightline.colorscheme = 'jellybeans'
+      let g:lightline.colorscheme = 'seoul256'
       call lightline#init()
       call lightline#colorscheme()
       call lightline#update()
