@@ -18,6 +18,7 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'lambdatoast/elm.vim'
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'Raimondi/delimitMate'
@@ -57,9 +58,10 @@ call plug#end()
 
 let base16colorspace=256
 set t_Co=256
-:command Dark set background=dark | colorscheme base16-ocean
-:command Light set background=light | colorscheme base16-solarized
-:Dark
+:colo nofrils-dark
+":command Dark set background=dark | colorscheme base16-ocean
+":command Light set background=light | colorscheme base16-solarized
+":Dark
 ":Light
 
 noremap ⁄ :Dark<CR>
@@ -565,7 +567,7 @@ set laststatus=2
 "===============================================================================
 " specify which checkers to use
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_json_checkers = ['jsonlint']
 
 let g:syntastic_mode_map = { 'mode': 'active',

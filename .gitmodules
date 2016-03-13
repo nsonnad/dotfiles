@@ -7,3 +7,6 @@
 [submodule "Tim"]
 	path = Tim
 	url = https://github.com/ggustafsson/Tim
+[submodule "nofrils"]
+	path = nofrils
+	url = git@github.com:robertmeta/nofrils.git

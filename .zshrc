@@ -7,7 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="pure"
 
 # Base16 Shell
-BASE16_SCHEME="ocean"
+BASE16_SCHEME="eighties"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
@@ -231,8 +231,5 @@ export PATH=/usr/texbin:$PATH
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-export NVM_DIR="/Users/nsonnad/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
