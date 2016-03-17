@@ -62,7 +62,7 @@ set t_Co=256
 :command Light set background=light | colorscheme nofrils-light
 :command Sepia set background=light | colorscheme nofrils-sepia
 :command Zen colo zenburn
-:Dark
+:Zen
 ":Light
 
 noremap ⁄ :Dark<CR>

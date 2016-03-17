@@ -187,7 +187,7 @@ hi Search          guifg=#ffffe0 guibg=#284f28
 hi SpecialChar     guifg=#dca3a3 gui=bold
 hi SpecialComment  guifg=#82a282 gui=bold
 hi Special         guifg=#cfbfaf
-hi SpecialKey      guifg=#9ece9e
+hi SpecialKey      ctermfg=8
 hi Statement       guifg=#e3ceab gui=none
 hi StatusLine      guifg=#313633 guibg=#ccdc90
 hi StatusLineNC    guifg=#2e3330 guibg=#88b090
@@ -250,7 +250,7 @@ if &t_Co > 255
     hi SpecialChar     ctermfg=181   cterm=bold
     hi SpecialComment  ctermfg=108   cterm=bold
     hi Special         ctermfg=181
-    hi SpecialKey      ctermfg=151
+    hi SpecialKey      ctermfg=8
     hi Statement       ctermfg=187   ctermbg=234     cterm=none
     hi StatusLine      ctermfg=236   ctermbg=186
     hi StatusLineNC    ctermfg=235   ctermbg=108
