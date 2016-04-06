@@ -34,7 +34,7 @@ alias update-pip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 
 alias update-brew="brew update && brew upgrade"
 alias update-slush="npm uninstall -g slush-qz-thing && npm install -g git+ssh://git@github.com:quartz/slush-qz-thing.git"
 alias pomo="pomojs -q --log ~/Dropbox/.pomo.log --tmux"
-alias draft="cd ~/Dropbox/Draft && vim ."
+alias draft="cd ~/Dropbox/Draft && nvim ."
 
 # common aliases, taken from https://github.com/robbyrussell/oh-my-zsh/pull/1866
 # ----------------------------------------------------------------------
@@ -234,5 +234,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="/Users/nsonnad/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
