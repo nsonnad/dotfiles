@@ -1,9 +1,6 @@
 [submodule "pure"]
 	path = pure
 	url = https://github.com/sindresorhus/pure
-[submodule "z"]
-	path = z
-	url = git@github.com:rupa/z.git
 [submodule "nofrils"]
 	path = nofrils
 	url = git@github.com:nsonnad/nofrils.git
