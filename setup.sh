@@ -1,7 +1,9 @@
 #!/bin/sh
 # Set up a fresh OSX
-
 mkdir -p ~/docs
+mkdir -p ~/docs/work
+mkdir -p ~/docs/learn
+mkdir -p ~/docs/personal
 
 # install xcode command line tools
 xcode-select --install
@@ -24,13 +26,21 @@ for f in ${links[@]}; do
   ln -s `pwd`$f ~/$f
 done
 
-# install node stuff
-npm install -g json
-npm install -g n
-npm install -g trash
-npm install -g pomo
+# neovim and hammerspoon have special simlink destinations
+ln -s `pwd`/.vim ~/.config/nvim
+ln -s `pwd`/.nvimrc ~/.config/nvim/init.vim
+ln -s `pwd`/hammerspoon.lua ~/.hammerspoon/init.lua
 
-# install python stuff
+# install nvm (node version manager)
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+# install latest node
+nvm install stable
+nvm alias default stable
+
+# global node packages
+npm install -g trash
+
+# global python packages
 pip install csvkit
 pip install ipython
 pip install pandas

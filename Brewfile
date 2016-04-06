@@ -1,8 +1,10 @@
 update
 upgrade
 
+# without git there is nothing
 install git
 
+# taps
 tap homebrew/science
 tap homebrew/versions
 tap homebrew/python
@@ -14,16 +16,19 @@ install moreutils
 install findutils
 install homebrew/dupes/grep
 
+# shells and editors
 install bash
 install zsh
+install neovim/neovim/neovim
 install vim --override-system-vi --with-lua
 
+# command line tools
 install ag
+install fzf
 install gnu-sed --default-namesinstall gnupg2
 install hub
-install mpc
+install jq
 install numpy
-install paperkey
 install pass
 install reattach-to-user-namespace --wrap-pbcopy-pbpaste
 install scipy
@@ -36,22 +41,15 @@ install youtube-dl
 
 # compilers. this will take a while
 install ghc cabal-install
-install node
-install python
-install python3
+install pyenv
 install r
 
 # cask apps
-tap phinze/cask
-install brew-cask
 tap caskroom/versions
-tap caskroom/fonts
 
-cask install alfred
 cask install atom
 cask install calibre
 cask install colloquy
-cask install cog
 cask install disk-inventory-x
 cask install dropbox
 cask install dash
@@ -60,12 +58,13 @@ cask install firefox-beta
 cask install flux
 cask install google-chrome
 cask install google-chrome-canary
+cask install hammerspoon
 cask install iterm2-beta
 cask install karabiner
 cask install menumeters
-cask install slate
-cask install torbrowserbundle
+cask install slack
 cask install vlc
 
 # cask fonts
+tap caskroom/fonts
 cask install font-inconsolata-dz-for-powerline
