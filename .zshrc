@@ -99,9 +99,9 @@ stty stop undef # to unmap ctrl-s
 # --------------------------
 alias hr='hr █'
 
-alias todo='vim ~/Dropbox/Draft/1-todo.md'
-alias qnotes='vim ~/Dropbox/Draft'
-alias notes='cd ~/Dropbox/Draft && vim'
+alias todo='nvim ~/Dropbox/Draft/1-todo.md'
+alias qnotes='nvim ~/Dropbox/Draft'
+alias notes='cd ~/Dropbox/Draft && nvim'
 alias batt='pmset -g batt'
 
 # Python
