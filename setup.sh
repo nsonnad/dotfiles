@@ -29,7 +29,7 @@ done
 # neovim and hammerspoon have special simlink destinations
 ln -s `pwd`/.vim ~/.config/nvim
 ln -s `pwd`/.nvimrc ~/.config/nvim/init.vim
-ln -s `pwd`/hammerspoon.lua ~/.hammerspoon/init.lua
+ln -s `pwd`/hammerspoon ~/.hammerspoon
 
 # install nvm (node version manager)
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
