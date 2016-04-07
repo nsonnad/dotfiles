@@ -76,9 +76,9 @@ local expose_space = hs.expose.new(nil,{includeOtherSpaces=false})
 hs.hotkey.bind(mod2,'e','App Expose',function()expose_space:toggleShow()end)
 
 -- pomodoro key binding
-hs.hotkey.bind(mash, '9', function() pom_enable() end)
-hs.hotkey.bind(mash, '0', function() pom_disable() end)
-hs.hotkey.bind(mash, '-', function() pom_reset_work() end)
+hs.hotkey.bind(mash, 'P', function() pom_enable() end)
+hs.hotkey.bind(mash, '[', function() pom_disable() end)
+hs.hotkey.bind(mash, ']', function() pom_reset_work() end)
 
 hotkey.bind(mash, "R", function()
   hs.reload()
