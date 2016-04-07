@@ -17,8 +17,8 @@ pom.bar = {
 
 pom.config = {
   enable_color_bar = false,
-  work_period_sec  = 25 * 60,
-  rest_period_sec  = 5 * 60,
+  work_period_sec  = 45 * 60,
+  rest_period_sec  = 10 * 60,
 
 }
 

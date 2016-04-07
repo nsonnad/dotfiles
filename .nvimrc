@@ -45,11 +45,6 @@ let javascript_enable_domhtmlcss=1
 
 Plug 'hdima/python-syntax'
 
-" Enable spell checking for markdown files
-au BufRead *.md setlocal spell
-au BufRead *.markdown setlocal spell
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
 Plug 'digitaltoad/vim-jade'
 Plug 'wavded/vim-stylus'
 "Plug 'vim-scripts/syntaxhaskell.vim'
@@ -62,9 +57,16 @@ set t_Co=256
 :command Dark set background=dark | colorscheme nofrils-dark
 :command Light set background=light | colorscheme nofrils-light
 :command Sepia set background=light | colorscheme nofrils-sepia
-:command Zen colo zenburn
-:Zen
+:command Zenburn colo zenburn
+:Zenburn
 ":Light
+
+" Special stuff for markdown files
+:command Zen Goyo | PencilSoft
+au BufRead *.md setlocal spell
+au BufRead *.markdown setlocal spell
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.md :Zen
 
 noremap ⁄ :Dark<CR>
 noremap € :Light<CR>
