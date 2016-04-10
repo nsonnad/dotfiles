@@ -38,6 +38,7 @@ Plug 'tpope/vim-surround'
 "Syntax highlighting
 "===========================
 Plug 'pangloss/vim-javascript'
+Plug 'nsonnad/vim-interview-syntax'
 
 " react
 Plug 'mxw/vim-jsx'
@@ -538,7 +539,7 @@ let g:neosnippet#disable_runtime_snippets = {
 \   '_' : 1,
 \ }
 let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/bundle/vim-react-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets,~/.vim/plugged/vim-react-snippets/snippets,~/.vim/plugged/vim-interview-syntax/snippets'
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
