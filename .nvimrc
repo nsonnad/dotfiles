@@ -68,6 +68,7 @@ au BufRead *.md setlocal spell
 au BufRead *.markdown setlocal spell
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.md :Zen
+autocmd BufNewFile,BufReadPost *.interview,*.vw :PencilSoft
 
 noremap ⁄ :Dark<CR>
 noremap € :Light<CR>
