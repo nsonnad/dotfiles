@@ -41,7 +41,8 @@ hs.hotkey.bind(mod3, "L", function() nudge(100,0) end)	--right
 appShortcuts = {
   ['1'] = 'Google Chrome',
   ['2'] = 'Dash',
-  ['3'] = 'Slack'
+  ['3'] = 'Slack',
+  ['4'] = 'Atom'
 }
 
 for key, value in pairs(appShortcuts) do
