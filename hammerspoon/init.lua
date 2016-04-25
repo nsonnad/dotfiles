@@ -40,9 +40,10 @@ hs.hotkey.bind(mod3, "L", function() nudge(100,0) end)	--right
 -- Open Applications with appMod+key
 appShortcuts = {
   ['1'] = 'Google Chrome',
-  ['2'] = 'Dash',
+  ['2'] = 'Reeder',
   ['3'] = 'Slack',
-  ['4'] = 'Atom'
+  ['4'] = 'Dash',
+  ['5'] = 'Atom'
 }
 
 for key, value in pairs(appShortcuts) do

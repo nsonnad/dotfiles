@@ -11,6 +11,7 @@ BASE16_SCHEME="ocean"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
+alias cabalupgrades="cabal list --installed  | egrep -iv '(synopsis|homepage|license)'"
 #alias gcc='/usr/local/bin/gcc-4.8'
 #alias cc='/usr/local/bin/gcc-4.8'
 #alias g++='/usr/local/bin/g++-4.8'
@@ -100,6 +101,7 @@ stty stop undef # to unmap ctrl-s
 alias hr='hr █'
 
 alias todo='nvim ~/Dropbox/Draft/1-todo.md'
+alias weather='curl -4 http://wttr.in/New_York'
 alias qnotes='nvim ~/Dropbox/Draft'
 alias notes='cd ~/Dropbox/Draft && nvim'
 alias batt='pmset -g batt'
@@ -221,6 +223,8 @@ source ~/docs/dotfiles/local.sh
 
 # Customize to your needs...
 export PATH=$PATH:$HOME/bin
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.stack/programs/x86_64-osx/ghc-7.10.3/bin:$PATH
 export EDITOR='vim'
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
