@@ -39,6 +39,7 @@ Plug 'tpope/vim-surround'
 "===========================
 Plug 'pangloss/vim-javascript'
 Plug 'nsonnad/vim-interview-syntax'
+Plug 'altercation/vim-colors-solarized'
 
 " react
 Plug 'mxw/vim-jsx'
@@ -56,18 +57,20 @@ call plug#end()
 let base16colorspace=256
 set t_Co=256
 :command Dark set background=dark | colorscheme nofrils-dark
-:command Light set background=light | colorscheme nofrils-light
-:command Sepia set background=light | colorscheme nofrils-sepia
+:command Light set background=light | colorscheme solarized
 :command Zenburn colo zenburn
-:Zenburn
-":Light
+
+if $ITERM_PROFILE == 'light'
+  :Light
+else
+  :Zenburn
+endif
 
 " Special stuff for markdown files
 :command Zen Goyo | PencilSoft
 au BufRead *.md setlocal spell
 au BufRead *.markdown setlocal spell
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufNewFile,BufReadPost *.md :Zen
 autocmd BufNewFile,BufReadPost *.interview,*.vw :PencilSoft
 
 noremap ⁄ :Dark<CR>
@@ -160,7 +163,7 @@ set t_vb=
 set encoding=utf-8
 
 " Column width indicator
-execute "set colorcolumn=" . join(range(81,335), ',')
+" execute "set colorcolumn=" . join(range(81,335), ',')
 
 " Lower the delay of escaping out of other modes
 set timeout timeoutlen=1000 ttimeoutlen=0"
@@ -255,6 +258,7 @@ nnoremap <Leader>ee :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
 
 :nmap <silent> <leader>d :Dark<cr>
 :nmap <silent> <leader>l :Light<cr>
+:nmap <silent> <leader>z :Zen<cr>
 
 " <Leader>s: Spell checking shortcuts
 nnoremap <Leader>ss :setlocal spell!<cr>
@@ -303,7 +307,6 @@ nnoremap <leader>R :RainbowParenthesesToggle
 
 " <Leader>m: Maximize current split
 nnoremap <Leader>m <C-w>_<C-w><Bar>
-nmap <Leader>md :LivedownPreview<CR>
 
 ""===============================================================================
 " Normal Mode Shift Key Mappings
@@ -399,6 +402,8 @@ let g:tmuxline_preset = {
       \'y'    : ['%R', '%a', '%Y'],
       \'z'    : '#H'}
 
+let g:tmuxline_theme = 'lightline'
+
 "===============================================================================
 " TmuxNavigator
 "===============================================================================
@@ -432,12 +437,10 @@ nnoremap <Leader>gd :Gdiff<cr>
 nnoremap <Leader>gp :Git push<cr>
 nnoremap <Leader>gs :Gstatus<cr>
 
-
 "===============================================================================
 " Lightline
 "===============================================================================
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
       \ 'mode_map': {
       \   '__' : '-',
       \   'n'  : 'N',
@@ -464,6 +467,12 @@ let g:lightline = {
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
+
+if $ITERM_PROFILE == "light"
+  let g:lightline.colorscheme = "solarized"
+else
+  let g:lightline.colorscheme = "seoul256"
+endif
 
 function! LightLineModified()
   if &filetype == "help"

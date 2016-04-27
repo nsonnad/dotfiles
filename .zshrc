@@ -7,11 +7,17 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="pure"
 
 # Base16 Shell
-BASE16_SCHEME="ocean"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+if [ "$ITERM_PROFILE" = "light" ]
+then
+  BASE16_SCHEME="solarized.light"
+else
+  BASE16_SCHEME="ocean.dark"
+fi
+
+BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
-alias cabalupgrades="cabal list --installed  | egrep -iv '(synopsis|homepage|license)'"
+#alias cabalupgrades="cabal list --installed  | egrep -iv '(synopsis|homepage|license)'"
 #alias gcc='/usr/local/bin/gcc-4.8'
 #alias cc='/usr/local/bin/gcc-4.8'
 #alias g++='/usr/local/bin/g++-4.8'
