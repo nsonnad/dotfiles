@@ -39,7 +39,6 @@ Plug 'tpope/vim-surround'
 "===========================
 Plug 'pangloss/vim-javascript'
 Plug 'nsonnad/vim-interview-syntax'
-Plug 'altercation/vim-colors-solarized'
 
 " react
 Plug 'mxw/vim-jsx'
@@ -54,16 +53,16 @@ Plug 'wavded/vim-stylus'
 "Check for new/updated bundles
 call plug#end()
 
-let base16colorspace=256
+"let base16colorspace=256
 set t_Co=256
-:command Dark set background=dark | colorscheme nofrils-dark
-:command Light set background=light | colorscheme solarized
-:command Zenburn colo zenburn
+:command Dark set background=dark | colorscheme zenburn
+:command Light set background=light | colorscheme base16-solarized
+":command Zenburn colo zenburn
 
 if $ITERM_PROFILE == 'light'
   :Light
 else
-  :Zenburn
+  :Dark
 endif
 
 " Special stuff for markdown files
@@ -469,7 +468,7 @@ let g:lightline = {
       \ }
 
 if $ITERM_PROFILE == "light"
-  let g:lightline.colorscheme = "solarized"
+  let g:lightline.colorscheme = "PaperColor"
 else
   let g:lightline.colorscheme = "seoul256"
 endif
