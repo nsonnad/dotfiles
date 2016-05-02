@@ -54,23 +54,23 @@ end
 -- layouts
 local fullScreenLayout = {
   { "Google Chrome", nil, nil, hs.layout.maximized, nil, nil },
-  { "iTerm2", nil, nil, hs.layout.maximized, nil, nil }
+  { "iTerm", nil, nil, hs.layout.maximized, nil, nil }
 }
 
 local browserTermLayout = {
   { "Google Chrome", nil, nil, hs.layout.right50, nil, nil },
-  { "iTerm2", nil, nil, hs.layout.left50, nil, nil }
+  { "iTerm", nil, nil, hs.layout.left50, nil, nil }
 }
 
 hotkey.bind(mash, "1", function()
-  local iterm2 = hs.application.get("iTerm2")
-  iterm2:selectMenuItem({"View", "Toggle Full Screen"})
+  local iterm = hs.application.get("iTerm")
+  iterm:selectMenuItem({"View", "Toggle Full Screen"})
   hs.layout.apply(fullScreenLayout)
 end)
 
 hotkey.bind(mash, "2", function()
-  local iterm2 = hs.application.get("iTerm2")
-  iterm2:selectMenuItem({"View", "Toggle Full Screen"})
+  local iterm = hs.application.get("iTerm")
+  iterm:selectMenuItem({"View", "Toggle Full Screen"})
   hs.layout.apply(browserTermLayout)
 end)
 
