@@ -2377,7 +2377,7 @@
 			<key>Set Local Environment Vars</key>
 			<true/>
 			<key>Shortcut</key>
-			<string>2</string>
+			<string>L</string>
 			<key>Silence Bell</key>
 			<false/>
 			<key>Smart Cursor Color</key>
@@ -3165,7 +3165,7 @@
 			<key>Set Local Environment Vars</key>
 			<true/>
 			<key>Shortcut</key>
-			<string></string>
+			<string>D</string>
 			<key>Silence Bell</key>
 			<false/>
 			<key>Smart Cursor Color</key>
@@ -3293,6 +3293,8 @@
 			<string>/Users/nikhil</string>
 		</dict>
 	</array>
+	<key>NoSyncInstallationId</key>
+	<string>FAFA4D8D-A1B6-4C24-B1CD-6E01F2969084</string>
 	<key>NoSyncLastTipTime</key>
 	<real>470627371.55807197</real>
 	<key>NoSyncNeverRemindPrefsChangesLost</key>
@@ -3371,11 +3373,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing3.xml</string>
+	<string>https://iterm2.com/appcasts/testing3.xml?shard=0</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-04-25T17:12:30Z</date>
+	<date>2016-04-27T19:11:09Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -5950,6 +5952,6 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>2.9.20160313</string>
+	<string>2.9.20160426</string>
 </dict>
 </plist>
