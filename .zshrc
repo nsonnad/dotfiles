@@ -4,7 +4,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pure"
+ZSH_THEME="refined"
 
 # Base16 Shell
 if [ "$ITERM_PROFILE" = "light" ]
@@ -107,23 +107,23 @@ stty stop undef # to unmap ctrl-s
 # --------------------------
 alias hr='hr █'
 
-alias todo='nvim ~/Dropbox/Draft/1-todo.md'
+alias todo='nvim ~/Dropbox/Draft/todo-life.md'
 alias weather='curl -4 http://wttr.in/New_York'
 alias qnotes='nvim ~/Dropbox/Draft'
 alias notes='cd ~/Dropbox/Draft && nvim'
 alias batt='pmset -g batt'
 
 # Python
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-#export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-#export PIP_VIRTUALENV_BASE=$WORKON_HOME
-#export PIP_RESPECT_VIRTUALENV=true
-if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-else
-    echo "WARNING: Can't find virtualenvwrapper.sh"
-fi
+#export WORKON_HOME=$HOME/.virtualenvs
+#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+##export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+##export PIP_VIRTUALENV_BASE=$WORKON_HOME
+##export PIP_RESPECT_VIRTUALENV=true
+#if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+    #source /usr/local/bin/virtualenvwrapper.sh
+#else
+    #echo "WARNING: Can't find virtualenvwrapper.sh"
+#fi
 
 # Enable reattach-to-user-namespace on Mac. See
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/8
@@ -240,16 +240,16 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/texbin:$PATH
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="/Users/nsonnad/.nvm"
+export NVM_DIR="/Users/nikhil/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-PATH="/Users/nsonnad/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/nsonnad/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/nsonnad/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/nsonnad/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/nsonnad/perl5"; export PERL_MM_OPT;
+PATH="/Users/nikhil/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/nikhil/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/nikhil/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/nikhil/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/nikhil/perl5"; export PERL_MM_OPT;
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

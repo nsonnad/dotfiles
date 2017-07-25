@@ -1,9 +1,8 @@
 #!/bin/sh
 # Set up a fresh OSX
-mkdir -p ~/docs
-mkdir -p ~/docs/work
-mkdir -p ~/docs/learn
-mkdir -p ~/docs/personal
+
+# tweak a bunch of osx settings
+#sh ./.osx
 
 # install xcode command line tools
 xcode-select --install
@@ -23,7 +22,7 @@ links=(.bash_profile .ghci .slate .vimrc .zshenv .zshrc .tmux.conf .vimpagerrc)
 
 for f in ${links[@]}; do
   rm ~/$f
-  ln -s `pwd`$f ~/$f
+  ln -s `pwd`/$f ~/$f
 done
 
 # neovim and hammerspoon have special simlink destinations
