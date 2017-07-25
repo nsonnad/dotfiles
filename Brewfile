@@ -60,6 +60,7 @@ cask "hammerspoon"
 cask "iterm2-beta"
 cask "slack"
 cask "vlc"
+mas "Reeder", id: 88001334
 
 # cask fonts
 tap "caskroom/fonts"
