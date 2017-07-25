@@ -58,6 +58,7 @@ cask "flux"
 cask "google-chrome"
 cask "hammerspoon"
 cask "iterm2-beta"
+cask "private-internet-access"
 cask "slack"
 cask "vlc"
 mas "Reeder", id: 88001334
