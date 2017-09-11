@@ -107,7 +107,7 @@ stty stop undef # to unmap ctrl-s
 # --------------------------
 alias hr='hr █'
 
-alias todo='nvim ~/Dropbox/Draft/todo-life.md'
+alias todo='nvim ~/Dropbox/Draft/todo.md'
 alias weather='curl -4 http://wttr.in/New_York'
 alias qnotes='nvim ~/Dropbox/Draft'
 alias notes='cd ~/Dropbox/Draft && nvim'
