@@ -44,6 +44,7 @@ Plug 'nsonnad/vim-interview-syntax'
 " react
 Plug 'mxw/vim-jsx'
 let javascript_enable_domhtmlcss=1
+let g:javascript_plugin_jsdoc = 1
 
 Plug 'hdima/python-syntax'
 

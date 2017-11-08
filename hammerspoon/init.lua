@@ -39,7 +39,7 @@ hs.hotkey.bind(mod3, "L", function() nudge(100,0) end)	--right
 
 -- Open Applications with appMod+key
 appShortcuts = {
-  ['1'] = 'Google Chrome',
+  ['1'] = 'Firefox',
   ['2'] = 'Reeder',
   ['3'] = 'Slack',
   ['4'] = 'Dash',
@@ -53,12 +53,12 @@ end
 
 -- layouts
 local fullScreenLayout = {
-  { "Google Chrome", nil, nil, hs.layout.maximized, nil, nil },
+  { "Firefox", nil, nil, hs.layout.maximized, nil, nil },
   { "iTerm", nil, nil, hs.layout.maximized, nil, nil }
 }
 
 local browserTermLayout = {
-  { "Google Chrome", nil, nil, hs.layout.right50, nil, nil },
+  { "Firefox", nil, nil, hs.layout.right50, nil, nil },
   { "iTerm", nil, nil, hs.layout.left50, nil, nil }
 }
 

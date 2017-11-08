@@ -107,10 +107,10 @@ stty stop undef # to unmap ctrl-s
 # --------------------------
 alias hr='hr █'
 
-alias todo='nvim ~/Dropbox/Draft/todo.md'
+alias todo='nvim ~/Dropbox/notes/todo.md'
 alias weather='curl -4 http://wttr.in/New_York'
-alias qnotes='nvim ~/Dropbox/Draft'
-alias notes='cd ~/Dropbox/Draft && nvim'
+alias qnotes='nvim ~/Dropbox/notes'
+alias notes='cd ~/Dropbox/notes && nvim'
 alias batt='pmset -g batt'
 
 # Python
