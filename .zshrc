@@ -242,7 +242,6 @@ export PATH=/usr/texbin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="/Users/nikhil/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 PATH="/Users/nikhil/perl5/bin${PATH:+:${PATH}}"; export PATH;

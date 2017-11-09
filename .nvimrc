@@ -5,9 +5,6 @@ set nocompatible
 "========================================================
 call plug#begin('~/.vim/plugged')
 
-" Colors
-Plug 'chriskempson/base16-vim'
-
 " Utilities
 Plug 'chrisbra/csv.vim'
 Plug 'danro/rename.vim'
@@ -58,11 +55,11 @@ call plug#end()
 "let base16colorspace=256
 set t_Co=256
 :command Dark set background=dark | colorscheme zenburn
-:command Light set background=light | colorscheme base16-solarized
+:command Light set background=light | colorscheme NeoSolarized
 ":command Zenburn colo zenburn
 
 if $ITERM_PROFILE == 'light'
-  :Light
+
 else
   :Dark
 endif
@@ -403,7 +400,7 @@ let g:tmuxline_preset = {
       \'y'    : ['%R', '%a', '%Y'],
       \'z'    : '#H'}
 
-let g:tmuxline_theme = 'lightline'
+:command Tmuxline lightline
 
 "===============================================================================
 " TmuxNavigator
@@ -470,7 +467,7 @@ let g:lightline = {
       \ }
 
 if $ITERM_PROFILE == "light"
-  let g:lightline.colorscheme = "PaperColor"
+  let g:lightline.colorscheme = "solarized"
 else
   let g:lightline.colorscheme = "seoul256"
 endif
