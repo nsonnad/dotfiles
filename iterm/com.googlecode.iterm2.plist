@@ -14,6 +14,8 @@
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
+	<key>AppleWindowTabbingMode</key>
+	<string>manual</string>
 	<key>AutoHideTmuxClientSession</key>
 	<true/>
 	<key>CheckTestRelease</key>
@@ -1666,6 +1668,8 @@
 	<false/>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 0</string>
+	<key>NSFontPanelPreviewHeight</key>
+	<real>0.0</real>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/docs/dotfiles/iterm</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -1678,40 +1682,40 @@
 	<false/>
 	<key>NSScrollViewShouldScrollUnderTitlebar</key>
 	<false/>
-	<key>NSTableView Columns v2 KeyBingingTable</key>
-	<data>
-	YnBsaXN0MDDUAQIDBAUGNjdYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
-	AAGGoK4HCA8aGxwdHh8gJjAxMlUkbnVsbNIJCgsOWk5TLm9iamVjdHNWJGNsYXNzogwN
-	gAKACoAN0xAJChEVGVdOUy5rZXlzoxITFIADgASABaMWFxiABoAHgAiACVpJZGVudGlm
-	aWVyVVdpZHRoVkhpZGRlblEwI0BowAAAAAAACNIhIiMkWiRjbGFzc25hbWVYJGNsYXNz
-	ZXNcTlNEaWN0aW9uYXJ5oiMlWE5TT2JqZWN00xAJCicrGaMSExSAA4AEgAWjLC0YgAuA
-	DIAIgAlRMSNAdKGdsi0OVtIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
-	TlNLZXllZEFyY2hpdmVy0Tg5VUFycmF5gAEACAARABoAIwAtADIANwBGAEwAUQBcAGMA
-	ZgBoAGoAbABzAHsAfwCBAIMAhQCJAIsAjQCPAJEAnACiAKkAqwC0ALUAugDFAM4A2wDe
-	AOcA7gDyAPQA9gD4APwA/gEAAQIBBAEGAQ8BFAEjAScBLwFBAUQBSgAAAAAAAAIBAAAA
-	AAAAADoAAAAAAAAAAAAAAAAAAAFM
-	</data>
-	<key>NSTableView Sort Ordering v2 KeyBingingTable</key>
-	<data>
-	YnBsaXN0MDDUAQIDBAUGFBVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
-	AAGGoKMHCA1VJG51bGzSCQoLDFpOUy5vYmplY3RzViRjbGFzc6CAAtIODxARWiRjbGFz
-	c25hbWVYJGNsYXNzZXNeTlNNdXRhYmxlQXJyYXmjEBITV05TQXJyYXlYTlNPYmplY3Rf
-	EA9OU0tleWVkQXJjaGl2ZXLRFhdVQXJyYXmAAQgRGiMtMjc7QUZRWFlbYGt0g4ePmKqt
-	swAAAAAAAAEBAAAAAAAAABgAAAAAAAAAAAAAAAAAAAC1
-	</data>
-	<key>NSTableView Supports v2 KeyBingingTable</key>
-	<true/>
+	<key>NSTableView Columns KeyBingingTable</key>
+	<array>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
+		hAErATCG
+		</data>
+		<string>198</string>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
+		hAErATGG
+		</data>
+		<string>330</string>
+	</array>
+	<key>NSTableView Hidden Columns KeyBingingTable</key>
+	<array/>
+	<key>NSTableView Sort Ordering KeyBingingTable</key>
+	<array/>
 	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
 	<dict>
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>1265 381 445 103 0 0 1920 1057 </string>
+	<string>528 72 440 435 0 0 1280 777 </string>
+	<key>NSWindow Frame Preferences</key>
+	<string>355 344 606 456 0 0 1280 800 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>332 306 620 392 0 0 1280 800 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>263 237 796 473 0 0 1440 900 </string>
+	<string>116 176 796 474 0 0 1280 800 </string>
+	<key>NSWindow Frame UKCrashReporter</key>
+	<string>76 113 592 584 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1920 1080 0 0 1920 1057 </string>
+	<string>0 0 1280 800 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -3294,11 +3298,32 @@
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>4B000897-4C33-47DA-BE14-834765AC1399</string>
+	<string>B5C8D93C-8D24-400F-AD63-66BC0935D613</string>
+	<key>NoSyncLastTipTime</key>
+	<real>487018745.95959997</real>
+	<key>NoSyncNeverRemindPrefsChangesLost</key>
+	<true/>
 	<key>NoSyncPermissionToShowTip</key>
-	<false/>
+	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>522654224.80027199</real>
+	<real>464853450.27001798</real>
+	<key>NoSyncTimeOfLastPromo</key>
+	<real>453838250.13362598</real>
+	<key>NoSyncTimeOfLastPromoDownload</key>
+	<real>485898973.475667</real>
+	<key>NoSyncTipsDisabled</key>
+	<true/>
+	<key>NoSyncTipsToNotShow</key>
+	<array>
+		<string>000</string>
+		<string>0000</string>
+		<string>0001</string>
+		<string>0002</string>
+		<string>0003</string>
+		<string>0004</string>
+		<string>0005</string>
+		<string>0006</string>
+	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -3347,7 +3372,9 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/nikhil/docs/dotfiles/iterm</string>
+	<string>/Users/nsonnad/docs/dotfiles/iterm</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -3359,15 +3386,15 @@
 	<key>RightOption</key>
 	<integer>3</integer>
 	<key>SUEnableAutomaticChecks</key>
-	<false/>
+	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing.xml?shard=97</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=58</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
-	<key>SUSendProfileInfo</key>
-	<false/>
+	<key>SULastCheckTime</key>
+	<date>2018-05-02T20:50:09Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -3392,6 +3419,8 @@
 	<integer>10</integer>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
+	<key>UKCrashReporterLastCrashReportDate</key>
+	<real>1411501824</real>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
@@ -5942,6 +5971,6 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.1.beta.6</string>
+	<string>3.1.4.beta.1</string>
 </dict>
 </plist>

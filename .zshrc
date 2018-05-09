@@ -41,8 +41,8 @@ alias update-pip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 
 alias update-brew="brew update && brew upgrade"
 alias update-slush="npm uninstall -g slush-qz-thing && npm install -g git+ssh://git@github.com:quartz/slush-qz-thing.git"
 alias pomo="pomojs -q --log ~/Dropbox/.pomo.log --tmux"
-alias draft="cd ~/Dropbox/Draft && nvim ."
-alias now="nvim ~/Dropbox/Draft/NOW.md"
+alias draft="cd ~/Dropbox/notes && nvim ."
+alias now="nvim ~/Dropbox/notes/NOW.md"
 
 # common aliases, taken from https://github.com/robbyrussell/oh-my-zsh/pull/1866
 # ----------------------------------------------------------------------
