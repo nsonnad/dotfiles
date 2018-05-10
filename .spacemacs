@@ -320,6 +320,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq default-frame-alist '((undecorated . t)))
   (setq frame-resize-pixelwise t)
+  (setq org-pomodoro-start-sound-p t)
+  (setq org-pomodoro-finished-sound-p t)
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
   )
