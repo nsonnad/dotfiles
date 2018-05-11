@@ -51,6 +51,8 @@ for key, value in pairs(appShortcuts) do
   hotkey.bind(appLaunch, key, bindAppLaunch(value))
 end
 
+hotkey.bind("ctrl", ";", bindAppFocus("Emacs"))
+
 -- layouts
 local fullScreenLayout = {
   { "Firefox", nil, nil, hs.layout.maximized, nil, nil },
