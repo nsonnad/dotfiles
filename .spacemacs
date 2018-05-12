@@ -69,7 +69,7 @@ values."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '()
    ;; Defines the behaviour of Spacemacs when installing packages.
-   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+   ;; Possible values are `used-only', `use'curved-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
    ;; unused packages as well as their unused dependencies.
    ;; `used-but-keep-unused' installs only the used packages but won't uninstall
@@ -143,7 +143,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Inconsolata"
+   dotspacemacs-default-font '("Inconsolata_dz for Powerline"
                                :size 14
                                :weight normal
                                :width normal
@@ -322,10 +322,17 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq default-frame-alist '((undecorated . t)))
   (setq frame-resize-pixelwise t)
-  (setq org-pomodoro-start-sound-p t)
-  (setq org-pomodoro-finished-sound-p t)
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+  ;; powerline stuff
+  (setq powerline-default-separator 'utf-8)
+  (setq display-time-24hr-format t)
+  (setq display-time-format "%H:%M")
+  (setq display-time-default-load-average nil)
+  (display-time-mode 1)
+  ;; pomodoro sounds
+  (setq org-pomodoro-start-sound-p t)
+  (setq org-pomodoro-finished-sound-p t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
