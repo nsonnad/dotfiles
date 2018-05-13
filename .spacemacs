@@ -328,7 +328,7 @@ you should place your code here."
   (setq frame-resize-pixelwise t)
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
-  ;; powerline stuff
+  ;; POWERLINE
   (setq powerline-default-separator 'utf-8)
   (setq display-time-24hr-format t)
   (setq display-time-format "%H:%M")
@@ -344,11 +344,12 @@ you should place your code here."
            "* TODO %?\n  %i\n  %t")
           ("tw" "Todo: Work" entry (file+headline "~/docs/emacs/org/todo/work.org" "Tasks")
            "* TODO %?\n  %i\n  %t")
-          ("j" "Journal" entry (file+olp+datetree "~/docs/emacs/org/journal.org")
-           "* %?\nEntered on %U\n  %i\n  %a")))
+          ("i" "Ideas" entry (file+olp+datetree "~/docs/emacs/org/ideas.org")
+           "* %?\nEntered on %U\n")))
   (setq org-agenda-files (list
                           "~/docs/emacs/org/todo/life.org"
                           "~/docs/emacs/org/todo/work.org"))
+  (setq bookmark-default-file "~/docs/dotfiles/spacemacs-bookmarks")
   ;; org-pomodoro
   (setq org-pomodoro-start-sound-p t)
   (setq org-pomodoro-finished-sound-p t)

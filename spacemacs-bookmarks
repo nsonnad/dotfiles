@@ -1,0 +1,25 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("todo-life"
+ (filename . "~/docs/emacs/org/todo/life.org")
+ (front-context-string . "** TODO Buy bike")
+ (rear-context-string . "2018-05-13 Sun>\n")
+ (position . 133))
+("todo-work"
+ (filename . "~/docs/emacs/org/todo/work.org")
+ (front-context-string . "  DEADLINE: <201")
+ (rear-context-string . "re: calculator\n ")
+ (position . 39))
+("spacemacs"
+ (filename . "~/docs/dotfiles/.spacemacs")
+ (front-context-string . "k\" entry (file+h")
+ (rear-context-string . "(\"tw\" \"Todo: Wor")
+ (position . 17467))
+("org-capture-last-stored"
+ (filename . "~/docs/emacs/org/todo/life.org")
+ (front-context-string . "** TODO Buy bike")
+ (rear-context-string . "2018-05-13 Sun>\n")
+ (position . 133))
+)
