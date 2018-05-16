@@ -27,7 +27,7 @@ values."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '("~/docs/emacs/")
+   dotspacemacs-configuration-layer-path '("~/Dropbox/emacs/")
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
@@ -336,19 +336,19 @@ you should place your code here."
   (display-time-mode 1)
   ;; ORG
   ;; org-capture
-  (setq org-directory "~/docs/emacs/org")
+  (setq org-directory "~/Dropbox//emacs/org")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
         '(("t" "Todos in various domains")
-          ("tl" "Todo: Life" entry (file+headline "~/docs/emacs/org/todo/life.org" "Tasks")
+          ("tl" "Todo: Life" entry (file+headline "~/Dropbox/emacs/org/personal/todo.org" "Tasks")
            "* TODO %?\n  %i\n  %t")
-          ("tw" "Todo: Work" entry (file+headline "~/docs/emacs/org/todo/work.org" "Tasks")
+          ("tw" "Todo: Work" entry (file+headline "~/Dropbox/emacs/org/qz/stories.org" "Tasks")
            "* TODO %?\n  %i\n  %t")
-          ("i" "Ideas" entry (file+olp+datetree "~/docs/emacs/org/ideas.org")
+          ("i" "Ideas" entry (file+olp+datetree "~/Dropbox/emacs/org/ideas.org")
            "* %?\nEntered on %U\n")))
   (setq org-agenda-files (list
-                          "~/docs/emacs/org/todo/life.org"
-                          "~/docs/emacs/org/todo/work.org"))
+                          "~/Dropbox/emacs/org/personal/todo.org"
+                          "~/Dropbox/emacs/org/qz/stories.org"))
   (setq bookmark-default-file "~/docs/dotfiles/spacemacs-bookmarks")
   ;; org-pomodoro
   (setq org-pomodoro-start-sound-p t)
