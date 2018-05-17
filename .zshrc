@@ -114,8 +114,11 @@ alias notes='cd ~/Dropbox/notes && nvim'
 alias batt='pmset -g batt'
 
 # Python
+export WORKON_HOME=$HOME/.virtualenvs   # optional
+export PROJECT_HOME=$HOME/python-projects      # optional
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
 #export WORKON_HOME=$HOME/.virtualenvs
-#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 ##export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 ##export PIP_VIRTUALENV_BASE=$WORKON_HOME
 ##export PIP_RESPECT_VIRTUALENV=true
@@ -250,6 +253,6 @@ PERL_LOCAL_LIB_ROOT="/Users/nikhil/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB
 PERL_MB_OPT="--install_base \"/Users/nikhil/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/nikhil/perl5"; export PERL_MM_OPT;
 # added by Miniconda3 installer
-export PATH="/Users/nikhil/miniconda3/bin:$PATH"
+# export PATH="/Users/nikhil/miniconda3/bin:$PATH"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
