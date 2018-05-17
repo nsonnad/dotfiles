@@ -52,6 +52,7 @@ for key, value in pairs(appShortcuts) do
 end
 
 hotkey.bind("ctrl", ";", bindAppFocus("Emacs"))
+hotkey.bind(appLaunch, ";", bindAppLaunch("Emacs"))
 
 -- layouts
 local fullScreenLayout = {
