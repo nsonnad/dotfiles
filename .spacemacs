@@ -31,6 +31,9 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     sql
+     deft
+     csv
      python
      yaml
      ;; ----------------------------------------------------------------
@@ -326,6 +329,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (setq-default js2-basic-offset 2)
+  (setq-default js-indent-level 2)
   (setq multi-term-program "/usr/local/bin/zsh")
   (setq default-frame-alist '((undecorated . t)))
   (setq frame-resize-pixelwise t)
@@ -338,22 +343,29 @@ you should place your code here."
   (setq display-time-24hr-format t)
   (setq display-time-format "%H:%M")
   (setq display-time-default-load-average nil)
+  (setq evil-move-cursor-back nil) ; prevent cursor from going to beginning in normal mode
   (display-time-mode 1)
+  ;; deft
+  (setq deft-directory "~/Dropbox/deft")
+  (setq deft-extensions '("org" "md" "txt"))
   ;; ORG
   ;; org-capture
   (setq org-directory "~/Dropbox//emacs/org")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
         '(("t" "Todos in various domains")
-          ("tl" "Todo: Life" entry (file+headline "~/Dropbox/emacs/org/personal/todo.org" "Tasks")
+          ("tl" "Todo: Life" entry (file+headline "~/Dropbox/emacs/org/personal.org" "Captured")
            "* TODO %?\n  %i\n  %t")
-          ("tw" "Todo: Work" entry (file+headline "~/Dropbox/emacs/org/qz/stories.org" "Tasks")
+          ("tw" "Todo: Work" entry (file+headline "~/Dropbox/emacs/org/work.org" "Captured")
            "* TODO %?\n  %i\n  %t")
-          ("i" "Ideas" entry (file+olp+datetree "~/Dropbox/emacs/org/ideas.org")
-           "* %?\nEntered on %U\n")))
+          ("n" "Notes" entry (file+headline "~/Dropbox/emacs/org/notes.org" "Captured")
+           "* %?\nEntered on %U")
+          ))
+
   (setq org-agenda-files (list
-                          "~/Dropbox/emacs/org/personal/todo.org"
-                          "~/Dropbox/emacs/org/qz/stories.org"))
+                          "~/Dropbox/emacs/org/personal.org"
+                          "~/Dropbox/emacs/org/work.org"))
+
   (setq bookmark-default-file "~/docs/dotfiles/spacemacs-bookmarks")
   ;; org-pomodoro
   (setq org-pomodoro-start-sound-p t)
@@ -376,7 +388,7 @@ you should place your code here."
  '(fci-rule-color "#eee8d5" t)
  '(package-selected-packages
    (quote
-    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic stylus-mode yaml-mode zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode lua-mode pdf-tools tablist web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data helm-themes helm-swoop helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag flyspell-correct-helm ace-jump-helm-line unfill mwim fuzzy flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help writeroom-mode visual-fill-column mmm-mode markdown-toc markdown-mode gh-md smeargle reveal-in-osx-finder pbcopy osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download magit-gitflow launchctl htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub let-alist with-editor ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy)))
+    (deft sql-indent csv-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic stylus-mode yaml-mode zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode lua-mode pdf-tools tablist web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data helm-themes helm-swoop helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag flyspell-correct-helm ace-jump-helm-line unfill mwim fuzzy flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help writeroom-mode visual-fill-column mmm-mode markdown-toc markdown-mode gh-md smeargle reveal-in-osx-finder pbcopy osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download magit-gitflow launchctl htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub let-alist with-editor ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
