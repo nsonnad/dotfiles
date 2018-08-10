@@ -1,5 +1,6 @@
 require "utils"
 require "pomodoor"
+require "keyboard.windows"
 
 -- Hammerspoon config
 
@@ -17,25 +18,6 @@ local mod3 = {"ctrl", "cmd"}
 local mash = {"ctrl", "alt", "cmd"}
 local appFocus = "alt"
 local appLaunch = mod1
-
--- Lock to screen edge
-hotkey.bind(mod1, "K", function() push(0, 0, 1, 0.5) end)
-hotkey.bind(mod1, "J", function() push(0, 0.5, 1, 0.5) end)
-hotkey.bind(mod1, "H", function() push(0, 0, 0.5, 1) end)
-hotkey.bind(mod1, "L", function() push(0.5, 0, 0.5, 1) end)
-hotkey.bind(mod1, "U", function() push(0, 0, 1, 1) end)
-
--- Resize hotkeys
-hs.hotkey.bind(mod2, "K", function() yank(0,-100) end) -- yank bottom up
-hs.hotkey.bind(mod2, "J", function() yank(0,100) end) -- yank bottom down
-hs.hotkey.bind(mod2, "H", function() yank(-100,0) end) -- yank right side left
-hs.hotkey.bind(mod2, "L", function() yank(100,0) end) -- yank right side right
-
--- Movement hotkeys
-hs.hotkey.bind(mod3, "K", function() nudge(0,-100) end)	--up
-hs.hotkey.bind(mod3, 'J', function() nudge(0,100) end) 	--down
-hs.hotkey.bind(mod3, "H", function() nudge(-100,0) end)	--left
-hs.hotkey.bind(mod3, "L", function() nudge(100,0) end)	--right
 
 -- Open Applications with appMod+key
 appShortcuts = {
