@@ -13,8 +13,23 @@ end
 -- only focus app, do nothing if not running
 function bindAppFocus(appName)
   return function()
+    app = hs.application.get(appName)
+    if app then
+      if app:isFrontmost()
+      then
+        app:hide()
+      else
+        hs.application.launchOrFocus(appName)
+      end
+    end
+  end
+end
+
+-- hide app, do nothing if not running
+function bindAppHide(appName)
+  return function()
     if hs.application.get(appName) then
-      hs.application.launchOrFocus(appName)
+      hs.application.hide(appName)
     end
   end
 end

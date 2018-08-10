@@ -40,7 +40,7 @@ hs.hotkey.bind(mod3, "L", function() nudge(100,0) end)	--right
 -- Open Applications with appMod+key
 appShortcuts = {
   ['1'] = 'Firefox',
-  ['2'] = 'Emacs',
+  -- handling this in iterm itself ['2'] = 'iTerm',
   ['3'] = 'Slack',
   ['4'] = 'Reeder'
 }
@@ -49,6 +49,9 @@ for key, value in pairs(appShortcuts) do
   hotkey.bind(appFocus, key, bindAppFocus(value))
   hotkey.bind(appLaunch, key, bindAppLaunch(value))
 end
+
+hotkey.bind("ctrl", ";", bindAppFocus("Emacs"))
+hotkey.bind(appLaunch, ";", bindAppLaunch("Emacs"))
 
 -- layouts
 local fullScreenLayout = {
