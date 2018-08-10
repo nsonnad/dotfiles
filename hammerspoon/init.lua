@@ -90,3 +90,4 @@ hotkey.bind(mash, "R", function()
 end)
 hs.alert.show("Config loaded")
 
+hs.loadSpoon('ControlEscape'):start() -- Load Hammerspoon bits from https://github.com/jasonrudolph/ControlEscape.spoon

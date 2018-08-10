@@ -4,3 +4,6 @@
 [submodule "nofrils"]
 	path = nofrils
 	url = git@github.com:nsonnad/nofrils.git
+[submodule "hammerspoon/Spoons/ControlEscape.spoon"]
+	path = hammerspoon/Spoons/ControlEscape.spoon
+	url = git@github.com:jasonrudolph/ControlEscape.spoon.git
