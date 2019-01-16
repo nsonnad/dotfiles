@@ -22,7 +22,7 @@ local appLaunch = mod1
 -- Open Applications with appMod+key
 appShortcuts = {
   ['1'] = 'Firefox',
-  -- handling this in iterm itself ['2'] = 'iTerm',
+  ['2'] = 'Notion',
   ['3'] = 'Slack',
   ['4'] = 'Reeder'
 }
@@ -31,9 +31,6 @@ for key, value in pairs(appShortcuts) do
   hotkey.bind(appFocus, key, bindAppFocus(value))
   hotkey.bind(appLaunch, key, bindAppLaunch(value))
 end
-
-hotkey.bind("ctrl", ";", bindAppFocus("Emacs"))
-hotkey.bind(appLaunch, ";", bindAppLaunch("Emacs"))
 
 -- layouts
 local fullScreenLayout = {
