@@ -31,6 +31,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
 
 "============================
 "Syntax highlighting
@@ -566,6 +567,12 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+"===============================================================================
+" Vimwiki
+"===============================================================================
+
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
 
 "===============================================================================
 " Custom commands

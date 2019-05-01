@@ -245,13 +245,16 @@ export PATH=/usr/texbin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash
 
 PATH="/Users/nikhil/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/nikhil/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/Users/nikhil/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/nikhil/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/nikhil/perl5"; export PERL_MM_OPT;
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # added by Miniconda3 installer
 # export PATH="/Users/nikhil/miniconda3/bin:$PATH"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
