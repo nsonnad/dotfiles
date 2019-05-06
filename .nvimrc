@@ -572,7 +572,8 @@ endif
 " Vimwiki
 "===============================================================================
 
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
+        \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "===============================================================================
 " Custom commands
