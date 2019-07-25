@@ -572,11 +572,13 @@ endif
 "===============================================================================
 " Vimwiki
 "===============================================================================
+autocmd BufRead,BufNewFile ~/Dropbox/vimwiki/* set filetype=vimwiki
 
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
         \ 'syntax': 'markdown', 'ext': '.md'}]
 
 nmap <Leader>wp :Files ~/Dropbox/vimwiki<CR>
+
 "===============================================================================
 " Custom commands
 "===============================================================================
