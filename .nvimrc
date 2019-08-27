@@ -15,9 +15,10 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'lambdatoast/elm.vim'
 Plug 'reedes/vim-pencil'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'neovimhaskell/haskell-vim'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdcommenter'
@@ -571,9 +572,12 @@ endif
 "===============================================================================
 " Vimwiki
 "===============================================================================
+autocmd BufRead,BufNewFile ~/Dropbox/vimwiki/* set filetype=vimwiki
 
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
-      \ 'syntax': 'markdown', 'ext': '.md'}]
+        \ 'syntax': 'markdown', 'ext': '.md'}]
+
+nmap <Leader>wp :Files ~/Dropbox/vimwiki<CR>
 
 "===============================================================================
 " Custom commands
