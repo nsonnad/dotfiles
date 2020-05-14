@@ -6,23 +6,24 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="refined"
 
+autoload -Uz compinit
+
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+
+compinit -C
+
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-# Base16 Shell
-if [ "$ITERM_PROFILE" = "light" ]
-then
-  base16_gruvbox-light-hard
-else
-  base16_material
-fi
-
-BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.sh"
-[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
-
+LIGHT_SCHEME="gruvbox-light-hard"
+DARK_SCHEME="zenburn"
+alias colorlight="base16_$LIGHT_SCHEME && nvim -c q"
+alias colordark="base16_$DARK_SCHEME && nvim -c q"
 #alias cabalupgrades="cabal list --installed  | egrep -iv '(synopsis|homepage|license)'"
 #alias gcc='/usr/local/bin/gcc-4.8'
 #alias cc='/usr/local/bin/gcc-4.8'
@@ -244,7 +245,7 @@ source ~/docs/dotfiles/local.sh
 export PATH=$PATH:$HOME/bin
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.stack/programs/x86_64-osx/ghc-7.10.3/bin:$PATH
-export EDITOR='vim'
+export EDITOR='nvim'
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
@@ -254,10 +255,6 @@ export PATH=/usr/texbin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash
-
 PATH="/Users/nikhil/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/nikhil/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/Users/nikhil/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
@@ -266,5 +263,3 @@ PERL_MM_OPT="INSTALL_BASE=/Users/nikhil/perl5"; export PERL_MM_OPT;
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # added by Miniconda3 installer
 # export PATH="/Users/nikhil/miniconda3/bin:$PATH"
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"

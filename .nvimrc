@@ -49,10 +49,6 @@ let g:javascript_plugin_jsdoc = 1
 
 Plug 'hdima/python-syntax'
 
-Plug 'digitaltoad/vim-jade'
-Plug 'wavded/vim-stylus'
-"Plug 'vim-scripts/syntaxhaskell.vim'
-
 "Check for new/updated bundles
 call plug#end()
 
@@ -60,16 +56,6 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-
-"set t_Co=256
-":command Dark set background=dark | colorscheme base16-zenburn
-":command Light set background=light | colorscheme base16-gruvbox-light-hard
-
-"if $ITERM_PROFILE == 'light'
-
-"else
-  ":Dark
-"endif
 
 " Special stuff for markdown files
 :command Zen Goyo | SoftPencil
@@ -481,7 +467,7 @@ let g:tmuxline_preset = {
       \'a'    : '#S',
       \'win'  : ['#I', '#W'],
       \'cwin' : ['#I', '#W', '#F'],
-      \'y'    : ['%R', '%a', '%Y'],
+      \'y'    : ['%R', '%D'],
       \'z'    : '#H',
       \'options': {
         \'status-justify': 'left'}
