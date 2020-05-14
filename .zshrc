@@ -7,11 +7,17 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="refined"
 
 # Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+# Base16 Shell
 if [ "$ITERM_PROFILE" = "light" ]
 then
-  BASE16_SCHEME="solarized.light"
+  base16_gruvbox-light-hard
 else
-  BASE16_SCHEME="ocean.dark"
+  base16_material
 fi
 
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.sh"
@@ -211,7 +217,7 @@ NPMRC=~/docs/dotfiles/npmrcs/default
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # wd plugin seems to fuck shit up
-plugins=(brew osx vi-mode git pass)
+plugins=(osx vi-mode git pass)
 #
 #export LC_CTYPE=C
 #export LANG=C

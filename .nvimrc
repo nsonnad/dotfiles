@@ -6,7 +6,9 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " Utilities
+Plug 'andys8/vim-elm-syntax'
 Plug 'chrisbra/csv.vim'
+Plug 'chriskempson/base16-vim'
 Plug 'danro/rename.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'edkolev/tmuxline.vim'
@@ -15,10 +17,11 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'lambdatoast/elm.vim'
 Plug 'reedes/vim-pencil'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovimhaskell/haskell-vim'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdcommenter'
@@ -26,7 +29,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -54,24 +56,29 @@ Plug 'wavded/vim-stylus'
 "Check for new/updated bundles
 call plug#end()
 
-"let base16colorspace=256
-set t_Co=256
-:command Dark set background=dark | colorscheme zenburn
-:command Light set background=light | colorscheme NeoSolarized
-":command Zenburn colo zenburn
-
-if $ITERM_PROFILE == 'light'
-
-else
-  :Dark
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
 endif
 
+"set t_Co=256
+":command Dark set background=dark | colorscheme base16-zenburn
+":command Light set background=light | colorscheme base16-gruvbox-light-hard
+
+"if $ITERM_PROFILE == 'light'
+
+"else
+  ":Dark
+"endif
+
 " Special stuff for markdown files
-:command Zen Goyo | PencilSoft
+:command Zen Goyo | SoftPencil
 au BufRead *.md setlocal spell
 au BufRead *.markdown setlocal spell
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.interview,*.vw :PencilSoft
+
+let g:limelight_conceal_ctermfg = 'gray'
 
 noremap ⁄ :Dark<CR>
 noremap € :Light<CR>
@@ -86,7 +93,6 @@ augroup END " }
 "SETTINGS
 "=============================
 let g:python3_host_prog = '/usr/local/bin/python3'
-let g:deoplete#enable_at_startup = 1
 
 filetype plugin on
 filetype indent on
@@ -253,8 +259,8 @@ nnoremap <Leader>x :bp\|bd #<cr>
 " <Leader>o: only
 nnoremap <Leader>o :only<cr>
 
-" <Leader>e: Fast editing of the .vimrc
-nnoremap <Leader>ee :e! /Users/nikhil/docs/dotfiles/.vimrc<cr>
+" <Leader>v: Fast editing of the .vimrc
+nnoremap <Leader>vv :e! /Users/nikhil/docs/dotfiles/.nvimrc<cr>
 
 :nmap <silent> <leader>d :Dark<cr>
 :nmap <silent> <leader>l :Light<cr>
@@ -275,7 +281,6 @@ nnoremap <Leader>, <C-w>p
 nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
 
 " Saving, quitting
-nnoremap <leader>s :w!<cr>
 nnoremap <leader>a :w!<cr>
 nnoremap <leader>A :wa!<cr>
 nnoremap <leader>q :q<cr>
@@ -395,48 +400,6 @@ noremap Ô mzyyp`zj
 "Alt-Shift-k: Duplicate line up
 noremap  mzyyp`z
 
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W', '#F'],
-      \'y'    : ['%R', '%a', '%Y'],
-      \'z'    : '#H'}
-
-:command Tmuxline lightline
-
-"===============================================================================
-" TmuxNavigator
-"===============================================================================
-let g:tmux_navigator_no_mappings = 1
-
-"nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-"nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-"nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-"nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-"nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
-
-"===============================================================================
-" NERDTree
-"===============================================================================
-
-nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
-let NERDTreeShowBookmarks=1
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-
-"===============================================================================
-" GitGutter
-"===============================================================================
-let g:gitgutter_eager=0
-
-"===============================================================================
-" Fugitive
-"===============================================================================
-nnoremap <Leader>gc :Gcommit<cr>
-nnoremap <Leader>gd :Gdiff<cr>
-nnoremap <Leader>gp :Git push<cr>
-nnoremap <Leader>gs :Gstatus<cr>
-
 "===============================================================================
 " Lightline
 "===============================================================================
@@ -468,8 +431,8 @@ let g:lightline = {
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
       \ }
 
-if $ITERM_PROFILE == "light"
-  let g:lightline.colorscheme = "solarized"
+if g:colors_name == "base16-gruvbox-light-hard"
+  let g:lightline.colorscheme = "selenized_light"
 else
   let g:lightline.colorscheme = "seoul256"
 endif
@@ -509,6 +472,82 @@ function! LightLineFilename()
        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
+
+"===============================================================================
+" tmuxline
+"===============================================================================
+
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W', '#F'],
+      \'y'    : ['%R', '%a', '%Y'],
+      \'z'    : '#H',
+      \'options': {
+        \'status-justify': 'left'}
+      \}
+
+:command Tmuxline lightline
+
+"===============================================================================
+" TmuxNavigator
+"===============================================================================
+let g:tmux_navigator_no_mappings = 1
+
+"nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+"nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+"nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+"nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+"nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+
+
+"===============================================================================
+" COC
+"===============================================================================
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Keybindings
+nmap <leader>r <Plug>(coc-rename)
+nmap <silent> <leader>s <Plug>(coc-fix-current)
+nmap <silent> <leader>S <Plug>(coc-codeaction)
+nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>E <Plug>(coc-diagnostic-next-error)
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>g :call CocAction('doHover')<CR>
+nmap <silent> <leader>u <Plug>(coc-references)
+nmap <silent> <leader>fm :call CocActionAsync('format')<CR>
+
+"===============================================================================
+" NERDTree
+"===============================================================================
+
+nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
+let NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+
+"===============================================================================
+" GitGutter
+"===============================================================================
+let g:gitgutter_eager=0
+
+"===============================================================================
+" Fugitive
+"===============================================================================
+nnoremap <Leader>gc :Gcommit<cr>
+nnoremap <Leader>gd :Gdiff<cr>
+nnoremap <Leader>gp :Git push<cr>
+nnoremap <Leader>gs :Gstatus<cr>
 
 augroup AutoSyntastic
   autocmd!
