@@ -14,6 +14,8 @@ done
 
 compinit -C
 
+# COLORS
+# --------------
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
@@ -21,13 +23,9 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 LIGHT_SCHEME="gruvbox-light-hard"
-DARK_SCHEME="zenburn"
+DARK_SCHEME="onedark"
 alias colorlight="base16_$LIGHT_SCHEME && nvim -c q"
 alias colordark="base16_$DARK_SCHEME && nvim -c q"
-#alias cabalupgrades="cabal list --installed  | egrep -iv '(synopsis|homepage|license)'"
-#alias gcc='/usr/local/bin/gcc-4.8'
-#alias cc='/usr/local/bin/gcc-4.8'
-#alias g++='/usr/local/bin/g++-4.8'
 
 # aliases
 alias zshconfig="vim ~/docs/dotfiles/.zshrc"
@@ -39,7 +37,6 @@ alias vimrc="vim ~/docs/dotfiles/.vimrc"
 alias penta="vim ~/docs/dotfiles/firefox/.pentadactylrc"
 alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias pgup='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias jsvim='vimpager -c "setf json"'
 
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
 alias wd='. /Users/nikhil/bin/wd/wd.sh'
@@ -49,9 +46,9 @@ alias update-brew="brew update && brew upgrade"
 alias update-slush="npm uninstall -g slush-qz-thing && npm install -g git+ssh://git@github.com:quartz/slush-qz-thing.git"
 alias pomo="pomojs -q --log ~/Dropbox/.pomo.log --tmux"
 
-# vimwiki aliases
-alias wiki="nvim -c 'VimwikiIndex'"
-alias diary="nvim -c 'VimwikiDiaryIndex'"
+# VIMWIKI aliases
+alias vimwiki="nvim -c 'VimwikiIndex'"
+alias journal="nvim -c 'VimwikiDiaryIndex'"
 alias today="nvim -c 'VimwikiMakeDiaryNote'"
 
 # common aliases, taken from https://github.com/robbyrussell/oh-my-zsh/pull/1866

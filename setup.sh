@@ -30,18 +30,7 @@ ln -s `pwd`/.vim ~/.config/nvim
 ln -s `pwd`/.nvimrc ~/.config/nvim/init.vim
 ln -s `pwd`/hammerspoon ~/.hammerspoon
 
-# install nvm (node version manager)
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
-# install latest node
-nvm install stable
-nvm alias default stable
-
 # global node packages
 npm install -g trash
 
 # global python packages
-pip install csvkit
-pip install ipython
-pip install pandas
-pip install virtualenv
-pip install virtualenvwrapper

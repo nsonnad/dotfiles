@@ -12,24 +12,26 @@ Plug 'chriskempson/base16-vim'
 Plug 'danro/rename.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'edkolev/tmuxline.vim'
-Plug 'godlygeek/tabular'
+Plug 'elixir-editors/vim-elixir'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
+Plug 'janko/vim-test'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-peekaboo'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'mbbill/undotree'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'reedes/vim-pencil'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovimhaskell/haskell-vim'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neosnippet.vim'
-Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
@@ -42,10 +44,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'pangloss/vim-javascript'
 Plug 'nsonnad/vim-interview-syntax'
 
-" react
-Plug 'mxw/vim-jsx'
-let javascript_enable_domhtmlcss=1
-let g:javascript_plugin_jsdoc = 1
 
 Plug 'hdima/python-syntax'
 
@@ -57,10 +55,13 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-" Special stuff for markdown files
+"================================================
+" WRITING + GOYO
+"================================================
 :command Zen Goyo | SoftPencil
-au BufRead *.md setlocal spell
-au BufRead *.markdown setlocal spell
+let g:goyo_height=90
+au BufRead *.md hi clear SpellBad
+au BufRead *.md hi SpellBad ctermfg=red cterm=underline
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.interview,*.vw :PencilSoft
 
@@ -212,6 +213,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 nnoremap / /\v
 vnoremap / /\v
 
+"ctrl+r to replace highlighted text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
 "===============================================================================
 " Function Key Mappings
 "===============================================================================
@@ -219,7 +223,7 @@ vnoremap / /\v
 " <F2>: Open Vimfiler
 
 " <F3>: Gundo
-nnoremap <F3> :<C-u>MundoToggle<CR>
+nnoremap <F3> :<C-u>UndotreeToggle<CR>
 
 "===============================================================================
 " Leader Key Mappings
@@ -286,9 +290,7 @@ nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>te :tabedit
 nnoremap <leader>jd :JsDoc<cr>
 
-noremap <leader>gu :MundoToggle<CR>
-noremap <leader>sm :SyntasticToggleMode<CR>
-noremap <leader>st :SyntasticCheck<CR>
+noremap <leader>gu :UndotreeToggle<CR>
 
 " search for current word (to replace)
 noremap <leader>sc :%s/<C-r><C-w>/
@@ -407,6 +409,10 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
       \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
       \ 'component_function': {
       \   'fugitive': 'LightLineFugitive',
       \   'readonly': 'LightLineReadonly',
@@ -416,6 +422,8 @@ let g:lightline = {
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
       \ }
+
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
 if g:colors_name == "base16-gruvbox-light-hard"
   let g:lightline.colorscheme = "selenized_light"
@@ -502,6 +510,13 @@ function! s:show_documentation()
   endif
 endfunction
 
+" autocompletion
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
 " Keybindings
 nmap <leader>r <Plug>(coc-rename)
 nmap <silent> <leader>s <Plug>(coc-fix-current)
@@ -511,7 +526,16 @@ nmap <silent> <leader>E <Plug>(coc-diagnostic-next-error)
 nmap <silent> <leader>d <Plug>(coc-definition)
 nmap <silent> <leader>g :call CocAction('doHover')<CR>
 nmap <silent> <leader>u <Plug>(coc-references)
-nmap <silent> <leader>fm :call CocActionAsync('format')<CR>
+nmap <silent> <leader>p :call CocActionAsync('format')<CR>
+
+"===============================================================================
+" vim-test
+"===============================================================================
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
 
 "===============================================================================
 " NERDTree
@@ -534,36 +558,6 @@ nnoremap <Leader>gc :Gcommit<cr>
 nnoremap <Leader>gd :Gdiff<cr>
 nnoremap <Leader>gp :Git push<cr>
 nnoremap <Leader>gs :Gstatus<cr>
-
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
-
-set laststatus=2
-
-"===============================================================================
-" Syntastic
-"===============================================================================
-" specify which checkers to use
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_json_checkers = ['jsonlint']
-
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['js', 'py', 'json', 'jsx'],
-                           \ 'passive_filetypes': ['html'] }
-
-" Better :sign interface symbols
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '!'
-
-" Check on buffer open
-let g:syntastic_check_on_open = 1"
 
 
 "===============================================================================

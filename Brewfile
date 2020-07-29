@@ -1,12 +1,6 @@
 # without git there is nothing
 brew "git"
 
-# taps
-tap "homebrew/science"
-tap "homebrew/versions"
-tap "homebrew/python"
-tap "thoughtbot/formulae"
-
 # utils
 brew "coreutils"
 brew "moreutils"
@@ -26,10 +20,8 @@ brew "gnu-sed", args: ["default-namesinstall"]
 brew "gnupg2"
 brew "hub"
 brew "jq"
-brew "numpy"
 brew "pass"
 brew "reattach-to-user-namespace", args: ["wrap-pbcopy-pbpaste"]
-brew "scipy"
 brew "tree"
 brew "tmux"
 brew "unar"
@@ -39,30 +31,28 @@ brew "youtube-dl"
 
 # compilers. this will take a while
 # brew ghc
-brew "pyenv"
+brew "node"
 brew "python3"
 brew "r"
 
 # cask apps
-tap "caskroom/versions"
 cask_args appdir: "/Applications"
 
-cask "atom"
+cask "ableton-live-suite"
 cask "calibre"
-cask "colloquy"
-cask "disk-inventory-x"
 cask "dropbox"
 cask "dash"
 cask "firefox"
-cask "flux"
 cask "google-chrome"
 cask "hammerspoon"
 cask "iterm2-beta"
+cask "karabiner-elements"
+cask "openemu"
 cask "private-internet-access"
-cask "slack"
+cask "splice"
+cask "steam"
+cask "tor-browser"
 cask "vlc"
-mas "Reeder", id: 88001334
 
 # cask fonts
-tap "caskroom/fonts"
 cask "font-inconsolata-dz-for-powerline"
