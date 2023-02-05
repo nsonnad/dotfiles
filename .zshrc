@@ -38,18 +38,17 @@ alias penta="vim ~/docs/dotfiles/firefox/.pentadactylrc"
 alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias pgup='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 
-alias wd='. /Users/nikhil/bin/wd/wd.sh'
-alias wd='. /Users/nikhil/bin/wd/wd.sh'
-
 alias update-pip="pip freeze | cut -d = -f 1 | xargs -n 1 pip search | grep -B2 'LATEST:'"
-alias update-brew="brew update && brew upgrade"
-alias update-slush="npm uninstall -g slush-qz-thing && npm install -g git+ssh://git@github.com:quartz/slush-qz-thing.git"
-alias pomo="pomojs -q --log ~/Dropbox/.pomo.log --tmux"
 
 # VIMWIKI aliases
-alias vimwiki="nvim -c 'VimwikiIndex'"
-alias journal="nvim -c 'VimwikiDiaryIndex'"
-alias today="nvim -c 'VimwikiMakeDiaryNote'"
+#alias todo="nvim -c 'Zen' ~/docs/vimwiki/todo.md"
+#alias vw="cd ~/docs/vimwiki && nvim -c 'VimwikiIndex' -c 'Zen'"
+#alias routine="nvim -c 'Zen' ~/docs/vimwiki/schedule.md"
+#alias agenda="nvim -c 'Zen' ~/docs/vimwiki/agenda.md"
+#alias today="nvim -c 'VimwikiMakeDiaryNote' -c 'Zen'"
+#alias diary="nvim -c 'VimwikiDiaryIndex' -c 'Zen'"
+#alias scratchpad="nvim ~/docs/vimwiki/Scratchpad.md -c 'Zen'"
+#alias projects="nvim ~/docs/vimwiki/projects.md -c 'Zen'"
 
 # common aliases, taken from https://github.com/robbyrussell/oh-my-zsh/pull/1866
 # ----------------------------------------------------------------------
@@ -114,39 +113,10 @@ stty stop undef # to unmap ctrl-s
 # --------------------------
 alias hr='hr █'
 
-alias todo='nvim ~/Dropbox/notes/todo.md'
-alias weather='curl -4 http://wttr.in/New_York'
-alias qnotes='nvim ~/Dropbox/notes'
-alias notes='cd ~/Dropbox/notes && nvim'
+alias weather='curl -4 http://wttr.in/Minneapolis'
 alias batt='pmset -g batt'
 
 # Python
-export WORKON_HOME=$HOME/.virtualenvs   # optional
-export PROJECT_HOME=$HOME/python-projects      # optional
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
-#export WORKON_HOME=$HOME/.virtualenvs
-##export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-##export PIP_VIRTUALENV_BASE=$WORKON_HOME
-##export PIP_RESPECT_VIRTUALENV=true
-#if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-    #source /usr/local/bin/virtualenvwrapper.sh
-#else
-    #echo "WARNING: Can't find virtualenvwrapper.sh"
-#fi
-
-# Enable reattach-to-user-namespace on Mac. See
-# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/8
-#if [[ "$(uname)" == "Darwin" ]]; then
-  #alias tmux='tmux -2'
-#else
-  #alias tmux='tmux -2'
-#fi
-
-# Export TERM correctly for tmux
-#[[ $TERM == "screen" ]] && export TERM=screen-256color
-#[[ $TERM == "xterm" ]] && export TERM=xterm-256color
-
 # command line calculator with =
 function \=() {
     calc="${@//p/+}"
@@ -183,39 +153,8 @@ vol () {
   osascript -e "set volume output volume $*";
 }
 
-NPMRC_STORE=~/docs/dotfiles/npmrcs/
-NPMRC=~/docs/dotfiles/npmrcs/default
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
 # wd plugin seems to fuck shit up
-plugins=(osx vi-mode git pass)
+plugins=(macos vi-mode git pass)
 #
 #export LC_CTYPE=C
 #export LANG=C
@@ -231,12 +170,9 @@ export NODE_ENV=development
 export TERM=xterm-256color
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/
-
 source $ZSH/oh-my-zsh.sh
 # aws tab completion
 #source /usr/local/share/zsh/site-functions/_aws
-source ~/docs/dotfiles/local.sh
 
 # Customize to your needs...
 export PATH=$PATH:$HOME/bin
@@ -252,11 +188,9 @@ export PATH=/usr/texbin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-PATH="/Users/nikhil/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/nikhil/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/nikhil/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/nikhil/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/nikhil/perl5"; export PERL_MM_OPT;
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-# added by Miniconda3 installer
-# export PATH="/Users/nikhil/miniconda3/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
