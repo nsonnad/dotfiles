@@ -21,6 +21,7 @@ Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'coc-extensions/coc-svelte', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
 
 " fzf
@@ -41,9 +42,13 @@ Plug 'tpope/vim-dadbod'
 " Utilities
 Plug 'chriskempson/base16-vim'
 Plug 'edkolev/tmuxline.vim'
+Plug 'evanleck/vim-svelte'
+Plug 'pangloss/vim-javascript'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'mbbill/undotree'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'preservim/nerdcommenter'
@@ -448,11 +453,11 @@ let g:lightline = {
 
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
-if g:colors_name == "base16-gruvbox-light-hard"
-  let g:lightline.colorscheme = "selenized_light"
-else
-  let g:lightline.colorscheme = "seoul256"
-endif
+"if g:colors_name == "base16-gruvbox-light-hard"
+  "let g:lightline.colorscheme = "selenized_light"
+"else
+  "let g:lightline.colorscheme = "seoul256"
+"endif
 
 function! LightLineModified()
   if &filetype == "help"
@@ -575,8 +580,6 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-
-let g:coc_config_home = '/path/to/folder'
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
@@ -732,3 +735,5 @@ nmap <Leader>wp :Files ~/docs/vimwiki<CR>
 :command Ipysource source ~/docs/dotfiles/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
 
 let g:jsdoc_default_mapping=0
+let g:javascript_plugin_jsdoc = 1
+
